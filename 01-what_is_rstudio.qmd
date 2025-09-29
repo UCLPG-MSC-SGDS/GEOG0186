@@ -20,6 +20,14 @@ Let us talk about the installation of RStudio on your personal computer.
 
 ## Download and Installation of Software {.unnumbered}
 
+## RStudio and Downloading it  (Length: 00:11:35)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('4TAAwv0En6o', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/4TAAwv0En6o)
+
 RStudio is an open-source software, it is free. It is widely recommended in data science, scientific research, and technical communication because it is easy to access, download, and install.
 
 To use RStudio, you must first install R (Base) before installing RStudio. Follow the steps below to install both programs for your operating system (Windows or Mac).

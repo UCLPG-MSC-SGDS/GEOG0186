@@ -16,7 +16,7 @@ In this course, you will receive introductory training in quantitative methods a
 
 ```{r, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
-embed_youtube('XGfX2bSt8Rk', height=400) %>% use_align('center')
+embed_youtube('XGfX2bSt8Rk', height=400, allowfullscreen = TRUE) %>% use_align('center')
 ```
 [[**Watch on YouTube**]](https://youtu.be/XGfX2bSt8Rk)
 
