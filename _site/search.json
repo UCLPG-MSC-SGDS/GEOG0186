@@ -1,0 +1,31 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "Installation",
+      "About"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "GEOG0186: Quantitative Skills",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "section_1-module_overview.html",
+    "href": "section_1-module_overview.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "Welcome to GIF1’s Introduction to Statistics. So far you have been introduced to the core tenets and principles of geography taught through the different themes touching on physical sciences (e.g., coastal and rivers) and social sciences (e.g., ethnographic methods and urbanism). This session focuses on the themes of statistics (i.e., data analysis). Here, we will provide you with an introduction to the basic statistical methods for exploring & representing secondary data from Barcelona, using a programming software tool known as R/RStudio, as well as using R/RStudio to introduce you to the basics of probability distributions and how they can be use for making predictions.\nGetting started with the learning process (Length: 13:50 minutes)\n\n\n\n\n\n\n\n\n\nWatch on YouTube [LINK]",
+    "crumbs": [
+      "Module Overview",
+      "Welcome"
+    ]
+  }
+]

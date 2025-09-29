@@ -1,0 +1,69 @@
+---
+title: "GEOG0186: Quantitative Skills"
+---
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE}
+knitr::include_graphics('assets/all_images/module_overview_page/00_Welcome_Page_Animation.gif') 
+```
+
+# Welcome {.unnumbered}
+
+Welcome to **Quantitative Skills**, one of the strands in **Foundations of Geography I**. 
+
+In this course, you will receive introductory training in quantitative methods and coding in RStudio, a powerful tool for analysing data in geography. No prior coding experience or background in quantitative sciences is expected, so we start from the absolute basics and build toward a solid foundation. The aim of this course is to help you feel comfortable and confident with computing and using code to work with and explore data. By the end of Term 1, you will have developed a strong foundation in coding and key programming skills.
+
+## Getting Started with the Learning Materials  (Length: 00:13:51)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('XGfX2bSt8Rk', height=400) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/XGfX2bSt8Rk)
+
+</br>
+
+## Self-Guided & Flipped Learning Approach {.unnumbered}
+
+This strand follows a more relaxed teaching structure. You will work **independently at your own pace**, with guidance provided along the way. We expect you to engage with the learning materials - supported by online tutorials, coding instructions, and guidance videos - **before going into the computer practical sessions**. This allows our session time to be used for discussion, problem-solving, and hands-on practice.
+
+</br>
+
+## Computer Practical Sessions & Timetable  {.unnumbered}
+
+There are 10 computer practical sessions throughout Term 1, all delivered in-person and facilitated by Postgraduate Teaching Assistants (PGTAs).
+
+All sessions take place every **Wednesday between 9:00am and 12:00pm**. The entire Geography cohort has been split into three groups (Computer **Groups A**, **B**, and **C**), with practicals delivered separately in one-hour, back-to-back sessions each week to each group. The schedule is as follows:
+
+ - **Group A**: 09:00am–10:00am, [**Christopher Ingold Building G20 – Public Cluster**](http://www.ucl.ac.uk/maps/christopher-ingold-building)
+ - **Group B**: 10:00am–11:00am, [**Birkbeck Malet Street 422/423 – Public Cluster**](https://maps.app.goo.gl/NPnPuS7PP7renp8Q6)
+ - **Group C**: 11:00am–12:00pm, [**Birkbeck Malet Street 422/423 – Public Cluster**](https://maps.app.goo.gl/NPnPuS7PP7renp8Q6)
+
+:::{.callout-important}
+The above locations for **Group A**, **B**, and **C** are public clusters with PC workstations. Since you will mostly be working through the materials at your own pace, often on your own laptops with RStudio installed, we highly recommend that you bring your own laptop to the computer practicals for ease of use.
+:::
+
+The topics for the course are as follows:
+
+|Dates    | Week | List of Topics                                                  |
+|:--------|:-----|:----------------------------------------------------------------|
+|01/10/25 | 1    | Introduction I: Basics Building Blocks for Computing in RStudio |
+|08/10/25 | 2    | Introduction II: Handling Data Structures in RStudio            |
+|15/10/25 | 3    | Examining I: Frequency Distribution                             |
+|22/10/25 | 4    | Examining II: Descriptive Statistics                            |
+|29/10/25 | 5    | Examining III: Types of Data Visualisation                      |
+|         |      | **Reading Week**                                                |
+|12/11/25 | 6    | Sourcing Data I: Acquiring Data From Open Sources               |
+|19/11/25 | 7    | Sourcing Data II: Sampling from Probability Distribution        |
+|26/11/25 | 8    | Air Quality I: Correlation & Regression                         |
+|03/12/25 | 9    | Air Quality II: Box Plots and T-tests                           |
+|10/12/25 | 10   | Portfolio Surgery & Wrap-up.                                    |
+
+</br>
+
+## Questions & Discusson Forum on Moodle {.unnumbered}
+
+On Moodle, you can use the [**Ask a question**](https://moodle.ucl.ac.uk/course/section.php?id=1274325) section to post general queries about the learning materials on this website, as well as any technical issues you encounter during your self-guided study. Please refer to that section on Moodle, and either I or one of the PGTAs will respond with solutions.
+
+:::{.callout-important}
+While Moodle is the central point for information and communications for **GEOG0186 Quantitative Skills** and where all formative assessments are submitted. However, note that all the weekly content will only be hosted on this dedicated web page and **not on Moodle**.
+:::
