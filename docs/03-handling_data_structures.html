@@ -178,7 +178,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#handling-data-structures-in-rstudio" id="toc-handling-data-structures-in-rstudio" class="nav-link active" data-scroll-target="#handling-data-structures-in-rstudio"><span class="header-section-number">1</span> Handling Data Structures in RStudio</a>
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">1.1</span> Learning objectives</a></li>
-  <li><a href="#setting-the-working-directory-to-datasets" id="toc-setting-the-working-directory-to-datasets" class="nav-link" data-scroll-target="#setting-the-working-directory-to-datasets"><span class="header-section-number">1.2</span> Setting the Working Directory to Datasets</a></li>
+  <li><a href="#setting-the-working-directory-to-datasets" id="toc-setting-the-working-directory-to-datasets" class="nav-link" data-scroll-target="#setting-the-working-directory-to-datasets"><span class="header-section-number">1.2</span> Setting the Working Directory to Datasets</a>
+  <ul class="collapse">
+  <li><a href="#setting-the-path-location-on-mac" id="toc-setting-the-path-location-on-mac" class="nav-link" data-scroll-target="#setting-the-path-location-on-mac"><span class="header-section-number">1.2.1</span> Setting the Path Location on MAC</a></li>
+  <li><a href="#setting-the-path-location-on-windows" id="toc-setting-the-path-location-on-windows" class="nav-link" data-scroll-target="#setting-the-path-location-on-windows"><span class="header-section-number">1.2.2</span> Setting the Path Location on Windows</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -218,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Combine multiple conditions with logical operators to perform further filtering of data</li>
 <li>Export data back into a .csv file</li>
 </ol>
-<p>These objectives combined with those from last week serve as a gateway to learning RStudio and building a strong foundation. Let us begin!</p>
+<p>These objectives, combined with those from last week, serve as a gateway to learning RStudio and building a strong foundation. Let us begin!</p>
 </section>
 <section id="setting-the-working-directory-to-datasets" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="setting-the-working-directory-to-datasets"><span class="header-section-number">1.2</span> Setting the Working Directory to Datasets</h2>
@@ -232,22 +236,31 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Before we do anything - make sure to have downloaded the data set for this computer session by clicking <a href=""><strong>[HERE]</strong></a>. There are three datasets:</p>
+<p>Before we do anything - make sure to have downloaded the dataset for this computer session by clicking <a href=""><strong>[HERE]</strong></a>. There are three datasets:</p>
 <ol type="1">
-<li><code>Primary Schools in Ealing.csv</code>: This comma seperated file (CSV) contains the data needed to to follow today’s tutorials.</li>
-<li><code>Open Street Drains in Accra</code>: This folder contains images of stormwater drainage infrastructure in Accra. It will be needed in part one of <strong>Task 1</strong>.</li>
+<li><code>Primary Schools in Ealing.csv</code>: This comma separated values (CSV) file contains the data needed to follow today’s tutorial. 2 <code>Open Street Drains in Accra</code>: This is zipped folder containing images of stormwater drainage infrastructure in Accra annotated with key information to created a data frame. It will be needed in part one of <strong>Task 1</strong>.</li>
 <li><code>Prevalence of Soil Transmitted Helminths in Africa.csv</code>: This dataset contains point locations for villages across sub-Saharan Africa. It will be needed in part two of <strong>Task 1</strong>.</li>
 </ol>
 <p><strong>Instructions</strong> In your computer, do the following:</p>
 <ol type="1">
-<li>Create a new folder on your desktop page and rename the folder to <strong>GEOG0186</strong></li>
+<li>Create a new folder on your desktop and rename the folder <strong>GEOG0186</strong></li>
 <li>Next, create a new sub-folder within <strong>GEOG0186</strong> and rename it as <strong>Week 2</strong>.</li>
-<li>The downloaded data from the folder <strong>Dataset for Week 2</strong>, make sure to unzip and transfer <strong>ALL</strong> the datasets directly to the <strong>Week 2</strong> folder.</li>
+<li>From the downloaded folder <strong>Dataset for Week 2</strong>, make sure to unzip and transfer <strong>ALL</strong> the datasets directly to the <strong>Week 2</strong> folder.</li>
 </ol>
 </div>
 </div>
+<p>This part is probably the most important section of this tutorial.We are going to learn how to set the <strong>Work Directory</strong>. This basically refers to us connecting the RStudio to the folder containing our dataset that we want to import and analyse.</p>
+<p>Doing this allows the user to tell RStudio to open data from a folder located somewhere in our computer using something called the <strong>Path Location</strong>.</p>
+<p>The <strong>Path Location</strong> specifies the whereabouts of the data file(s) stored within a computer. Setting your directory in RStudio, <strong>in code</strong>, beforehand makes life incredibly easier (than the usual point-and-click approach) in terms of finding, importing, exporting and saving data in and out of RStudio.</p>
+<p>To illustrate what a <strong>Path Location</strong> is – suppose on my desktop’s dashboard on a Mac/Windows there is a folder called <strong>GEOG0186</strong>, and within that folder, exists another folder called <strong>Week 2</strong>. Finally, suppose a comma separated value (.csv) data file called <code>Primary Schools in Ealing.csv</code> is store in this folder i.e., <strong>Week 2</strong>. If via RStudio you want to open this CSV data file located in within the <strong>Week 2</strong> folder. You will need to first set the path to <strong>Week 2</strong> in RStudio using the <code>setwd()</code> function.</p>
+<section id="setting-the-path-location-on-mac" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="setting-the-path-location-on-mac"><span class="header-section-number">1.2.1</span> Setting the Path Location on MAC</h3>
+</section>
+<section id="setting-the-path-location-on-windows" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="setting-the-path-location-on-windows"><span class="header-section-number">1.2.2</span> Setting the Path Location on Windows</h3>
 
 
+</section>
 </section>
 </section>
 
