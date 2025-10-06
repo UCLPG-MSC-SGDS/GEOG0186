@@ -89,3 +89,43 @@ If you type the code `getwd()` and quickly run it through console - if it return
 
 Now, let us learn how to import a CSV data into RStudio.
 
+## How to Import a Dataset into RStudio
+
+A CSV file (short for Comma-Separated Values) is one of the most common formats for storing data.
+Each **row** is a **single record** or **observation**. For example, it can be details about a person, household unit, a city, or even disease events; and while each **column** is a **variable** (for example, population counts, temperature readings, or region name etc.).
+
+For this exercise, we will be using the `Primary Schools in Ealing.csv` dataset to build intuition on understanding the basics of data structure.
+
+Since, we have already set the work directory to folder containing this dataset. Importing it into RStudio would be a piece of cake.
+
+To read a CSV file into R, we can use the `read.csv()` function import it as a **data frame object**:
+
+```{r, eval=FALSE}
+# Load data into RStudio. The spreadsheet is stored in the object called 'SchoolData'
+SchoolData <- read.csv(file = "Primary Schools in Ealing.csv")
+```
+
+The loaded dataset contains up to 58 primary schools with the following **variables**:
+
+- `SchoolName`: Name of school in Ealing (**character**)
+- `Type`: School classified as a "Primary" school (**character**)
+- `NumberBoys`: Total number of boys in a primary school (**numeric**)
+- `NumberGirls`: Total number of girls in a primary school (**numeric**)
+- `TotalStudents`: Total number of students in a primary school (**numeric**)
+- `OfstedGrade`: Overall school performance where `1` = "excellent", `2` = "good", `3` = "requires improvement", and `4` = "inadequate" (**factor**/**categorical**)
+
+:::{.callout-important}
+We have covered a lot of the basics in RStudio - i.e., setting the work directory and importing a spreadsheet that is CSV format. The things shown in this section will be used frequently in all future tutorials. So, get used to using `setwd()` and `read.csv()`.
+:::
+
+## Useful Functions to Examine Data
+
+One can examine the structure of the imported data with the following basic functions.
+
+- `str()`: tells the user which columns in the data frame are character or numeric variables, and so on.
+- `names()`: prints the entire names of the columns present in the data frame
+- `head()`: allows the user to see the first top 10 rows of the data frame
+- `tail()`: allows the user to see the last bottom 10 rows of the data frame
+- `ncol()`: tells the user the total number of columns present in the data frame
+- `nrow()`: tells the user the total number of observations (or rows) present in the data frame
+- `dim()`: prints both the total number of observations (or rows) and columns present in the data frame.

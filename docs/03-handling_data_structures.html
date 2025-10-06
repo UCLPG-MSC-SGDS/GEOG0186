@@ -217,6 +217,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#setting-the-path-location-on-mac" id="toc-setting-the-path-location-on-mac" class="nav-link" data-scroll-target="#setting-the-path-location-on-mac"><span class="header-section-number">1.2.1</span> Setting the Path Location on MAC</a></li>
   <li><a href="#setting-the-path-location-on-windows" id="toc-setting-the-path-location-on-windows" class="nav-link" data-scroll-target="#setting-the-path-location-on-windows"><span class="header-section-number">1.2.2</span> Setting the Path Location on Windows</a></li>
   </ul></li>
+  <li><a href="#how-to-import-a-dataset-into-rstudio" id="toc-how-to-import-a-dataset-into-rstudio" class="nav-link" data-scroll-target="#how-to-import-a-dataset-into-rstudio"><span class="header-section-number">1.3</span> How to Import a Dataset into RStudio</a></li>
+  <li><a href="#useful-functions-to-examine-data" id="toc-useful-functions-to-examine-data" class="nav-link" data-scroll-target="#useful-functions-to-examine-data"><span class="header-section-number">1.4</span> Useful Functions to Examine Data</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -341,9 +343,55 @@ Warning
 </div>
 <p>If you type the code <code>getwd()</code> and quickly run it through console - if it returns the inputted path location - then you have done this correctly.</p>
 <p>Now, let us learn how to import a CSV data into RStudio.</p>
-
-
 </section>
+</section>
+<section id="how-to-import-a-dataset-into-rstudio" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="how-to-import-a-dataset-into-rstudio"><span class="header-section-number">1.3</span> How to Import a Dataset into RStudio</h2>
+<p>A CSV file (short for Comma-Separated Values) is one of the most common formats for storing data. Each <strong>row</strong> is a <strong>single record</strong> or <strong>observation</strong>. For example, it can be details about a person, household unit, a city, or even disease events; and while each <strong>column</strong> is a <strong>variable</strong> (for example, population counts, temperature readings, or region name etc.).</p>
+<p>For this exercise, we will be using the <code>Primary Schools in Ealing.csv</code> dataset to build intuition on understanding the basics of data structure.</p>
+<p>Since, we have already set the work directory to folder containing this dataset. Importing it into RStudio would be a piece of cake.</p>
+<p>To read a CSV file into R, we can use the <code>read.csv()</code> function import it as a <strong>data frame object</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data into RStudio. The spreadsheet is stored in the object called 'SchoolData'</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>SchoolData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"Primary Schools in Ealing.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The loaded dataset contains up to 58 primary schools with the following <strong>variables</strong>:</p>
+<ul>
+<li><code>SchoolName</code>: Name of school in Ealing (<strong>character</strong>)</li>
+<li><code>Type</code>: School classified as a “Primary” school (<strong>character</strong>)</li>
+<li><code>NumberBoys</code>: Total number of boys in a primary school (<strong>numeric</strong>)</li>
+<li><code>NumberGirls</code>: Total number of girls in a primary school (<strong>numeric</strong>)</li>
+<li><code>TotalStudents</code>: Total number of students in a primary school (<strong>numeric</strong>)</li>
+<li><code>OfstedGrade</code>: Overall school performance where <code>1</code> = “excellent”, <code>2</code> = “good”, <code>3</code> = “requires improvement”, and <code>4</code> = “inadequate” (<strong>factor</strong>/<strong>categorical</strong>)</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We have covered a lot of the basics in RStudio - i.e., setting the work directory and importing a spreadsheet that is CSV format. The things shown in this section will be used frequently in all future tutorials. So, get used to using <code>setwd()</code> and <code>read.csv()</code>.</p>
+</div>
+</div>
+</section>
+<section id="useful-functions-to-examine-data" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="useful-functions-to-examine-data"><span class="header-section-number">1.4</span> Useful Functions to Examine Data</h2>
+<p>One can examine the structure of the imported data with the following basic functions.</p>
+<ul>
+<li><code>str()</code>: tells the user which columns in the data frame are character or numeric variables, and so on.</li>
+<li><code>names()</code>: prints the entire names of the columns present in the data frame</li>
+<li><code>head()</code>: allows the user to see the first top 10 rows of the data frame</li>
+<li><code>tail()</code>: allows the user to see the last bottom 10 rows of the data frame</li>
+<li><code>ncol()</code>: tells the user the total number of columns present in the data frame</li>
+<li><code>nrow()</code>: tells the user the total number of observations (or rows) present in the data frame</li>
+<li><code>dim()</code>: prints both the total number of observations (or rows) and columns present in the data frame.</li>
+</ul>
+
+
 </section>
 </section>
 
