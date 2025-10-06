@@ -44,5 +44,48 @@ To illustrate what a **Path Location** is – suppose on my desktop's dashboard 
 
 ### Setting the Path Location on MAC
 
+For **MAC** users, the path location would be written as follows, `"/Users/accountName/Desktop/GEOG0186/Workshop 1"`. You can access this piece of information simply by:
+
+1. Open the folder **GEOG0186**
+2. Right-clicking on the folder **Week 2** in which the files are stored. A drop-down scroll menu will appear (see image below).
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('assets/all_images/set_working_directory/00_setwd_mac.png', error = FALSE) 
+```
+
+3. Hold the **Option** (`⌥`) button on your keyboard down, and click **Copy "Week 2" as Pathname**
+4. Paste the copied path name into the function `setwd()` and run the code
+
+For Mac, the `setwd()` is as follows:
+
+```{r, eval=FALSE}
+# set work directory in macs
+setwd("/Users/accountName/Desktop/GEOG0186/Week 2")
+```
 
 ### Setting the Path Location on Windows
+
+For Windows user, its marginally different - the path location to this folder on a **Windows** machine would be written as follows, `"C:/Users/accountName/Desktop/GEOG00186/Week 2"`. You can access this piece of information simply by:
+
+1. Open the **GEOG0186** folder to reveal the **Week 2** folder.
+2. Open the **Week 2** folder where your downloaded data files have been stored.
+3. Now, click on the browser bar at the top which shows `GEOG0186 > Week 2`. This should highlight and show `"C:\Users\accountName\Desktop\GEOG0186\Week 2"` (see image below).
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('assets/all_images/set_working_directory/00_setwd_windows.png', error = FALSE) 
+```
+
+4. Now, copy `"C:\Users\accountName\Desktop\GEOG0186\Week 2"` and paste the path name into the `setwd()` function in your R script.
+5. Lastly, change all the back slashes `\` in the path name to forward slashes `/` and run the code. It should look like this: `setwd("C:/Users/accountName/Desktop/GEOG0186/Week 2")`.
+
+For **Windows**, the `setwd()` is as follows:
+
+```{r, eval=FALSE}
+# set work directory in windows
+setwd("C:/Users/accountName/Desktop/GEOG0013/Week 2")
+```
+
+If you type the code `getwd()` and quickly run it through console - if it returns the inputted path location - then you have done this correctly.
+
+Now, let us learn how to import a CSV data into RStudio.
+

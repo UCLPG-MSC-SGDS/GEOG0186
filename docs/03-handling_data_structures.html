@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -255,9 +289,58 @@ Warning
 <p>To illustrate what a <strong>Path Location</strong> is – suppose on my desktop’s dashboard on a Mac/Windows there is a folder called <strong>GEOG0186</strong>, and within that folder, exists another folder called <strong>Week 2</strong>. Finally, suppose a comma separated value (.csv) data file called <code>Primary Schools in Ealing.csv</code> is store in this folder i.e., <strong>Week 2</strong>. If via RStudio you want to open this CSV data file located in within the <strong>Week 2</strong> folder. You will need to first set the path to <strong>Week 2</strong> in RStudio using the <code>setwd()</code> function.</p>
 <section id="setting-the-path-location-on-mac" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="setting-the-path-location-on-mac"><span class="header-section-number">1.2.1</span> Setting the Path Location on MAC</h3>
+<p>For <strong>MAC</strong> users, the path location would be written as follows, <code>"/Users/accountName/Desktop/GEOG0186/Workshop 1"</code>. You can access this piece of information simply by:</p>
+<ol type="1">
+<li>Open the folder <strong>GEOG0186</strong></li>
+<li>Right-clicking on the folder <strong>Week 2</strong> in which the files are stored. A drop-down scroll menu will appear (see image below).</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/set_working_directory/00_setwd_mac.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Hold the <strong>Option</strong> (<code>⌥</code>) button on your keyboard down, and click <strong>Copy “Week 2” as Pathname</strong></li>
+<li>Paste the copied path name into the function <code>setwd()</code> and run the code</li>
+</ol>
+<p>For Mac, the <code>setwd()</code> is as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set work directory in macs</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/accountName/Desktop/GEOG0186/Week 2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="setting-the-path-location-on-windows" class="level3" data-number="1.2.2">
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="setting-the-path-location-on-windows"><span class="header-section-number">1.2.2</span> Setting the Path Location on Windows</h3>
+<p>For Windows user, its marginally different - the path location to this folder on a <strong>Windows</strong> machine would be written as follows, <code>"C:/Users/accountName/Desktop/GEOG00186/Week 2"</code>. You can access this piece of information simply by:</p>
+<ol type="1">
+<li>Open the <strong>GEOG0186</strong> folder to reveal the <strong>Week 2</strong> folder.</li>
+<li>Open the <strong>Week 2</strong> folder where your downloaded data files have been stored.</li>
+<li>Now, click on the browser bar at the top which shows <code>GEOG0186 &gt; Week 2</code>. This should highlight and show <code>"C:\Users\accountName\Desktop\GEOG0186\Week 2"</code> (see image below).</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/set_working_directory/00_setwd_windows.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Now, copy <code>"C:\Users\accountName\Desktop\GEOG0186\Week 2"</code> and paste the path name into the <code>setwd()</code> function in your R script.</li>
+<li>Lastly, change all the back slashes <code>\</code> in the path name to forward slashes <code>/</code> and run the code. It should look like this: <code>setwd("C:/Users/accountName/Desktop/GEOG0186/Week 2")</code>.</li>
+</ol>
+<p>For <strong>Windows</strong>, the <code>setwd()</code> is as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set work directory in windows</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/accountName/Desktop/GEOG0013/Week 2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you type the code <code>getwd()</code> and quickly run it through console - if it returns the inputted path location - then you have done this correctly.</p>
+<p>Now, let us learn how to import a CSV data into RStudio.</p>
 
 
 </section>
