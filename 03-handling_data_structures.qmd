@@ -1,0 +1,35 @@
+---
+title: "Introduction II"
+---
+
+# Handling Data Structures in RStudio
+
+## Learning objectives
+
+By the end of this tutorial, you will be able to:
+
+1. Set your working directory on Mac and Windows
+2. Import a .csv file into RStudio
+3. Understand the structure of a data frame (rows and columns)
+4. Filter data using both numeric and categorical variables
+5. Combine multiple conditions with logical operators to perform further filtering of data
+5. Export data back into a .csv file
+
+These objectives combined with those from last week serve as a gateway to learning RStudio and building a strong foundation. Let us begin!
+
+## Setting the Working Directory to Datasets
+
+:::{.callout-warning}
+Before we do anything - make sure to have downloaded the data set for this computer session by clicking [**[HERE]**](). There are three datasets: 
+
+1. `Primary Schools in Ealing.csv`: This comma seperated file (CSV) contains the data needed to to follow today's tutorials. 
+2. `Open Street Drains in Accra`: This folder contains images of stormwater drainage infrastructure in Accra. It will be needed in part one of **Task 1**. 
+3. `Prevalence of Soil Transmitted Helminths in Africa.csv`: This dataset contains point locations for villages across sub-Saharan Africa. It will be needed in part two of **Task 1**.
+
+**Instructions**
+In your computer, do the following:
+
+1. Create a new folder on your desktop page and rename the folder to **GEOG0186**
+2. Next, create a new sub-folder within **GEOG0186** and rename it as **Week 2**. 
+3. The downloaded data from the folder **Dataset for Week 2**, make sure to unzip and transfer **ALL** the datasets directly to the **Week 2** folder.
+:::

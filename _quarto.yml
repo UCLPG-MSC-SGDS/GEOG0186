@@ -49,3 +49,4 @@ website:
       - section: "Core Content"
         contents:
           - 02-basic_building_blocks.qmd
+          - 03-handling_data_structures.qmd

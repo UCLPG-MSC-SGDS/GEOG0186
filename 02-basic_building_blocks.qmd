@@ -1,5 +1,5 @@
 ---
-title: "Lesson: Introduction I"
+title: "Introduction I"
 ---
 
 # Basic Building Blocks of RStudio
@@ -16,9 +16,13 @@ The learning objectives for today are:
 
 These objectives serve as a gateway to learning RStudio and building a strong foundation. Let us begin!
 
-</br>
+## RStudio Interface (Length: 00:07:08)
 
-## RStudio Interface
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('p21WD6EYGHQ', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/p21WD6EYGHQ)
 
 When you open RStudio for the first time, you are greeted by its interface. The window is divided into three panels:
 
@@ -45,16 +49,19 @@ Under **New File**, click **R Script**. This opens a new script titled **Untitle
 Throughout the course, and in all practical tutorials, you will be encouraged to use an R Script to collate and save the code you write for any statistical or spatial analysis. However, we will only begin working with scripts in **section 1.4** of the tutorials. For now, let’s start with the absolute basics: interacting with the R Console and using it as a simple calculator for typing basic code.
 :::
 
-</br>
+## Using R Console as a Calculator (Length: 00:07:26)
 
-## Using R Console as a Calculator
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('dxymrkN1omg', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/dxymrkN1omg)
 
 The R Console window (Panel 1) is where RStudio waits for you to tell it what to do. It displays the code you enter and the results of each command. You can type commands directly into this window for immediate execution.
 
 Let’s begin by using the Console as a basic calculator for addition (`+`), subtraction (`-`), multiplication (`*`), division (`/`), exponents (`^`), and other calculations.
 
 Click inside the R Console window, type `19+8`, and press the Enter key (`↵`) to see the result. Then try the following calculations by typing them into the Console:
-
 
 ```{r, eval=FALSE}
 # Perform addition
@@ -97,10 +104,13 @@ exp(5)
 log(3)
 ```
 
+## Creating basic objects and assignment operator (Length 00:12:59)
 
-</br>
-
-## Creating basic objects and assigning values to it
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('N7NKU-uCDJ8', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/N7NKU-uCDJ8)
 
 Let’s open an R Script file!
 
@@ -180,9 +190,13 @@ g <- "Blade Runner is amazing"
 g
 ```
 
-</br>
+## How to identify data types (Length 00:08:29)
 
-## How to identify data types
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('VKuhiS97C6k', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/VKuhiS97C6k)
 
 In programming, variables are used to store information, and each has a type determined by the kind of data it holds (e.g., integer, character, factor, logical). Assigning an integer makes the variable type “int.” A variable is simply a reserved memory location where values are stored.
 
@@ -228,9 +242,13 @@ class(b)
 
 We are now familiar with using the console and assigning numeric and string to objects, and identifying their data type. Let's learn who to enter data into RStudio and create our first data frame.
 
-</br>
+## How to enter data and create variables in RStudio? (Length: 00:16:27)
 
-## How to enter data and create variables in RStudio?
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('GlEQFX74bq4', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/GlEQFX74bq4)
 
 Here, we will learn some basics coding etiquettes creating a dataset from scratch using the two functions:
 
@@ -302,9 +320,13 @@ View(dataset)
 The column 'id' is a numeric variable with integers. The second column 'name' is a text variable with strings. The third & fourth columns 'height' and ‘weight’ are examples of numeric variables with real numbers with  continuous measures. The variable 'gender' is a text variable with strings – however, this type of variable is classed as a categorical variable as individuals were categorised as either 'M' and 'F'.
 :::
 
-</br>
+## How do we create a variable based on other existing variables within a data frame? (Length: 00:21:00)
 
-## How do we create a variable based on other existing variables within a data frame?
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('diHAc50vIhg', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/diHAc50vIhg)
 
 To access a variable by its name within a data frame, you will need to first type the name of the data frame followed by a `$` (dollar sign), and then typing the variable’s name of interest. For instance, suppose you just want to see the height values in the Console viewer - you just type:
 
@@ -315,11 +337,9 @@ dataset$height
 
 We can use other columns or variables within our data frame to create another variable. This technique is essentially important when cleaning and managing data. From this dataset, it is possible to derive the body mass index `bmi` from height and weight using the formula: 
 
-</br>
 <center>
 $BMI = weight/height^2$
 </center>
-</br>
 
 To generate `bmi` into our data frame, we would need to access the `height` (m) and `weight` (kg) columns using the `$` from the data frame its stored to, and apply the above formula as a code to generate the new `bmi` column:
 
@@ -342,8 +362,6 @@ dataset$weight <- dataset$weight*1000
 dataset
 ```
 
-</br>
-
 ## Saving your R script
 
 Well done! You have learnt the basics of coding in RStudio - next week, we will learn further coding etiquettes for managing datasets which includes: 
@@ -354,5 +372,3 @@ Well done! You have learnt the basics of coding in RStudio - next week, we will 
 - Merging two data frames.
 
 You can now **save** your script for future use by clicking on the **save icon** in the menu bar.
-
-</br>

@@ -12,7 +12,7 @@ Welcome to **Quantitative Skills**, one of the strands in **Foundations of Geogr
 
 In this course, you will receive introductory training in quantitative methods and coding in RStudio, a powerful tool for analysing data in geography. No prior coding experience or background in quantitative sciences is expected, so we start from the absolute basics and build toward a solid foundation. The aim of this course is to help you feel comfortable and confident with computing and using code to work with and explore data. By the end of Term 1, you will have developed a strong foundation in coding and key programming skills.
 
-## Getting Started with the Learning Materials  (Length: 00:13:51)
+## Getting Started with the Learning Materials  (Length: 00:13:51) {.unnumbered}
 
 ```{r, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
@@ -20,13 +20,9 @@ embed_youtube('XGfX2bSt8Rk', height=400, allowfullscreen = TRUE) %>% use_align('
 ```
 [[**Watch on YouTube**]](https://youtu.be/XGfX2bSt8Rk)
 
-</br>
-
 ## Self-Guided & Flipped Learning Approach {.unnumbered}
 
 This strand follows a more relaxed teaching structure. You will work **independently at your own pace**, with guidance provided along the way. We expect you to engage with the learning materials - supported by online tutorials, coding instructions, and guidance videos - **before going into the computer practical sessions**. This allows our session time to be used for discussion, problem-solving, and hands-on practice.
-
-</br>
 
 ## Computer Practical Sessions & Timetable  {.unnumbered}
 
@@ -57,8 +53,6 @@ The topics for the course are as follows:
 |26/11/25 | 8    | Air Quality I: Correlation & Regression                         |
 |03/12/25 | 9    | Air Quality II: Box Plots and T-tests                           |
 |10/12/25 | 10   | Portfolio Surgery & Wrap-up.                                    |
-
-</br>
 
 ## Questions & Discusson Forum on Moodle {.unnumbered}
 

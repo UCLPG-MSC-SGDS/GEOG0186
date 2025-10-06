@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lesson: Introduction I</title>
+<title>Introduction I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./03-handling_data_structures.html" rel="next">
 <link href="./01-what_is_rstudio.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -103,6 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<link href="site_libs/vembedr-0.1.5/css/vembedr.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -146,7 +148,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Core Content</a></li><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Lesson: Introduction I</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Core Content</a></li><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Introduction I</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -217,7 +219,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-basic_building_blocks.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lesson: Introduction I</span></a>
+ <span class="menu-text">Introduction I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-handling_data_structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction II</span></a>
   </div>
 </li>
       </ul>
@@ -235,12 +243,12 @@ window.Quarto = {
   <li><a href="#basic-building-blocks-of-rstudio" id="toc-basic-building-blocks-of-rstudio" class="nav-link active" data-scroll-target="#basic-building-blocks-of-rstudio"><span class="header-section-number">1</span> Basic Building Blocks of RStudio</a>
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">1.1</span> Learning objectives</a></li>
-  <li><a href="#rstudio-interface" id="toc-rstudio-interface" class="nav-link" data-scroll-target="#rstudio-interface"><span class="header-section-number">1.2</span> RStudio Interface</a></li>
-  <li><a href="#using-r-console-as-a-calculator" id="toc-using-r-console-as-a-calculator" class="nav-link" data-scroll-target="#using-r-console-as-a-calculator"><span class="header-section-number">1.3</span> Using R Console as a Calculator</a></li>
-  <li><a href="#creating-basic-objects-and-assigning-values-to-it" id="toc-creating-basic-objects-and-assigning-values-to-it" class="nav-link" data-scroll-target="#creating-basic-objects-and-assigning-values-to-it"><span class="header-section-number">1.4</span> Creating basic objects and assigning values to it</a></li>
-  <li><a href="#how-to-identify-data-types" id="toc-how-to-identify-data-types" class="nav-link" data-scroll-target="#how-to-identify-data-types"><span class="header-section-number">1.5</span> How to identify data types</a></li>
-  <li><a href="#how-to-enter-data-and-create-variables-in-rstudio" id="toc-how-to-enter-data-and-create-variables-in-rstudio" class="nav-link" data-scroll-target="#how-to-enter-data-and-create-variables-in-rstudio"><span class="header-section-number">1.6</span> How to enter data and create variables in RStudio?</a></li>
-  <li><a href="#how-do-we-create-a-variable-based-on-other-existing-variables-within-a-data-frame" id="toc-how-do-we-create-a-variable-based-on-other-existing-variables-within-a-data-frame" class="nav-link" data-scroll-target="#how-do-we-create-a-variable-based-on-other-existing-variables-within-a-data-frame"><span class="header-section-number">1.7</span> How do we create a variable based on other existing variables within a data frame?</a></li>
+  <li><a href="#rstudio-interface-length-000708" id="toc-rstudio-interface-length-000708" class="nav-link" data-scroll-target="#rstudio-interface-length-000708"><span class="header-section-number">1.2</span> RStudio Interface (Length: 00:07:08)</a></li>
+  <li><a href="#using-r-console-as-a-calculator-length-000726" id="toc-using-r-console-as-a-calculator-length-000726" class="nav-link" data-scroll-target="#using-r-console-as-a-calculator-length-000726"><span class="header-section-number">1.3</span> Using R Console as a Calculator (Length: 00:07:26)</a></li>
+  <li><a href="#creating-basic-objects-and-assignment-operator-length-001259" id="toc-creating-basic-objects-and-assignment-operator-length-001259" class="nav-link" data-scroll-target="#creating-basic-objects-and-assignment-operator-length-001259"><span class="header-section-number">1.4</span> Creating basic objects and assignment operator (Length 00:12:59)</a></li>
+  <li><a href="#how-to-identify-data-types-length-000829" id="toc-how-to-identify-data-types-length-000829" class="nav-link" data-scroll-target="#how-to-identify-data-types-length-000829"><span class="header-section-number">1.5</span> How to identify data types (Length 00:08:29)</a></li>
+  <li><a href="#how-to-enter-data-and-create-variables-in-rstudio-length-001627" id="toc-how-to-enter-data-and-create-variables-in-rstudio-length-001627" class="nav-link" data-scroll-target="#how-to-enter-data-and-create-variables-in-rstudio-length-001627"><span class="header-section-number">1.6</span> How to enter data and create variables in RStudio? (Length: 00:16:27)</a></li>
+  <li><a href="#how-do-we-create-a-variable-based-on-other-existing-variables-within-a-data-frame-length-002100" id="toc-how-do-we-create-a-variable-based-on-other-existing-variables-within-a-data-frame-length-002100" class="nav-link" data-scroll-target="#how-do-we-create-a-variable-based-on-other-existing-variables-within-a-data-frame-length-002100"><span class="header-section-number">1.7</span> How do we create a variable based on other existing variables within a data frame? (Length: 00:21:00)</a></li>
   <li><a href="#saving-your-r-script" id="toc-saving-your-r-script" class="nav-link" data-scroll-target="#saving-your-r-script"><span class="header-section-number">1.8</span> Saving your R script</a></li>
   </ul></li>
   </ul>
@@ -249,9 +257,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Core Content</a></li><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Lesson: Introduction I</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Core Content</a></li><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Introduction I</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lesson: Introduction I</h1>
+<h1 class="title">Introduction I</h1>
 </div>
 
 
@@ -281,10 +289,19 @@ window.Quarto = {
 <li>Data entry and variable creation in RStudio</li>
 </ol>
 <p>These objectives serve as a gateway to learning RStudio and building a strong foundation. Let us begin!</p>
-<p><br></p>
 </section>
-<section id="rstudio-interface" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="rstudio-interface"><span class="header-section-number">1.2</span> RStudio Interface</h2>
+<section id="rstudio-interface-length-000708" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="rstudio-interface-length-000708"><span class="header-section-number">1.2</span> RStudio Interface (Length: 00:07:08)</h2>
+<div class="cell" data-warnings="false">
+<div class="cell-output-display">
+<div class="vembedr" align="center">
+<div>
+<iframe src="https://www.youtube.com/embed/p21WD6EYGHQ" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+</div>
+<p><a href="https://youtu.be/p21WD6EYGHQ">[<strong>Watch on YouTube</strong>]</a></p>
 <p>When you open RStudio for the first time, you are greeted by its interface. The window is divided into three panels:</p>
 <ul>
 <li>R Console</li>
@@ -323,10 +340,19 @@ Important
 <p>Throughout the course, and in all practical tutorials, you will be encouraged to use an R Script to collate and save the code you write for any statistical or spatial analysis. However, we will only begin working with scripts in <strong>section 1.4</strong> of the tutorials. For now, let’s start with the absolute basics: interacting with the R Console and using it as a simple calculator for typing basic code.</p>
 </div>
 </div>
-<p><br></p>
 </section>
-<section id="using-r-console-as-a-calculator" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="using-r-console-as-a-calculator"><span class="header-section-number">1.3</span> Using R Console as a Calculator</h2>
+<section id="using-r-console-as-a-calculator-length-000726" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="using-r-console-as-a-calculator-length-000726"><span class="header-section-number">1.3</span> Using R Console as a Calculator (Length: 00:07:26)</h2>
+<div class="cell" data-warnings="false">
+<div class="cell-output-display">
+<div class="vembedr" align="center">
+<div>
+<iframe src="https://www.youtube.com/embed/dxymrkN1omg" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+</div>
+<p><a href="https://youtu.be/dxymrkN1omg">[<strong>Watch on YouTube</strong>]</a></p>
 <p>The R Console window (Panel 1) is where RStudio waits for you to tell it what to do. It displays the code you enter and the results of each command. You can type commands directly into this window for immediate execution.</p>
 <p>Let’s begin by using the Console as a basic calculator for addition (<code>+</code>), subtraction (<code>-</code>), multiplication (<code>*</code>), division (<code>/</code>), exponents (<code>^</code>), and other calculations.</p>
 <p>Click inside the R Console window, type <code>19+8</code>, and press the Enter key (<code>↵</code>) to see the result. Then try the following calculations by typing them into the Console:</p>
@@ -376,10 +402,19 @@ Important
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use log() to transforrm a value on to a logarithm scale</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><br></p>
 </section>
-<section id="creating-basic-objects-and-assigning-values-to-it" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="creating-basic-objects-and-assigning-values-to-it"><span class="header-section-number">1.4</span> Creating basic objects and assigning values to it</h2>
+<section id="creating-basic-objects-and-assignment-operator-length-001259" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="creating-basic-objects-and-assignment-operator-length-001259"><span class="header-section-number">1.4</span> Creating basic objects and assignment operator (Length 00:12:59)</h2>
+<div class="cell" data-warnings="false">
+<div class="cell-output-display">
+<div class="vembedr" align="center">
+<div>
+<iframe src="https://www.youtube.com/embed/N7NKU-uCDJ8" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+</div>
+<p><a href="https://youtu.be/N7NKU-uCDJ8">[<strong>Watch on YouTube</strong>]</a></p>
 <p>Let’s open an R Script file!</p>
 <p>Now that we are familiar with using the Console as a calculator, let’s build on this and learn one of the most important features in R: the <strong>Assignment Operator</strong>.</p>
 <p>The arrow symbol <code>&lt;-</code> is called the <strong>Assignment Operator</strong>. You type it by pressing the less-than symbol <code>&lt;</code> followed by the hyphen <code>-</code>. It allows you to assign values to an object in R.</p>
@@ -443,10 +478,19 @@ Important
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Type the object 'g' in the console to return the result</span></span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><br></p>
 </section>
-<section id="how-to-identify-data-types" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="how-to-identify-data-types"><span class="header-section-number">1.5</span> How to identify data types</h2>
+<section id="how-to-identify-data-types-length-000829" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="how-to-identify-data-types-length-000829"><span class="header-section-number">1.5</span> How to identify data types (Length 00:08:29)</h2>
+<div class="cell" data-warnings="false">
+<div class="cell-output-display">
+<div class="vembedr" align="center">
+<div>
+<iframe src="https://www.youtube.com/embed/VKuhiS97C6k" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+</div>
+<p><a href="https://youtu.be/VKuhiS97C6k">[<strong>Watch on YouTube</strong>]</a></p>
 <p>In programming, variables are used to store information, and each has a type determined by the kind of data it holds (e.g., integer, character, factor, logical). Assigning an integer makes the variable type “int.” A variable is simply a reserved memory location where values are stored.</p>
 <p>To use R effectively, you need a solid understanding of its basic data types, data structures, and how to work with them.</p>
 <p>R has a range of data types. The most common ones are:</p>
@@ -494,10 +538,19 @@ Important
 </div>
 </div>
 <p>We are now familiar with using the console and assigning numeric and string to objects, and identifying their data type. Let’s learn who to enter data into RStudio and create our first data frame.</p>
-<p><br></p>
 </section>
-<section id="how-to-enter-data-and-create-variables-in-rstudio" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="how-to-enter-data-and-create-variables-in-rstudio"><span class="header-section-number">1.6</span> How to enter data and create variables in RStudio?</h2>
+<section id="how-to-enter-data-and-create-variables-in-rstudio-length-001627" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="how-to-enter-data-and-create-variables-in-rstudio-length-001627"><span class="header-section-number">1.6</span> How to enter data and create variables in RStudio? (Length: 00:16:27)</h2>
+<div class="cell" data-warnings="false">
+<div class="cell-output-display">
+<div class="vembedr" align="center">
+<div>
+<iframe src="https://www.youtube.com/embed/GlEQFX74bq4" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+</div>
+<p><a href="https://youtu.be/GlEQFX74bq4">[<strong>Watch on YouTube</strong>]</a></p>
 <p>Here, we will learn some basics coding etiquettes creating a dataset from scratch using the two functions:</p>
 <ul>
 <li><code>c()</code> combine function</li>
@@ -618,10 +671,19 @@ Important
 <p>The column ‘id’ is a numeric variable with integers. The second column ‘name’ is a text variable with strings. The third &amp; fourth columns ‘height’ and ‘weight’ are examples of numeric variables with real numbers with continuous measures. The variable ‘gender’ is a text variable with strings – however, this type of variable is classed as a categorical variable as individuals were categorised as either ‘M’ and ‘F’.</p>
 </div>
 </div>
-<p><br></p>
 </section>
-<section id="how-do-we-create-a-variable-based-on-other-existing-variables-within-a-data-frame" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="how-do-we-create-a-variable-based-on-other-existing-variables-within-a-data-frame"><span class="header-section-number">1.7</span> How do we create a variable based on other existing variables within a data frame?</h2>
+<section id="how-do-we-create-a-variable-based-on-other-existing-variables-within-a-data-frame-length-002100" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="how-do-we-create-a-variable-based-on-other-existing-variables-within-a-data-frame-length-002100"><span class="header-section-number">1.7</span> How do we create a variable based on other existing variables within a data frame? (Length: 00:21:00)</h2>
+<div class="cell" data-warnings="false">
+<div class="cell-output-display">
+<div class="vembedr" align="center">
+<div>
+<iframe src="https://www.youtube.com/embed/diHAc50vIhg" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+</div>
+<p><a href="https://youtu.be/diHAc50vIhg">[<strong>Watch on YouTube</strong>]</a></p>
 <p>To access a variable by its name within a data frame, you will need to first type the name of the data frame followed by a <code>$</code> (dollar sign), and then typing the variable’s name of interest. For instance, suppose you just want to see the height values in the Console viewer - you just type:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to access height - you need to type 'dataset$height'</span></span>
@@ -631,11 +693,9 @@ Important
 </div>
 </div>
 <p>We can use other columns or variables within our data frame to create another variable. This technique is essentially important when cleaning and managing data. From this dataset, it is possible to derive the body mass index <code>bmi</code> from height and weight using the formula:</p>
-<br>
 <center>
 <span class="math inline">\(BMI = weight/height^2\)</span>
 </center>
-<p><br></p>
 <p>To generate <code>bmi</code> into our data frame, we would need to access the <code>height</code> (m) and <code>weight</code> (kg) columns using the <code>$</code> from the data frame its stored to, and apply the above formula as a code to generate the new <code>bmi</code> column:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create 'bmi' in the data frame i.e.,'dataset' and calculate 'bmi'</span></span>
@@ -660,7 +720,6 @@ Important
 4  4 Fatima    168  75000      F 26.57313</code></pre>
 </div>
 </div>
-<p><br></p>
 </section>
 <section id="saving-your-r-script" class="level2" data-number="1.8">
 <h2 data-number="1.8" class="anchored" data-anchor-id="saving-your-r-script"><span class="header-section-number">1.8</span> Saving your R script</h2>
@@ -672,7 +731,6 @@ Important
 <li>Merging two data frames.</li>
 </ul>
 <p>You can now <strong>save</strong> your script for future use by clicking on the <strong>save icon</strong> in the menu bar.</p>
-<p><br></p>
 
 
 </section>
@@ -1247,6 +1305,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./03-handling_data_structures.html" class="pagination-link" aria-label="Introduction II">
+        <span class="nav-page-text">Introduction II</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

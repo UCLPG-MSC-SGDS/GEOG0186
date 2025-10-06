@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>GEOG0186: Quantitative Skills</title>
+<title>Introduction II</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-what_is_rstudio.html" rel="next">
+<link href="./02-basic_building_blocks.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -69,7 +69,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
-<link href="site_libs/vembedr-0.1.5/css/vembedr.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="assets/all_css/styles.css">
@@ -84,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-module_overview.html">Module Overview</a></li><li class="breadcrumb-item"><a href="./00-module_overview.html">Welcome</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Core Content</a></li><li class="breadcrumb-item"><a href="./03-handling_data_structures.html">Introduction II</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00-module_overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="./00-module_overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
@@ -160,7 +159,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-handling_data_structures.html" class="sidebar-item-text sidebar-link">
+  <a href="./03-handling_data_structures.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Introduction II</span></a>
   </div>
 </li>
@@ -176,12 +175,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
+  <li><a href="#handling-data-structures-in-rstudio" id="toc-handling-data-structures-in-rstudio" class="nav-link active" data-scroll-target="#handling-data-structures-in-rstudio"><span class="header-section-number">1</span> Handling Data Structures in RStudio</a>
   <ul>
-  <li><a href="#getting-started-with-the-learning-materials-length-001351" id="toc-getting-started-with-the-learning-materials-length-001351" class="nav-link" data-scroll-target="#getting-started-with-the-learning-materials-length-001351">Getting Started with the Learning Materials (Length: 00:13:51)</a></li>
-  <li><a href="#self-guided-flipped-learning-approach" id="toc-self-guided-flipped-learning-approach" class="nav-link" data-scroll-target="#self-guided-flipped-learning-approach">Self-Guided &amp; Flipped Learning Approach</a></li>
-  <li><a href="#computer-practical-sessions-timetable" id="toc-computer-practical-sessions-timetable" class="nav-link" data-scroll-target="#computer-practical-sessions-timetable">Computer Practical Sessions &amp; Timetable</a></li>
-  <li><a href="#questions-discusson-forum-on-moodle" id="toc-questions-discusson-forum-on-moodle" class="nav-link" data-scroll-target="#questions-discusson-forum-on-moodle">Questions &amp; Discusson Forum on Moodle</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">1.1</span> Learning objectives</a></li>
+  <li><a href="#setting-the-working-directory-to-datasets" id="toc-setting-the-working-directory-to-datasets" class="nav-link" data-scroll-target="#setting-the-working-directory-to-datasets"><span class="header-section-number">1.2</span> Setting the Working Directory to Datasets</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -189,9 +186,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-module_overview.html">Module Overview</a></li><li class="breadcrumb-item"><a href="./00-module_overview.html">Welcome</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Core Content</a></li><li class="breadcrumb-item"><a href="./03-handling_data_structures.html">Introduction II</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">GEOG0186: Quantitative Skills</h1>
+<h1 class="title">Introduction II</h1>
 </div>
 
 
@@ -208,145 +205,45 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/all_images/module_overview_page/00_Welcome_Page_Animation.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome</h1>
-<p>Welcome to <strong>Quantitative Skills</strong>, one of the strands in <strong>Foundations of Geography I</strong>.</p>
-<p>In this course, you will receive introductory training in quantitative methods and coding in RStudio, a powerful tool for analysing data in geography. No prior coding experience or background in quantitative sciences is expected, so we start from the absolute basics and build toward a solid foundation. The aim of this course is to help you feel comfortable and confident with computing and using code to work with and explore data. By the end of Term 1, you will have developed a strong foundation in coding and key programming skills.</p>
-<section id="getting-started-with-the-learning-materials-length-001351" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="getting-started-with-the-learning-materials-length-001351">Getting Started with the Learning Materials (Length: 00:13:51)</h2>
-<div class="cell" data-warnings="false">
-<div class="cell-output-display">
-<div class="vembedr" align="center">
-<div>
-<iframe src="https://www.youtube.com/embed/XGfX2bSt8Rk" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
-</div>
-</div>
-</div>
-</div>
-<p><a href="https://youtu.be/XGfX2bSt8Rk">[<strong>Watch on YouTube</strong>]</a></p>
+<section id="handling-data-structures-in-rstudio" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Handling Data Structures in RStudio</h1>
+<section id="learning-objectives" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">1.1</span> Learning objectives</h2>
+<p>By the end of this tutorial, you will be able to:</p>
+<ol type="1">
+<li>Set your working directory on Mac and Windows</li>
+<li>Import a .csv file into RStudio</li>
+<li>Understand the structure of a data frame (rows and columns)</li>
+<li>Filter data using both numeric and categorical variables</li>
+<li>Combine multiple conditions with logical operators to perform further filtering of data</li>
+<li>Export data back into a .csv file</li>
+</ol>
+<p>These objectives combined with those from last week serve as a gateway to learning RStudio and building a strong foundation. Let us begin!</p>
 </section>
-<section id="self-guided-flipped-learning-approach" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="self-guided-flipped-learning-approach">Self-Guided &amp; Flipped Learning Approach</h2>
-<p>This strand follows a more relaxed teaching structure. You will work <strong>independently at your own pace</strong>, with guidance provided along the way. We expect you to engage with the learning materials - supported by online tutorials, coding instructions, and guidance videos - <strong>before going into the computer practical sessions</strong>. This allows our session time to be used for discussion, problem-solving, and hands-on practice.</p>
-</section>
-<section id="computer-practical-sessions-timetable" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="computer-practical-sessions-timetable">Computer Practical Sessions &amp; Timetable</h2>
-<p>There are 10 computer practical sessions throughout Term 1, all delivered in-person and facilitated by Postgraduate Teaching Assistants (PGTAs).</p>
-<p>All sessions take place every <strong>Wednesday between 9:00am and 12:00pm</strong>. The entire Geography cohort has been split into three groups (Computer <strong>Groups A</strong>, <strong>B</strong>, and <strong>C</strong>), with practicals delivered separately in one-hour, back-to-back sessions each week to each group. The schedule is as follows:</p>
-<ul>
-<li><strong>Group A</strong>: 09:00am–10:00am, <a href="http://www.ucl.ac.uk/maps/christopher-ingold-building"><strong>Christopher Ingold Building G20 – Public Cluster</strong></a></li>
-<li><strong>Group B</strong>: 10:00am–11:00am, <a href="https://maps.app.goo.gl/NPnPuS7PP7renp8Q6"><strong>Birkbeck Malet Street 422/423 – Public Cluster</strong></a></li>
-<li><strong>Group C</strong>: 11:00am–12:00pm, <a href="https://maps.app.goo.gl/NPnPuS7PP7renp8Q6"><strong>Birkbeck Malet Street 422/423 – Public Cluster</strong></a></li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
+<section id="setting-the-working-directory-to-datasets" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="setting-the-working-directory-to-datasets"><span class="header-section-number">1.2</span> Setting the Working Directory to Datasets</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The above locations for <strong>Group A</strong>, <strong>B</strong>, and <strong>C</strong> are public clusters with PC workstations. Since you will mostly be working through the materials at your own pace, often on your own laptops with RStudio installed, we highly recommend that you bring your own laptop to the computer practicals for ease of use.</p>
-</div>
-</div>
-<p>The topics for the course are as follows:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 11%">
-<col style="width: 7%">
-<col style="width: 81%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Dates</th>
-<th style="text-align: left;">Week</th>
-<th style="text-align: left;">List of Topics</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">01/10/25</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">Introduction I: Basics Building Blocks for Computing in RStudio</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">08/10/25</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">Introduction II: Handling Data Structures in RStudio</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">15/10/25</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">Examining I: Frequency Distribution</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">22/10/25</td>
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">Examining II: Descriptive Statistics</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">29/10/25</td>
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">Examining III: Types of Data Visualisation</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>Reading Week</strong></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">12/11/25</td>
-<td style="text-align: left;">6</td>
-<td style="text-align: left;">Sourcing Data I: Acquiring Data From Open Sources</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">19/11/25</td>
-<td style="text-align: left;">7</td>
-<td style="text-align: left;">Sourcing Data II: Sampling from Probability Distribution</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">26/11/25</td>
-<td style="text-align: left;">8</td>
-<td style="text-align: left;">Air Quality I: Correlation &amp; Regression</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">03/12/25</td>
-<td style="text-align: left;">9</td>
-<td style="text-align: left;">Air Quality II: Box Plots and T-tests</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">10/12/25</td>
-<td style="text-align: left;">10</td>
-<td style="text-align: left;">Portfolio Surgery &amp; Wrap-up.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="questions-discusson-forum-on-moodle" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="questions-discusson-forum-on-moodle">Questions &amp; Discusson Forum on Moodle</h2>
-<p>On Moodle, you can use the <a href="https://moodle.ucl.ac.uk/course/section.php?id=1274325"><strong>Ask a question</strong></a> section to post general queries about the learning materials on this website, as well as any technical issues you encounter during your self-guided study. Please refer to that section on Moodle, and either I or one of the PGTAs will respond with solutions.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>While Moodle is the central point for information and communications for <strong>GEOG0186 Quantitative Skills</strong> and where all formative assessments are submitted. However, note that all the weekly content will only be hosted on this dedicated web page and <strong>not on Moodle</strong>.</p>
+<p>Before we do anything - make sure to have downloaded the data set for this computer session by clicking <a href=""><strong>[HERE]</strong></a>. There are three datasets:</p>
+<ol type="1">
+<li><code>Primary Schools in Ealing.csv</code>: This comma seperated file (CSV) contains the data needed to to follow today’s tutorials.</li>
+<li><code>Open Street Drains in Accra</code>: This folder contains images of stormwater drainage infrastructure in Accra. It will be needed in part one of <strong>Task 1</strong>.</li>
+<li><code>Prevalence of Soil Transmitted Helminths in Africa.csv</code>: This dataset contains point locations for villages across sub-Saharan Africa. It will be needed in part two of <strong>Task 1</strong>.</li>
+</ol>
+<p><strong>Instructions</strong> In your computer, do the following:</p>
+<ol type="1">
+<li>Create a new folder on your desktop page and rename the folder to <strong>GEOG0186</strong></li>
+<li>Next, create a new sub-folder within <strong>GEOG0186</strong> and rename it as <strong>Week 2</strong>.</li>
+<li>The downloaded data from the folder <strong>Dataset for Week 2</strong>, make sure to unzip and transfer <strong>ALL</strong> the datasets directly to the <strong>Week 2</strong> folder.</li>
+</ol>
 </div>
 </div>
 
@@ -918,11 +815,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./02-basic_building_blocks.html" class="pagination-link" aria-label="Introduction I">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction I</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-what_is_rstudio.html" class="pagination-link" aria-label="What is RStudio (or R)?">
-        <span class="nav-page-text">What is RStudio (or R)?</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
