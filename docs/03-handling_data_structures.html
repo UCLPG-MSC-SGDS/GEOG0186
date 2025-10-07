@@ -292,7 +292,7 @@ Warning
 </ol>
 </div>
 </div>
-<p>This part is probably the most important section of this tutorial.We are going to learn how to set the <strong>Work Directory</strong>. This basically refers to us connecting the RStudio to the folder containing our dataset that we want to import and analyse.</p>
+<p>This part is probably the most important section of this tutorial. We are going to learn how to set the <strong>Work Directory</strong>. This basically refers to us connecting the RStudio to the folder containing our dataset that we want to import and analyse.</p>
 <p>Doing this allows the user to tell RStudio to open data from a folder located somewhere in our computer using something called the <strong>Path Location</strong>.</p>
 <p>The <strong>Path Location</strong> specifies the whereabouts of the data file(s) stored within a computer. Setting your directory in RStudio, <strong>in code</strong>, beforehand makes life incredibly easier (than the usual point-and-click approach) in terms of finding, importing, exporting and saving data in and out of RStudio.</p>
 <p>To illustrate what a <strong>Path Location</strong> is – suppose on my desktop’s dashboard on a Mac/Windows there is a folder called <strong>GEOG0186</strong>, and within that folder, exists another folder called <strong>Week 2</strong>. Finally, suppose a comma separated value (.csv) data file called <code>Primary Schools in Ealing.csv</code> is store in this folder i.e., <strong>Week 2</strong>. If via RStudio you want to open this CSV data file located in within the <strong>Week 2</strong> folder. You will need to first set the path to <strong>Week 2</strong> in RStudio using the <code>setwd()</code> function.</p>
@@ -348,8 +348,8 @@ Warning
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set work directory in windows (using UCL PC)</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"N:/Desktop/GEOG0186/Week 2"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># note that on usual Windows machine - the code looks something like:</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/accountName/Desktop/GEOG0013/Week 2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># note that on usual Windows OS on a personal computer - the code looks something like:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/accountName/Desktop/GEOG0186/Week 2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you type the code <code>getwd()</code> and quickly run it through console - if it returns the inputted path location - then you have done this correctly.</p>
 <p>Now, let us learn how to import a CSV data into RStudio.</p>

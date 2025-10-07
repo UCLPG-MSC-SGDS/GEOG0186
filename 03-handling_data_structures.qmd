@@ -30,7 +30,7 @@ In your computer, do the following:
 3. From the downloaded folder **Dataset for Week 2**, make sure to unzip and transfer **ALL** the datasets directly to the **Week 2** folder.
 :::
 
-This part is probably the most important section of this tutorial.We are going to learn how to set the **Work Directory**. This basically refers to us connecting the RStudio to the folder containing our dataset that we want to import and analyse. 
+This part is probably the most important section of this tutorial. We are going to learn how to set the **Work Directory**. This basically refers to us connecting the RStudio to the folder containing our dataset that we want to import and analyse. 
 
 Doing this allows the user to tell RStudio to open data from a folder located somewhere in our computer using something called the **Path Location**. 
 
@@ -80,8 +80,8 @@ For **Windows**, the `setwd()` is as follows:
 # set work directory in windows (using UCL PC)
 setwd("N:/Desktop/GEOG0186/Week 2")
 
-# note that on usual Windows machine - the code looks something like:
-setwd("C:/Users/accountName/Desktop/GEOG0013/Week 2")
+# note that on usual Windows OS on a personal computer - the code looks something like:
+setwd("C:/Users/accountName/Desktop/GEOG0186/Week 2")
 ```
 
 If you type the code `getwd()` and quickly run it through console - if it returns the inputted path location - then you have done this correctly.
