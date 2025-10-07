@@ -371,4 +371,10 @@ Well done! You have learnt the basics of coding in RStudio - next week, we will 
 - Row and column manipulations
 - Merging two data frames.
 
-You can now **save** your script for future use by clicking on the **save icon** in the menu bar.
+You can now **save** your script for future use by clicking on the **save icon** in the menu bar. Saving an R-script for the first will prompt a **Choose Encoding** window to appear:
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('assets/all_images/basic_building_blocks/02_r_savefile.png', error = FALSE) 
+```
+
+Select the default option **UTF-8 (System default)** and click **OK** and then save. 

@@ -201,7 +201,13 @@ dim(school_data)
 
 ### Basic Manipulation of Data Frame
 
-#### Subsetting using Rows and Columns
+#### Subsetting using Rows and Columns (Length: 00:17:06)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('dE9Jc9_hCQA', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/dE9Jc9_hCQA)
 
 One can subset or restrict the data frame by specifying which row(s) and column(s) to keep or discard using this standard square bracket syntax `dataframe[Row, Column]`.
 
@@ -271,7 +277,13 @@ full_filter
 
 Not too shabby! So far, you have been shown how to do some create subset of data by filtering rows and columns. Let's take it up a notch on filtering based on row **Logical Operators** to create **conditions**.
 
-#### Subsetting using Logical Operators to Combine Conditions
+#### Subsetting using Logical Operators to Combine Conditions (Length: 00:15:38)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('I3dpW72kqVQ', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/I3dpW72kqVQ)
 
 Often, we want to filter based on more than one condition — for example, "cities in England **and** with a population over 600000". RStudio uses logical operators to combine these conditions:
 
@@ -310,7 +322,13 @@ schools_650_ofsted2
 
 I am sure you now get the gist of what is happening here with these logical statements for subsetting, or filtering data accordingly. We are now in the final stretch - let us learn how to save and export a dataset as a CSV spreadsheet.
 
-## Saving your dataset
+## Saving your dataset (Length: 00:11:13)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('Ssiawr3ADnw', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/Ssiawr3ADnw)
 
 This operation is very easy to perform. Once you have created your filtered data, you can use the following function `write.csv()` to save it as a new CSV file:
 
@@ -355,5 +373,5 @@ Use the information inside the images’ text box to construct a data frame in R
 -	`Mosquitoes`: refers to evidence of mosquito breeding in drain due to condition
 
 2. Use the `data.frame()` with the assignment operator (`<-`) to create the data frame object `drainage_data`.
-3. Use the following row conditions i.e., drains classified as having **Poor** sanitary state **AND** it is a **breeding spot** for mosquitoes at the same time to perform a filter on the `drainage_data` object. At the same time, limit the filtered data to the following columns: `GoProID`, `Latitude`, `Longitude`, `Sanitation` and `Mosquitoes`   
+3. Use the following row conditions i.e., drains classified as having **Poor** sanitary state **AND** it is a **Breeding Spot** for mosquitoes at the same time to perform a filter on the `drainage_data` object. At the same time, limit the filtered data to the following columns: `GoProID`, `Latitude`, `Longitude`, `Sanitation` and `Mosquitoes`   
 4. Use the `write.csv()` to save your new filtered dataset. 
