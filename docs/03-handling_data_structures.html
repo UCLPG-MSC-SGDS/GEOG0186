@@ -218,7 +218,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#setting-the-path-location-on-windows" id="toc-setting-the-path-location-on-windows" class="nav-link" data-scroll-target="#setting-the-path-location-on-windows"><span class="header-section-number">1.2.2</span> Setting the Path Location on Windows</a></li>
   </ul></li>
   <li><a href="#how-to-import-a-dataset-into-rstudio" id="toc-how-to-import-a-dataset-into-rstudio" class="nav-link" data-scroll-target="#how-to-import-a-dataset-into-rstudio"><span class="header-section-number">1.3</span> How to Import a Dataset into RStudio</a></li>
-  <li><a href="#useful-functions-to-examine-data" id="toc-useful-functions-to-examine-data" class="nav-link" data-scroll-target="#useful-functions-to-examine-data"><span class="header-section-number">1.4</span> Useful Functions to Examine Data</a></li>
+  <li><a href="#data-structure" id="toc-data-structure" class="nav-link" data-scroll-target="#data-structure"><span class="header-section-number">1.4</span> Data Structure</a>
+  <ul class="collapse">
+  <li><a href="#inspecting-the-size-and-structure" id="toc-inspecting-the-size-and-structure" class="nav-link" data-scroll-target="#inspecting-the-size-and-structure"><span class="header-section-number">1.4.1</span> Inspecting the Size and Structure</a></li>
+  <li><a href="#basic-subsetting-and-manipulation-of-data-frame" id="toc-basic-subsetting-and-manipulation-of-data-frame" class="nav-link" data-scroll-target="#basic-subsetting-and-manipulation-of-data-frame"><span class="header-section-number">1.4.2</span> Basic Subsetting and Manipulation of Data Frame</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -352,16 +356,16 @@ Warning
 <p>Since, we have already set the work directory to folder containing this dataset. Importing it into RStudio would be a piece of cake.</p>
 <p>To read a CSV file into R, we can use the <code>read.csv()</code> function import it as a <strong>data frame object</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data into RStudio. The spreadsheet is stored in the object called 'SchoolData'</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>SchoolData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"Primary Schools in Ealing.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data into RStudio. The spreadsheet is stored in the object called 'school_data'</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>school_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"Primary Schools in Ealing.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The loaded dataset contains up to 58 primary schools with the following <strong>variables</strong>:</p>
 <ul>
 <li><code>SchoolName</code>: Name of school in Ealing (<strong>character</strong>)</li>
 <li><code>Type</code>: School classified as a “Primary” school (<strong>character</strong>)</li>
-<li><code>NumberBoys</code>: Total number of boys in a primary school (<strong>numeric</strong>)</li>
-<li><code>NumberGirls</code>: Total number of girls in a primary school (<strong>numeric</strong>)</li>
-<li><code>TotalStudents</code>: Total number of students in a primary school (<strong>numeric</strong>)</li>
+<li><code>NumberBoys</code>: Total number of boys in a primary school (<strong>integer</strong>/)</li>
+<li><code>NumberGirls</code>: Total number of girls in a primary school (<strong>integer</strong>)</li>
+<li><code>TotalStudents</code>: Total number of students in a primary school (<strong>integer</strong>)</li>
 <li><code>OfstedGrade</code>: Overall school performance where <code>1</code> = “excellent”, <code>2</code> = “good”, <code>3</code> = “requires improvement”, and <code>4</code> = “inadequate” (<strong>factor</strong>/<strong>categorical</strong>)</li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -378,8 +382,10 @@ Important
 </div>
 </div>
 </section>
-<section id="useful-functions-to-examine-data" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="useful-functions-to-examine-data"><span class="header-section-number">1.4</span> Useful Functions to Examine Data</h2>
+<section id="data-structure" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="data-structure"><span class="header-section-number">1.4</span> Data Structure</h2>
+<section id="inspecting-the-size-and-structure" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="inspecting-the-size-and-structure"><span class="header-section-number">1.4.1</span> Inspecting the Size and Structure</h3>
 <p>One can examine the structure of the imported data with the following basic functions.</p>
 <ul>
 <li><code>str()</code>: tells the user which columns in the data frame are character or numeric variables, and so on.</li>
@@ -390,8 +396,84 @@ Important
 <li><code>nrow()</code>: tells the user the total number of observations (or rows) present in the data frame</li>
 <li><code>dim()</code>: prints both the total number of observations (or rows) and columns present in the data frame.</li>
 </ul>
+<p>Using the following code <code>str()</code> will display the structure of <code>school_data</code> data frame object and some of its contents:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(school_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   58 obs. of  6 variables:
+ $ SchoolName   : chr  "Berrymede Junior School" "East Acton Primary School" "Oldfield Primary School" "North Ealing Primary School" ...
+ $ Type         : chr  "Primary" "Primary" "Primary" "Primary" ...
+ $ NumberBoys   : int  180 160 225 340 265 230 155 285 185 150 ...
+ $ NumberGirls  : int  200 165 240 355 205 205 180 290 190 125 ...
+ $ TotalStudents: int  377 329 465 697 471 435 335 573 373 273 ...
+ $ OfstedGrade  : int  2 2 2 2 2 2 2 3 2 2 ...</code></pre>
+</div>
+</div>
+<p>Using the following code <code>head()</code> or <code>tail()</code> will display the first or last 10 observations, respectively, in the <code>school_data</code> data frame object:</p>
+<div class="cell" data-max.height="100px">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(school_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   SchoolName    Type NumberBoys NumberGirls TotalStudents
+1     Berrymede Junior School Primary        180         200           377
+2   East Acton Primary School Primary        160         165           329
+3     Oldfield Primary School Primary        225         240           465
+4 North Ealing Primary School Primary        340         355           697
+5    St John's Primary School Primary        265         205           471
+6    St Mark's Primary School Primary        230         205           435
+  OfstedGrade
+1           2
+2           2
+3           2
+4           2
+5           2
+6           2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(school_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                       SchoolName    Type NumberBoys
+53           St Vincent's Catholic Primary School Primary        240
+54 Edward Betham Church of England Primary School Primary        230
+55                    Dormers Wells Junior School Primary        205
+56                          Grange Primary School Primary        415
+57                      Petts Hill Primary School Primary        125
+58                       Khalsa VA Primary School Primary        235
+   NumberGirls TotalStudents OfstedGrade
+53         260           498           2
+54         240           471           2
+55         200           409           3
+56         385           800           2
+57         130           254           2
+58         180           412           2</code></pre>
+</div>
+</div>
+<p>You can inspect the data frame object in a <strong>Data viewer</strong> by using the <code>View()</code> syntax. This should cause the <strong>Data viewer</strong> window to open showing the full dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(school_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The dataset has 58 rows (primary school observations) and 6 columns (variables). You can use <code>nrow</code>, <code>ncol</code> and <code>dim()</code> functions separately to report the size of your data frame:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># total number of rows</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(school_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 58</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># total number of columns</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(school_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># full size of data frame i.e., total rows and columns</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(school_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 58  6</code></pre>
+</div>
+</div>
+</section>
+<section id="basic-subsetting-and-manipulation-of-data-frame" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="basic-subsetting-and-manipulation-of-data-frame"><span class="header-section-number">1.4.2</span> Basic Subsetting and Manipulation of Data Frame</h3>
 
 
+</section>
 </section>
 </section>
 

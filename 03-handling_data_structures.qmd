@@ -100,25 +100,32 @@ Since, we have already set the work directory to folder containing this dataset.
 
 To read a CSV file into R, we can use the `read.csv()` function import it as a **data frame object**:
 
-```{r, eval=FALSE}
-# Load data into RStudio. The spreadsheet is stored in the object called 'SchoolData'
-SchoolData <- read.csv(file = "Primary Schools in Ealing.csv")
+```{r setup, include = FALSE}
+knitr::opts_knit$set(root.dir = "/Users/anwarmusah/Documents/Websites/GEOG0186/datasets/All Data")
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+```{r}
+# Load data into RStudio. The spreadsheet is stored in the object called 'school_data'
+school_data <- read.csv(file = "Primary Schools in Ealing.csv")
 ```
 
 The loaded dataset contains up to 58 primary schools with the following **variables**:
 
 - `SchoolName`: Name of school in Ealing (**character**)
 - `Type`: School classified as a "Primary" school (**character**)
-- `NumberBoys`: Total number of boys in a primary school (**numeric**)
-- `NumberGirls`: Total number of girls in a primary school (**numeric**)
-- `TotalStudents`: Total number of students in a primary school (**numeric**)
+- `NumberBoys`: Total number of boys in a primary school (**integer**/)
+- `NumberGirls`: Total number of girls in a primary school (**integer**)
+- `TotalStudents`: Total number of students in a primary school (**integer**)
 - `OfstedGrade`: Overall school performance where `1` = "excellent", `2` = "good", `3` = "requires improvement", and `4` = "inadequate" (**factor**/**categorical**)
 
 :::{.callout-important}
 We have covered a lot of the basics in RStudio - i.e., setting the work directory and importing a spreadsheet that is CSV format. The things shown in this section will be used frequently in all future tutorials. So, get used to using `setwd()` and `read.csv()`.
 :::
 
-## Useful Functions to Examine Data
+## Data Structure
+
+### Inspecting the Size and Structure
 
 One can examine the structure of the imported data with the following basic functions.
 
@@ -129,3 +136,37 @@ One can examine the structure of the imported data with the following basic func
 - `ncol()`: tells the user the total number of columns present in the data frame
 - `nrow()`: tells the user the total number of observations (or rows) present in the data frame
 - `dim()`: prints both the total number of observations (or rows) and columns present in the data frame.
+
+Using the following code `str()` will display the structure of `school_data` data frame object and some of its contents:
+
+```{r}
+str(school_data)
+```
+
+Using the following code `head()` or `tail()` will display the first or last 10 observations, respectively, in the `school_data` data frame object:
+
+```{r, max.height='100px'}
+head(school_data)
+tail(school_data)
+```
+
+You can inspect the data frame object in a **Data viewer** by using the `View()` syntax. This should cause the **Data viewer** window to open showing the full dataset:
+
+```{r, eval=FALSE}
+View(school_data)
+```
+
+The dataset has 58 rows (primary school observations) and 6 columns (variables). You can use `nrow`, `ncol` and `dim()` functions separately to report the size of your data frame: 
+
+```{r}
+# total number of rows
+nrow(school_data)
+
+# total number of columns
+ncol(school_data)
+
+# full size of data frame i.e., total rows and columns
+dim(school_data)
+```
+
+### Basic Subsetting and Manipulation of Data Frame

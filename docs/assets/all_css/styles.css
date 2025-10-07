@@ -23,3 +23,10 @@ div.sidebar-header {
 main p {
   text-align: justify;
 }
+
+pre {
+	max-width: 100%;
+	overflow-x: auto;
+	max-height: 100%;
+	overflow-y: auto;
+}
