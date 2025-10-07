@@ -17,7 +17,13 @@ By the end of this tutorial, you will be able to:
 
 These objectives, combined with those from last week, serve as a gateway to learning RStudio and building a strong foundation. Let us begin!
 
-## Setting the Working Directory to Datasets
+## Setting the Working Directory to Datasets (Length: 00:05:24)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('-rzneFvp190', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/-rzneFvp190)
 
 :::{.callout-warning}
 Before we do anything - make sure to have downloaded the dataset for this computer session by clicking [**[HERE]**](https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/datasets/Dataset%20for%20Week%202.zip). It contains the file `Primary Schools in Ealing.csv` - this comma separated values (CSV) file contains the data needed to follow today's tutorial.
@@ -38,7 +44,13 @@ The **Path Location** specifies the whereabouts of the data file(s) stored withi
 
 To illustrate what a **Path Location** is – suppose on my desktop's dashboard on a Mac/Windows there is a folder called **GEOG0186**, and within that folder, exists another folder called **Week 2**. Finally, suppose a comma separated value (.csv) data file called `Primary Schools in Ealing.csv` is store in this folder i.e., **Week 2**. If via RStudio you want to open this CSV data file located in within the **Week 2** folder. You will need to first set the path to **Week 2** in RStudio using the `setwd()` function.
 
-### Setting the Path Location on MAC
+### Setting the Path Location on MAC (Length: 00:06:44)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('S0CaXUH0Mz0', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/S0CaXUH0Mz0)
 
 For **MAC** users, the path location would be written as follows, `"/Users/accountName/Desktop/GEOG0186/Week 2"`. You can access this piece of information simply by:
 
@@ -59,7 +71,14 @@ For Mac, the `setwd()` is as follows:
 setwd("/Users/accountName/Desktop/GEOG0186/Week 2")
 ```
 
-### Setting the Path Location on Windows
+### Setting the Path Location on Windows (Length: 00:05:07)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('_r0MTEnoOhg', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/_r0MTEnoOhg)
+
 
 For Windows user (on **UCL PCs**), its marginally different - the path location to this folder on a **Windows** machine would be written as follows, `"N:/Desktop/GEOG00186/Week 2"`. You can access this piece of information simply by:
 
@@ -88,7 +107,13 @@ If you type the code `getwd()` and quickly run it through console - if it return
 
 Now, let us learn how to import a CSV data into RStudio.
 
-## How to Import a Dataset into RStudio
+## How to Import a Dataset into RStudio (Length: 00:06:21)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('MxBlUJkKOnA', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/MxBlUJkKOnA)
 
 A CSV file (short for Comma-Separated Values) is one of the most common formats for storing data.
 Each **row** is a **single record** or **observation**. For example, it can be details about a person, household unit, a city, or even disease events; and while each **column** is a **variable** (for example, population counts, temperature readings, or region name etc.).
@@ -124,7 +149,13 @@ We have covered a lot of the basics in RStudio - i.e., setting the work director
 
 ## Data Structure
 
-### Inspecting the Size and Structure
+### Inspecting the Size and Structure (Length: 00:08:16)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('PDEw6dIlijg', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/PDEw6dIlijg)
 
 One can examine the structure of the imported data with the following basic functions.
 
