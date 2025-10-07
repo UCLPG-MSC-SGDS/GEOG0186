@@ -20,7 +20,7 @@ These objectives, combined with those from last week, serve as a gateway to lear
 ## Setting the Working Directory to Datasets
 
 :::{.callout-warning}
-Before we do anything - make sure to have downloaded the dataset for this computer session by clicking [**[HERE]**](). It contains the file `Primary Schools in Ealing.csv` - this comma separated values (CSV) file contains the data needed to follow today's tutorial.
+Before we do anything - make sure to have downloaded the dataset for this computer session by clicking [**[HERE]**](https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/datasets/Dataset%20for%20Week%202.zip). It contains the file `Primary Schools in Ealing.csv` - this comma separated values (CSV) file contains the data needed to follow today's tutorial.
 
 **Instructions**
 In your computer, do the following:
@@ -61,23 +61,26 @@ setwd("/Users/accountName/Desktop/GEOG0186/Week 2")
 
 ### Setting the Path Location on Windows
 
-For Windows user, its marginally different - the path location to this folder on a **Windows** machine would be written as follows, `"C:/Users/accountName/Desktop/GEOG00186/Week 2"`. You can access this piece of information simply by:
+For Windows user (on **UCL PCs**), its marginally different - the path location to this folder on a **Windows** machine would be written as follows, `"N:/Desktop/GEOG00186/Week 2"`. You can access this piece of information simply by:
 
 1. Open the **GEOG0186** folder to reveal the **Week 2** folder.
 2. Open the **Week 2** folder where your downloaded data files have been stored.
-3. Now, click on the browser bar at the top which shows `GEOG0186 > Week 2`. This should highlight and show `"C:\Users\accountName\Desktop\GEOG0186\Week 2"` (see image below).
+3. Now, click on the browser bar at the top which shows `GEOG0186 > Week 2`. This should highlight and show `"N:\Desktop\GEOG0186\Week 2"` (see image below).
 
 ```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
 knitr::include_graphics('assets/all_images/set_working_directory/01_setwd_windows.png', error = FALSE) 
 ```
 
-4. Now, copy `"C:\Users\accountName\Desktop\GEOG0186\Week 2"` and paste the path name into the `setwd()` function in your R script.
-5. Lastly, change all the back slashes `\` in the path name to forward slashes `/` and run the code. It should look like this: `setwd("C:/Users/accountName/Desktop/GEOG0186/Week 2")`.
+4. Now, copy `"N:\Desktop\GEOG0186\Week 2"` and paste the path name into the `setwd()` function in your R script.
+5. Lastly, change all the back slashes `\` in the path name to forward slashes `/` and run the code. It should look like this: `setwd("N:/Desktop/GEOG0186/Week 2")`.
 
 For **Windows**, the `setwd()` is as follows:
 
 ```{r, eval=FALSE}
-# set work directory in windows
+# set work directory in windows (using UCL PC)
+setwd("N:/Desktop/GEOG0186/Week 2")
+
+# note that on usual Windows machine - the code looks something like:
 setwd("C:/Users/accountName/Desktop/GEOG0013/Week 2")
 ```
 

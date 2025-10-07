@@ -283,7 +283,7 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Before we do anything - make sure to have downloaded the dataset for this computer session by clicking <a href=""><strong>[HERE]</strong></a>. It contains the file <code>Primary Schools in Ealing.csv</code> - this comma separated values (CSV) file contains the data needed to follow today’s tutorial.</p>
+<p>Before we do anything - make sure to have downloaded the dataset for this computer session by clicking <a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/datasets/Dataset%20for%20Week%202.zip"><strong>[HERE]</strong></a>. It contains the file <code>Primary Schools in Ealing.csv</code> - this comma separated values (CSV) file contains the data needed to follow today’s tutorial.</p>
 <p><strong>Instructions</strong> In your computer, do the following:</p>
 <ol type="1">
 <li>Create a new folder on your desktop and rename the folder <strong>GEOG0186</strong></li>
@@ -324,11 +324,11 @@ Warning
 </section>
 <section id="setting-the-path-location-on-windows" class="level3" data-number="1.2.2">
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="setting-the-path-location-on-windows"><span class="header-section-number">1.2.2</span> Setting the Path Location on Windows</h3>
-<p>For Windows user, its marginally different - the path location to this folder on a <strong>Windows</strong> machine would be written as follows, <code>"C:/Users/accountName/Desktop/GEOG00186/Week 2"</code>. You can access this piece of information simply by:</p>
+<p>For Windows user (on <strong>UCL PCs</strong>), its marginally different - the path location to this folder on a <strong>Windows</strong> machine would be written as follows, <code>"N:/Desktop/GEOG00186/Week 2"</code>. You can access this piece of information simply by:</p>
 <ol type="1">
 <li>Open the <strong>GEOG0186</strong> folder to reveal the <strong>Week 2</strong> folder.</li>
 <li>Open the <strong>Week 2</strong> folder where your downloaded data files have been stored.</li>
-<li>Now, click on the browser bar at the top which shows <code>GEOG0186 &gt; Week 2</code>. This should highlight and show <code>"C:\Users\accountName\Desktop\GEOG0186\Week 2"</code> (see image below).</li>
+<li>Now, click on the browser bar at the top which shows <code>GEOG0186 &gt; Week 2</code>. This should highlight and show <code>"N:\Desktop\GEOG0186\Week 2"</code> (see image below).</li>
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -340,13 +340,16 @@ Warning
 </div>
 </div>
 <ol start="4" type="1">
-<li>Now, copy <code>"C:\Users\accountName\Desktop\GEOG0186\Week 2"</code> and paste the path name into the <code>setwd()</code> function in your R script.</li>
-<li>Lastly, change all the back slashes <code>\</code> in the path name to forward slashes <code>/</code> and run the code. It should look like this: <code>setwd("C:/Users/accountName/Desktop/GEOG0186/Week 2")</code>.</li>
+<li>Now, copy <code>"N:\Desktop\GEOG0186\Week 2"</code> and paste the path name into the <code>setwd()</code> function in your R script.</li>
+<li>Lastly, change all the back slashes <code>\</code> in the path name to forward slashes <code>/</code> and run the code. It should look like this: <code>setwd("N:/Desktop/GEOG0186/Week 2")</code>.</li>
 </ol>
 <p>For <strong>Windows</strong>, the <code>setwd()</code> is as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set work directory in windows</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/accountName/Desktop/GEOG0013/Week 2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set work directory in windows (using UCL PC)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"N:/Desktop/GEOG0186/Week 2"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># note that on usual Windows machine - the code looks something like:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/accountName/Desktop/GEOG0013/Week 2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you type the code <code>getwd()</code> and quickly run it through console - if it returns the inputted path location - then you have done this correctly.</p>
 <p>Now, let us learn how to import a CSV data into RStudio.</p>
