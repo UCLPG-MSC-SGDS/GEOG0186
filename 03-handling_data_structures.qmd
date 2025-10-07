@@ -20,11 +20,7 @@ These objectives, combined with those from last week, serve as a gateway to lear
 ## Setting the Working Directory to Datasets
 
 :::{.callout-warning}
-Before we do anything - make sure to have downloaded the dataset for this computer session by clicking [**[HERE]**](). There are three datasets:
-
-1. `Primary Schools in Ealing.csv`: This comma separated values (CSV) file contains the data needed to follow today's tutorial.
-2 `Open Street Drains in Accra`: This is zipped folder containing images of stormwater drainage infrastructure in Accra annotated with key information to created a data frame. It will be needed in part one of **Task 1**.
-3. `Prevalence of Soil Transmitted Helminths in Africa.csv`: This dataset contains point locations for villages across sub-Saharan Africa. It will be needed in part two of **Task 1**.
+Before we do anything - make sure to have downloaded the dataset for this computer session by clicking [**[HERE]**](). It contains the file `Primary Schools in Ealing.csv` - this comma separated values (CSV) file contains the data needed to follow today's tutorial.
 
 **Instructions**
 In your computer, do the following:
@@ -44,7 +40,7 @@ To illustrate what a **Path Location** is – suppose on my desktop's dashboard 
 
 ### Setting the Path Location on MAC
 
-For **MAC** users, the path location would be written as follows, `"/Users/accountName/Desktop/GEOG0186/Workshop 1"`. You can access this piece of information simply by:
+For **MAC** users, the path location would be written as follows, `"/Users/accountName/Desktop/GEOG0186/Week 2"`. You can access this piece of information simply by:
 
 1. Open the folder **GEOG0186**
 2. Right-clicking on the folder **Week 2** in which the files are stored. A drop-down scroll menu will appear (see image below).
@@ -72,7 +68,7 @@ For Windows user, its marginally different - the path location to this folder on
 3. Now, click on the browser bar at the top which shows `GEOG0186 > Week 2`. This should highlight and show `"C:\Users\accountName\Desktop\GEOG0186\Week 2"` (see image below).
 
 ```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
-knitr::include_graphics('assets/all_images/set_working_directory/00_setwd_windows.png', error = FALSE) 
+knitr::include_graphics('assets/all_images/set_working_directory/01_setwd_windows.png', error = FALSE) 
 ```
 
 4. Now, copy `"C:\Users\accountName\Desktop\GEOG0186\Week 2"` and paste the path name into the `setwd()` function in your R script.
@@ -98,7 +94,7 @@ For this exercise, we will be using the `Primary Schools in Ealing.csv` dataset 
 
 Since, we have already set the work directory to folder containing this dataset. Importing it into RStudio would be a piece of cake.
 
-To read a CSV file into R, we can use the `read.csv()` function import it as a **data frame object**:
+To read a CSV file into R, we can use the `read.csv()` function import it as a **data frame object** named `school_data` using the assignment operator (`<-`):
 
 ```{r setup, include = FALSE}
 knitr::opts_knit$set(root.dir = "/Users/anwarmusah/Documents/Websites/GEOG0186/datasets/All Data")
@@ -169,4 +165,161 @@ ncol(school_data)
 dim(school_data)
 ```
 
-### Basic Subsetting and Manipulation of Data Frame
+### Basic Manipulation of Data Frame
+
+#### Subsetting using Rows and Columns
+
+One can subset or restrict the data frame by specifying which row(s) and column(s) to keep or discard using this standard square bracket syntax `dataframe[Row, Column]`.
+
+Breakdown of `dataframe[Row, Column]`code:
+
+1. The bit in the code that corresponds to `dataframe` from `dataframe[Row, Column]` represents the **name** data frame object.
+2. Where it states `Row` within the square brackets specifies the subsetting, or filter action to be carried out based on rows.
+3. Where it states `Column` within the square brackets specifies the subsetting, or filter action to be carried out based on columns.
+
+Let's take our `school_data` data frame as an example - if we select the first row (row number 1) and the first column (SchoolName), we have essentially filter out only the school name `Berrymede Junior School Primary`:
+
+```{r}
+data11 <- school_data[1, 1]
+data11
+```
+
+If you select only the first row (row number 1) and do not specific any numbers for the columns, you will be filtering out the entire row for row number 1:
+
+```{r}
+row1 <- school_data[1, ]
+row1
+```
+
+In the same vein, if you select only the column and do not specific any numbers for the rows, you will be filtering out the entire column (i.e., `SchoolName` variable) for column number 1 which is the list of all primary school names:
+
+```{r}
+column1 <- school_data[, 1]
+column1
+```
+
+What if we wanted to filter the following rows numbered `2`, `7` and `19` from the `school_data` data frame object as highlighted in the image below?
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('assets/all_images/subsetting_dfs/01_rows_only.png', error = FALSE) 
+```
+
+We can use the combine function i.e., `c()` to list those numbers in the square brackets:
+
+```{r}
+rows_filter <- school_data[c(2, 7, 19), ]
+rows_filter
+```
+
+Likewise, what if we wanted to filter the following columns numbered `1`, `5` and `6` from the `school_data` data frame object as highlighted in the image below?
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('assets/all_images/subsetting_dfs/02_columns_only.png', error = FALSE) 
+```
+
+We can also use the combine function i.e., `c()` to list those numbers for the columns within that square brackets:
+
+```{r}
+columns_filter <- school_data[ , c(1, 5, 6)]
+columns_filter
+```
+
+What if we wanted to filter on rows numbered `2`, `7` and `19`, as well as columns numbered `1`, `5` and `6` from that `school_data` data frame object as highlighted in the image below?
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('assets/all_images/subsetting_dfs/03_rows_and_columns.png', error = FALSE) 
+```
+
+```{r}
+full_filter <- school_data[c(2, 7, 19) , c(1, 5, 6)]
+full_filter
+```
+
+Not too shabby! So far, you have been shown how to do some create subset of data by filtering rows and columns. Let's take it up a notch on filtering based on row **Logical Operators** to create **conditions**.
+
+#### Subsetting using Logical Operators to Combine Conditions
+
+Often, we want to filter based on more than one condition — for example, "cities in England **and** with a population over 600000". RStudio uses logical operators to combine these conditions:
+
+| Operator | Meaning | Example | Description |
+|:---|:---------|:-----------------------|:------------------------------|
+|`==`| Equal to | `country == "England"` | True if the country is England|
+|`!=`| Not Equal to | `country != "England"` | True if for all except England|
+|`>`|Greater than | `population > 600000` | True if population is above 600000|
+|`<`|Less than | `population < 600000` | True if population is under 600000|
+|`>=`|Greater than or eqaul to | `population >= 600000` | True if population is equal to 600000 or more|
+|`<=`|Less than or equal to | `population <= 600000` | True if population is equal to 600000 or less|
+|`&`|AND | `country == "England" & population <= 600000` | Both conditions are true |
+|`|`|OR | `country == "England" | country == "Wales"` | True for either England or Wales |
+
+Let's illustrate with the `school_data` object. We are interested in primary schools with a total of 500 hundred or more students. This operation is **always** row-based. We will need to use the `$` to call the column `TotalStudents` and the logical operator for this filter is `>=`: 
+
+```{r}
+schools_500plus <- school_data[school_data$TotalStudents >= 500, ]
+schools_500plus
+```
+
+What if were interested in primary schools with an OFSTED score of `1` (Excellent). Again, this operation is row-based and so we will need to use the `$` to call the column `OfstedGrade` and the logical operator for this filter is `==`:
+
+```{r}
+schools_ofsted1 <- school_data[school_data$OfstedGrade == 1, ]
+schools_ofsted1
+```
+
+Here is an example of combining such logical operators - select schools that have more than 650 students and with an OFSTED score of 2.
+
+```{r}
+# logical operators is >, &, ==
+schools_650_ofsted2 <- school_data[school_data$TotalStudents > 650 & school_data$OfstedGrade == 2, ]
+schools_650_ofsted2
+```
+
+I am sure you now get the gist of what is happening here with these logical statements for subsetting, or filtering data accordingly. We are now in the final stretch - let us learn how to save and export a dataset as a CSV spreadsheet.
+
+## Saving your dataset
+
+This operation is very easy to perform. Once you have created your filtered data, you can use the following function `write.csv()` to save it as a new CSV file:
+
+```{r, eval=FALSE}
+write.csv(schools_650_ofsted2, file = "Filtered_example_data.csv", row.names = FALSE)
+```
+
+The above syntax should save a new CSV file named as `Filtered_example_data.csv`. Do not forget to save your R-script!
+
+## Summary
+
+You have learned the following:
+
+1. Set your working directory for Windows/MAC
+2. Import and explore data
+3. Understand rows and columns
+4. Filter data using numeric and categorical variables
+5. Combine filters with logical operators
+6. Export your results to a new CSV file
+
+# Task One: Stormwater Drainage Survey Data
+
+In Accra, June-July 2024, we carried out a stormwater drainage survey to identify exposed stormwater drainage points along street segments that were clogged with solid waste (i.e., plastics and rubbish) and stagnated for the purpose of reducing the burden of poor environmental sanitation and risk of mosquito-borne infestation.
+
+Following information has been captured in annotated images:
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('assets/all_images/tasks/00_drain_exhibits.png', error = FALSE) 
+```
+
+Use the information inside the images’ text box to construct a data frame in RStudio. 
+
+1. Use the `c( )` function with assignment operator (`<-`) to create the following vector objects with the names:
+
+- `GoProID`: it contains the image ID numbers
+-	`Latitude`: it contains the y-coordinate of surveyed location
+-	`Longitude`: it contains the x-coordinate of surveyed location
+-	`Sanitation`: it contains information about the sanitation state of drain
+-	`SolidWaste`: it describes presence or absence of solid waste materials in drain
+-	`Structure`: it describes whether the structure of the drain was damaged (or not) or it being a “run off” drain
+-	`Stagnation`:  refers to flow obstruction in drain resulting in it be stagnated
+-	`Mosquitoes`: refers to evidence of mosquito breeding in drain due to condition
+
+2. Use the `data.frame()` with the assignment operator (`<-`) to create the data frame object `drainage_data`.
+3. Use the following row conditions i.e., drains classified as having **Poor** sanitary state **AND** it is a **breeding spot** for mosquitoes at the same time to perform a filter on the `drainage_data` object. At the same time, limit the filtered data to the following columns: `GoProID`, `Latitude`, `Longitude`, `Sanitation` and `Mosquitoes`   
+4. Use the `write.csv()` to save your new filtered dataset. 

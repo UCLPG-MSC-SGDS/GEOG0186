@@ -221,9 +221,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#data-structure" id="toc-data-structure" class="nav-link" data-scroll-target="#data-structure"><span class="header-section-number">1.4</span> Data Structure</a>
   <ul class="collapse">
   <li><a href="#inspecting-the-size-and-structure" id="toc-inspecting-the-size-and-structure" class="nav-link" data-scroll-target="#inspecting-the-size-and-structure"><span class="header-section-number">1.4.1</span> Inspecting the Size and Structure</a></li>
-  <li><a href="#basic-subsetting-and-manipulation-of-data-frame" id="toc-basic-subsetting-and-manipulation-of-data-frame" class="nav-link" data-scroll-target="#basic-subsetting-and-manipulation-of-data-frame"><span class="header-section-number">1.4.2</span> Basic Subsetting and Manipulation of Data Frame</a></li>
+  <li><a href="#basic-manipulation-of-data-frame" id="toc-basic-manipulation-of-data-frame" class="nav-link" data-scroll-target="#basic-manipulation-of-data-frame"><span class="header-section-number">1.4.2</span> Basic Manipulation of Data Frame</a>
+  <ul class="collapse">
+  <li><a href="#subsetting-using-rows-and-columns" id="toc-subsetting-using-rows-and-columns" class="nav-link" data-scroll-target="#subsetting-using-rows-and-columns"><span class="header-section-number">1.4.2.1</span> Subsetting using Rows and Columns</a></li>
+  <li><a href="#subsetting-using-logical-operators-to-combine-conditions" id="toc-subsetting-using-logical-operators-to-combine-conditions" class="nav-link" data-scroll-target="#subsetting-using-logical-operators-to-combine-conditions"><span class="header-section-number">1.4.2.2</span> Subsetting using Logical Operators to Combine Conditions</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#saving-your-dataset" id="toc-saving-your-dataset" class="nav-link" data-scroll-target="#saving-your-dataset"><span class="header-section-number">1.5</span> Saving your dataset</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">1.6</span> Summary</a></li>
+  </ul></li>
+  <li><a href="#task-one-stormwater-drainage-survey-data" id="toc-task-one-stormwater-drainage-survey-data" class="nav-link" data-scroll-target="#task-one-stormwater-drainage-survey-data"><span class="header-section-number">2</span> Task One: Stormwater Drainage Survey Data</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -276,11 +283,7 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Before we do anything - make sure to have downloaded the dataset for this computer session by clicking <a href=""><strong>[HERE]</strong></a>. There are three datasets:</p>
-<ol type="1">
-<li><code>Primary Schools in Ealing.csv</code>: This comma separated values (CSV) file contains the data needed to follow today’s tutorial. 2 <code>Open Street Drains in Accra</code>: This is zipped folder containing images of stormwater drainage infrastructure in Accra annotated with key information to created a data frame. It will be needed in part one of <strong>Task 1</strong>.</li>
-<li><code>Prevalence of Soil Transmitted Helminths in Africa.csv</code>: This dataset contains point locations for villages across sub-Saharan Africa. It will be needed in part two of <strong>Task 1</strong>.</li>
-</ol>
+<p>Before we do anything - make sure to have downloaded the dataset for this computer session by clicking <a href=""><strong>[HERE]</strong></a>. It contains the file <code>Primary Schools in Ealing.csv</code> - this comma separated values (CSV) file contains the data needed to follow today’s tutorial.</p>
 <p><strong>Instructions</strong> In your computer, do the following:</p>
 <ol type="1">
 <li>Create a new folder on your desktop and rename the folder <strong>GEOG0186</strong></li>
@@ -295,7 +298,7 @@ Warning
 <p>To illustrate what a <strong>Path Location</strong> is – suppose on my desktop’s dashboard on a Mac/Windows there is a folder called <strong>GEOG0186</strong>, and within that folder, exists another folder called <strong>Week 2</strong>. Finally, suppose a comma separated value (.csv) data file called <code>Primary Schools in Ealing.csv</code> is store in this folder i.e., <strong>Week 2</strong>. If via RStudio you want to open this CSV data file located in within the <strong>Week 2</strong> folder. You will need to first set the path to <strong>Week 2</strong> in RStudio using the <code>setwd()</code> function.</p>
 <section id="setting-the-path-location-on-mac" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="setting-the-path-location-on-mac"><span class="header-section-number">1.2.1</span> Setting the Path Location on MAC</h3>
-<p>For <strong>MAC</strong> users, the path location would be written as follows, <code>"/Users/accountName/Desktop/GEOG0186/Workshop 1"</code>. You can access this piece of information simply by:</p>
+<p>For <strong>MAC</strong> users, the path location would be written as follows, <code>"/Users/accountName/Desktop/GEOG0186/Week 2"</code>. You can access this piece of information simply by:</p>
 <ol type="1">
 <li>Open the folder <strong>GEOG0186</strong></li>
 <li>Right-clicking on the folder <strong>Week 2</strong> in which the files are stored. A drop-down scroll menu will appear (see image below).</li>
@@ -331,7 +334,7 @@ Warning
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="assets/all_images/set_working_directory/00_setwd_windows.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<p><img src="assets/all_images/set_working_directory/01_setwd_windows.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -354,7 +357,7 @@ Warning
 <p>A CSV file (short for Comma-Separated Values) is one of the most common formats for storing data. Each <strong>row</strong> is a <strong>single record</strong> or <strong>observation</strong>. For example, it can be details about a person, household unit, a city, or even disease events; and while each <strong>column</strong> is a <strong>variable</strong> (for example, population counts, temperature readings, or region name etc.).</p>
 <p>For this exercise, we will be using the <code>Primary Schools in Ealing.csv</code> dataset to build intuition on understanding the basics of data structure.</p>
 <p>Since, we have already set the work directory to folder containing this dataset. Importing it into RStudio would be a piece of cake.</p>
-<p>To read a CSV file into R, we can use the <code>read.csv()</code> function import it as a <strong>data frame object</strong>:</p>
+<p>To read a CSV file into R, we can use the <code>read.csv()</code> function import it as a <strong>data frame object</strong> named <code>school_data</code> using the assignment operator (<code>&lt;-</code>):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data into RStudio. The spreadsheet is stored in the object called 'school_data'</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>school_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"Primary Schools in Ealing.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -469,12 +472,461 @@ Important
 </div>
 </div>
 </section>
-<section id="basic-subsetting-and-manipulation-of-data-frame" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="basic-subsetting-and-manipulation-of-data-frame"><span class="header-section-number">1.4.2</span> Basic Subsetting and Manipulation of Data Frame</h3>
-
-
+<section id="basic-manipulation-of-data-frame" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="basic-manipulation-of-data-frame"><span class="header-section-number">1.4.2</span> Basic Manipulation of Data Frame</h3>
+<section id="subsetting-using-rows-and-columns" class="level4" data-number="1.4.2.1">
+<h4 data-number="1.4.2.1" class="anchored" data-anchor-id="subsetting-using-rows-and-columns"><span class="header-section-number">1.4.2.1</span> Subsetting using Rows and Columns</h4>
+<p>One can subset or restrict the data frame by specifying which row(s) and column(s) to keep or discard using this standard square bracket syntax <code>dataframe[Row, Column]</code>.</p>
+<p>Breakdown of <code>dataframe[Row, Column]</code>code:</p>
+<ol type="1">
+<li>The bit in the code that corresponds to <code>dataframe</code> from <code>dataframe[Row, Column]</code> represents the <strong>name</strong> data frame object.</li>
+<li>Where it states <code>Row</code> within the square brackets specifies the subsetting, or filter action to be carried out based on rows.</li>
+<li>Where it states <code>Column</code> within the square brackets specifies the subsetting, or filter action to be carried out based on columns.</li>
+</ol>
+<p>Let’s take our <code>school_data</code> data frame as an example - if we select the first row (row number 1) and the first column (SchoolName), we have essentially filter out only the school name <code>Berrymede Junior School Primary</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data11 <span class="ot">&lt;-</span> school_data[<span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>data11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Berrymede Junior School"</code></pre>
+</div>
+</div>
+<p>If you select only the first row (row number 1) and do not specific any numbers for the columns, you will be filtering out the entire row for row number 1:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>row1 <span class="ot">&lt;-</span> school_data[<span class="dv">1</span>, ]</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>row1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               SchoolName    Type NumberBoys NumberGirls TotalStudents
+1 Berrymede Junior School Primary        180         200           377
+  OfstedGrade
+1           2</code></pre>
+</div>
+</div>
+<p>In the same vein, if you select only the column and do not specific any numbers for the rows, you will be filtering out the entire column (i.e., <code>SchoolName</code> variable) for column number 1 which is the list of all primary school names:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>column1 <span class="ot">&lt;-</span> school_data[, <span class="dv">1</span>]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>column1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Berrymede Junior School"                           
+ [2] "East Acton Primary School"                         
+ [3] "Oldfield Primary School"                           
+ [4] "North Ealing Primary School"                       
+ [5] "St John's Primary School"                          
+ [6] "St Mark's Primary School"                          
+ [7] "West Twyford Primary School"                       
+ [8] "West Acton Primary School"                         
+ [9] "Mayfield Primary School"                           
+[10] "Beaconsfield Primary and Nursery School"           
+[11] "Coston Primary School"                             
+[12] "Downe Manor Primary School"                        
+[13] "Drayton Green Primary School"                      
+[14] "North Primary School"                              
+[15] "Ravenor Primary School"                            
+[16] "Selborne Primary School"                           
+[17] "Hambrough Primary School"                          
+[18] "Hobbayne Primary School"                           
+[19] "John Perryn Primary School"                        
+[20] "Southfield Primary School"                         
+[21] "Allenby Primary School"                            
+[22] "Blair Peach Primary School"                        
+[23] "Clifton Primary School"                            
+[24] "Dairy Meadow Primary School"                       
+[25] "Derwentwater Primary School"                       
+[26] "Durdans Park Primary School"                       
+[27] "Fielding Primary School"                           
+[28] "Gifford Primary School"                            
+[29] "Greenwood Primary School"                          
+[30] "Havelock Primary School and Nursery"               
+[31] "Horsenden Primary School"                          
+[32] "Willow Tree Primary School"                        
+[33] "Lady Margaret Primary School"                      
+[34] "Little Ealing Primary School"                      
+[35] "Oaklands Primary School"                           
+[36] "Perivale Primary School"                           
+[37] "Stanhope Primary School"                           
+[38] "Viking Primary School"                             
+[39] "Wolf Fields Primary School"                        
+[40] "Featherstone Primary and Nursery School"           
+[41] "Three Bridges Primary School"                      
+[42] "Montpelier Primary School"                         
+[43] "Tudor Primary School"                              
+[44] "Hathaway Primary School"                           
+[45] "Vicar's Green Primary School"                      
+[46] "Mount Carmel Catholic Primary School"              
+[47] "Our Lady of the Visitation Catholic Primary School"
+[48] "St John Fisher Catholic Primary School"            
+[49] "St Anselm's Catholic Primary School"               
+[50] "St Gregory's Catholic Primary School"              
+[51] "St Joseph's Catholic Primary School"               
+[52] "St Raphael's Catholic Primary School"              
+[53] "St Vincent's Catholic Primary School"              
+[54] "Edward Betham Church of England Primary School"    
+[55] "Dormers Wells Junior School"                       
+[56] "Grange Primary School"                             
+[57] "Petts Hill Primary School"                         
+[58] "Khalsa VA Primary School"                          </code></pre>
+</div>
+</div>
+<p>What if we wanted to filter the following rows numbered <code>2</code>, <code>7</code> and <code>19</code> from the <code>school_data</code> data frame object as highlighted in the image below?</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/subsetting_dfs/01_rows_only.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can use the combine function i.e., <code>c()</code> to list those numbers in the square brackets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rows_filter <span class="ot">&lt;-</span> school_data[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">19</span>), ]</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>rows_filter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    SchoolName    Type NumberBoys NumberGirls TotalStudents
+2    East Acton Primary School Primary        160         165           329
+7  West Twyford Primary School Primary        155         180           335
+19  John Perryn Primary School Primary        230         230           460
+   OfstedGrade
+2            2
+7            2
+19           2</code></pre>
+</div>
+</div>
+<p>Likewise, what if we wanted to filter the following columns numbered <code>1</code>, <code>5</code> and <code>6</code> from the <code>school_data</code> data frame object as highlighted in the image below?</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/subsetting_dfs/02_columns_only.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can also use the combine function i.e., <code>c()</code> to list those numbers for the columns within that square brackets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>columns_filter <span class="ot">&lt;-</span> school_data[ , <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>)]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>columns_filter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                           SchoolName TotalStudents OfstedGrade
+1                             Berrymede Junior School           377           2
+2                           East Acton Primary School           329           2
+3                             Oldfield Primary School           465           2
+4                         North Ealing Primary School           697           2
+5                            St John's Primary School           471           2
+6                            St Mark's Primary School           435           2
+7                         West Twyford Primary School           335           2
+8                           West Acton Primary School           573           3
+9                             Mayfield Primary School           373           2
+10            Beaconsfield Primary and Nursery School           273           2
+11                              Coston Primary School           450           2
+12                         Downe Manor Primary School           471           2
+13                       Drayton Green Primary School           354           2
+14                               North Primary School           419           1
+15                             Ravenor Primary School           610           2
+16                            Selborne Primary School           554           2
+17                           Hambrough Primary School           520           2
+18                            Hobbayne Primary School           641           2
+19                         John Perryn Primary School           460           2
+20                          Southfield Primary School           518           2
+21                             Allenby Primary School           263           2
+22                         Blair Peach Primary School           506           2
+23                             Clifton Primary School           400           2
+24                        Dairy Meadow Primary School           469           2
+25                        Derwentwater Primary School           708           2
+26                        Durdans Park Primary School           528           2
+27                            Fielding Primary School           891           2
+28                             Gifford Primary School           866           1
+29                           Greenwood Primary School           555           2
+30                Havelock Primary School and Nursery           434           1
+31                           Horsenden Primary School           872           2
+32                         Willow Tree Primary School           759           2
+33                       Lady Margaret Primary School           671           2
+34                       Little Ealing Primary School           669           2
+35                            Oaklands Primary School           552           2
+36                            Perivale Primary School           467           2
+37                            Stanhope Primary School           598           2
+38                              Viking Primary School           275           2
+39                         Wolf Fields Primary School           421           2
+40            Featherstone Primary and Nursery School           722           2
+41                       Three Bridges Primary School           455           2
+42                          Montpelier Primary School           682           1
+43                               Tudor Primary School           453           2
+44                            Hathaway Primary School           346           4
+45                       Vicar's Green Primary School           342           1
+46               Mount Carmel Catholic Primary School           457           2
+47 Our Lady of the Visitation Catholic Primary School           471           3
+48             St John Fisher Catholic Primary School           467           1
+49                St Anselm's Catholic Primary School           239           3
+50               St Gregory's Catholic Primary School           619           2
+51                St Joseph's Catholic Primary School           558           2
+52               St Raphael's Catholic Primary School           589           2
+53               St Vincent's Catholic Primary School           498           2
+54     Edward Betham Church of England Primary School           471           2
+55                        Dormers Wells Junior School           409           3
+56                              Grange Primary School           800           2
+57                          Petts Hill Primary School           254           2
+58                           Khalsa VA Primary School           412           2</code></pre>
+</div>
+</div>
+<p>What if we wanted to filter on rows numbered <code>2</code>, <code>7</code> and <code>19</code>, as well as columns numbered <code>1</code>, <code>5</code> and <code>6</code> from that <code>school_data</code> data frame object as highlighted in the image below?</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/subsetting_dfs/03_rows_and_columns.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>full_filter <span class="ot">&lt;-</span> school_data[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">19</span>) , <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>)]</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>full_filter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    SchoolName TotalStudents OfstedGrade
+2    East Acton Primary School           329           2
+7  West Twyford Primary School           335           2
+19  John Perryn Primary School           460           2</code></pre>
+</div>
+</div>
+<p>Not too shabby! So far, you have been shown how to do some create subset of data by filtering rows and columns. Let’s take it up a notch on filtering based on row <strong>Logical Operators</strong> to create <strong>conditions</strong>.</p>
+</section>
+<section id="subsetting-using-logical-operators-to-combine-conditions" class="level4" data-number="1.4.2.2">
+<h4 data-number="1.4.2.2" class="anchored" data-anchor-id="subsetting-using-logical-operators-to-combine-conditions"><span class="header-section-number">1.4.2.2</span> Subsetting using Logical Operators to Combine Conditions</h4>
+<p>Often, we want to filter based on more than one condition — for example, “cities in England <strong>and</strong> with a population over 600000”. RStudio uses logical operators to combine these conditions:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 14%">
+<col style="width: 34%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Operator</th>
+<th style="text-align: left;">Meaning</th>
+<th style="text-align: left;">Example</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>==</code></td>
+<td style="text-align: left;">Equal to</td>
+<td style="text-align: left;"><code>country == "England"</code></td>
+<td style="text-align: left;">True if the country is England</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>!=</code></td>
+<td style="text-align: left;">Not Equal to</td>
+<td style="text-align: left;"><code>country != "England"</code></td>
+<td style="text-align: left;">True if for all except England</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>&gt;</code></td>
+<td style="text-align: left;">Greater than</td>
+<td style="text-align: left;"><code>population &gt; 600000</code></td>
+<td style="text-align: left;">True if population is above 600000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&lt;</code></td>
+<td style="text-align: left;">Less than</td>
+<td style="text-align: left;"><code>population &lt; 600000</code></td>
+<td style="text-align: left;">True if population is under 600000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>&gt;=</code></td>
+<td style="text-align: left;">Greater than or eqaul to</td>
+<td style="text-align: left;"><code>population &gt;= 600000</code></td>
+<td style="text-align: left;">True if population is equal to 600000 or more</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&lt;=</code></td>
+<td style="text-align: left;">Less than or equal to</td>
+<td style="text-align: left;"><code>population &lt;= 600000</code></td>
+<td style="text-align: left;">True if population is equal to 600000 or less</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>&amp;</code></td>
+<td style="text-align: left;">AND</td>
+<td style="text-align: left;"><code>country == "England" &amp; population &lt;= 600000</code></td>
+<td style="text-align: left;">Both conditions are true</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>|</code></td>
+<td style="text-align: left;">OR</td>
+<td style="text-align: left;"><code>country == "England" | country == "Wales"</code></td>
+<td style="text-align: left;">True for either England or Wales</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s illustrate with the <code>school_data</code> object. We are interested in primary schools with a total of 500 hundred or more students. This operation is <strong>always</strong> row-based. We will need to use the <code>$</code> to call the column <code>TotalStudents</code> and the logical operator for this filter is <code>&gt;=</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>schools_500plus <span class="ot">&lt;-</span> school_data[school_data<span class="sc">$</span>TotalStudents <span class="sc">&gt;=</span> <span class="dv">500</span>, ]</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>schools_500plus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                SchoolName    Type NumberBoys NumberGirls
+4              North Ealing Primary School Primary        340         355
+8                West Acton Primary School Primary        285         290
+15                  Ravenor Primary School Primary        315         295
+16                 Selborne Primary School Primary        275         280
+17                Hambrough Primary School Primary        275         245
+18                 Hobbayne Primary School Primary        340         300
+20               Southfield Primary School Primary        275         245
+22              Blair Peach Primary School Primary        265         245
+25             Derwentwater Primary School Primary        335         370
+26             Durdans Park Primary School Primary        275         250
+27                 Fielding Primary School Primary        480         410
+28                  Gifford Primary School Primary        435         435
+29                Greenwood Primary School Primary        290         265
+31                Horsenden Primary School Primary        440         435
+32              Willow Tree Primary School Primary        385         370
+33            Lady Margaret Primary School Primary        360         310
+34            Little Ealing Primary School Primary        345         325
+35                 Oaklands Primary School Primary        290         260
+37                 Stanhope Primary School Primary        305         295
+40 Featherstone Primary and Nursery School Primary        365         360
+42               Montpelier Primary School Primary        350         330
+50    St Gregory's Catholic Primary School Primary        305         310
+51     St Joseph's Catholic Primary School Primary        295         265
+52    St Raphael's Catholic Primary School Primary        325         265
+56                   Grange Primary School Primary        415         385
+   TotalStudents OfstedGrade
+4            697           2
+8            573           3
+15           610           2
+16           554           2
+17           520           2
+18           641           2
+20           518           2
+22           506           2
+25           708           2
+26           528           2
+27           891           2
+28           866           1
+29           555           2
+31           872           2
+32           759           2
+33           671           2
+34           669           2
+35           552           2
+37           598           2
+40           722           2
+42           682           1
+50           619           2
+51           558           2
+52           589           2
+56           800           2</code></pre>
+</div>
+</div>
+<p>What if were interested in primary schools with an OFSTED score of <code>1</code> (Excellent). Again, this operation is row-based and so we will need to use the <code>$</code> to call the column <code>OfstedGrade</code> and the logical operator for this filter is <code>==</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>schools_ofsted1 <span class="ot">&lt;-</span> school_data[school_data<span class="sc">$</span>OfstedGrade <span class="sc">==</span> <span class="dv">1</span>, ]</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>schools_ofsted1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                               SchoolName    Type NumberBoys NumberGirls
+14                   North Primary School Primary        215         205
+28                 Gifford Primary School Primary        435         435
+30    Havelock Primary School and Nursery Primary        245         190
+42              Montpelier Primary School Primary        350         330
+45           Vicar's Green Primary School Primary        165         180
+48 St John Fisher Catholic Primary School Primary        225         240
+   TotalStudents OfstedGrade
+14           419           1
+28           866           1
+30           434           1
+42           682           1
+45           342           1
+48           467           1</code></pre>
+</div>
+</div>
+<p>Here is an example of combining such logical operators - select schools that have more than 650 students and with an OFSTED score of 2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># logical operators is &gt;, &amp;, ==</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>schools_650_ofsted2 <span class="ot">&lt;-</span> school_data[school_data<span class="sc">$</span>TotalStudents <span class="sc">&gt;</span> <span class="dv">650</span> <span class="sc">&amp;</span> school_data<span class="sc">$</span>OfstedGrade <span class="sc">==</span> <span class="dv">2</span>, ]</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>schools_650_ofsted2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                SchoolName    Type NumberBoys NumberGirls
+4              North Ealing Primary School Primary        340         355
+25             Derwentwater Primary School Primary        335         370
+27                 Fielding Primary School Primary        480         410
+31                Horsenden Primary School Primary        440         435
+32              Willow Tree Primary School Primary        385         370
+33            Lady Margaret Primary School Primary        360         310
+34            Little Ealing Primary School Primary        345         325
+40 Featherstone Primary and Nursery School Primary        365         360
+56                   Grange Primary School Primary        415         385
+   TotalStudents OfstedGrade
+4            697           2
+25           708           2
+27           891           2
+31           872           2
+32           759           2
+33           671           2
+34           669           2
+40           722           2
+56           800           2</code></pre>
+</div>
+</div>
+<p>I am sure you now get the gist of what is happening here with these logical statements for subsetting, or filtering data accordingly. We are now in the final stretch - let us learn how to save and export a dataset as a CSV spreadsheet.</p>
 </section>
 </section>
+</section>
+<section id="saving-your-dataset" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="saving-your-dataset"><span class="header-section-number">1.5</span> Saving your dataset</h2>
+<p>This operation is very easy to perform. Once you have created your filtered data, you can use the following function <code>write.csv()</code> to save it as a new CSV file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(schools_650_ofsted2, <span class="at">file =</span> <span class="st">"Filtered_example_data.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The above syntax should save a new CSV file named as <code>Filtered_example_data.csv</code>. Do not forget to save your R-script!</p>
+</section>
+<section id="summary" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">1.6</span> Summary</h2>
+<p>You have learned the following:</p>
+<ol type="1">
+<li>Set your working directory for Windows/MAC</li>
+<li>Import and explore data</li>
+<li>Understand rows and columns</li>
+<li>Filter data using numeric and categorical variables</li>
+<li>Combine filters with logical operators</li>
+<li>Export your results to a new CSV file</li>
+</ol>
+</section>
+</section>
+<section id="task-one-stormwater-drainage-survey-data" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Task One: Stormwater Drainage Survey Data</h1>
+<p>In Accra, June-July 2024, we carried out a stormwater drainage survey to identify exposed stormwater drainage points along street segments that were clogged with solid waste (i.e., plastics and rubbish) and stagnated for the purpose of reducing the burden of poor environmental sanitation and risk of mosquito-borne infestation.</p>
+<p>Following information has been captured in annotated images:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/tasks/00_drain_exhibits.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Use the information inside the images’ text box to construct a data frame in RStudio.</p>
+<ol type="1">
+<li>Use the <code>c( )</code> function with assignment operator (<code>&lt;-</code>) to create the following vector objects with the names:</li>
+</ol>
+<ul>
+<li><code>GoProID</code>: it contains the image ID numbers</li>
+<li><code>Latitude</code>: it contains the y-coordinate of surveyed location</li>
+<li><code>Longitude</code>: it contains the x-coordinate of surveyed location</li>
+<li><code>Sanitation</code>: it contains information about the sanitation state of drain</li>
+<li><code>SolidWaste</code>: it describes presence or absence of solid waste materials in drain</li>
+<li><code>Structure</code>: it describes whether the structure of the drain was damaged (or not) or it being a “run off” drain</li>
+<li><code>Stagnation</code>: refers to flow obstruction in drain resulting in it be stagnated</li>
+<li><code>Mosquitoes</code>: refers to evidence of mosquito breeding in drain due to condition</li>
+</ul>
+<ol start="2" type="1">
+<li>Use the <code>data.frame()</code> with the assignment operator (<code>&lt;-</code>) to create the data frame object <code>drainage_data</code>.</li>
+<li>Use the following row conditions i.e., drains classified as having <strong>Poor</strong> sanitary state <strong>AND</strong> it is a <strong>breeding spot</strong> for mosquitoes at the same time to perform a filter on the <code>drainage_data</code> object. At the same time, limit the filtered data to the following columns: <code>GoProID</code>, <code>Latitude</code>, <code>Longitude</code>, <code>Sanitation</code> and <code>Mosquitoes</code><br>
+</li>
+<li>Use the <code>write.csv()</code> to save your new filtered dataset.</li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->
