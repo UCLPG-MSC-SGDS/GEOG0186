@@ -349,9 +349,20 @@ You have learned the following:
 5. Combine filters with logical operators
 6. Export your results to a new CSV file
 
-# Task One: Stormwater Drainage Survey Data
+# Worksheet One: Workflow and Generating Data in RStudio
 
-In Accra, June-July 2024, we carried out a stormwater drainage survey to identify exposed stormwater drainage points along street segments that were clogged with solid waste (i.e., plastics and rubbish) and stagnated for the purpose of reducing the burden of poor environmental sanitation and risk of mosquito-borne infestation.
+In this worksheet, we will put into practice some of the basics we learned in Introduction I and II. The aim of this worksheet is to transcribe the image data containing stormwater drain infrastructure and sanitation information using the following R code syntax:
+
+- Assignment operator `<-`
+- Combine function `c()`
+- Data frame function `data.frame()`
+- Display data structure of output `str()`
+- Using logical operators
+- Save function `write.csv()`
+
+**Scenario: Stormwater Drainage Survey Data**
+
+In Accra, between June and July 2024, we conducted a stormwater drainage survey to identify exposed drainage points along street segments that were clogged with solid waste (e.g., plastics and rubbish) and stagnant water, with the aim of reducing the burden of poor environmental sanitation and the risk of mosquito-borne infestation.
 
 Following information has been captured in annotated images:
 
@@ -359,7 +370,7 @@ Following information has been captured in annotated images:
 knitr::include_graphics('assets/all_images/tasks/00_drain_exhibits.png', error = FALSE) 
 ```
 
-Use the information inside the images’ text box to construct a data frame in RStudio. 
+Use the information in the white text box of each image to construct a data frame in RStudio.
 
 1. Use the `c( )` function with assignment operator (`<-`) to create the following vector objects with the names:
 
@@ -373,5 +384,7 @@ Use the information inside the images’ text box to construct a data frame in R
 -	`Mosquitoes`: refers to evidence of mosquito breeding in drain due to condition
 
 2. Use the `data.frame()` with the assignment operator (`<-`) to create the data frame object `drainage_data`.
-3. Use the following row conditions i.e., drains classified as having **Poor** sanitary state **AND** it is a **Breeding Spot** for mosquitoes at the same time to perform a filter on the `drainage_data` object. At the same time, limit the filtered data to the following columns: `GoProID`, `Latitude`, `Longitude`, `Sanitation` and `Mosquitoes`   
-4. Use the `write.csv()` to save your new filtered dataset. 
+3. Use the `str()` to describe the structure of `drainage_data` data frame.
+4. Use the following row conditions i.e., drains classified as having **Poor** sanitary state **AND** it is a **Breeding Spot** for mosquitoes at the same time to perform a filter on the `drainage_data` object. At the same time, limit the filtered data to the following columns: `GoProID`, `Latitude`, `Longitude`, `Sanitation` and `Mosquitoes`   
+5. Use the `write.csv()` to save your new filtered dataset.
+

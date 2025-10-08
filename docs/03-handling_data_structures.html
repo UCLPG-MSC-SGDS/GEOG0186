@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#saving-your-dataset-length-001113" id="toc-saving-your-dataset-length-001113" class="nav-link" data-scroll-target="#saving-your-dataset-length-001113"><span class="header-section-number">1.5</span> Saving your dataset (Length: 00:11:13)</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">1.6</span> Summary</a></li>
   </ul></li>
-  <li><a href="#task-one-stormwater-drainage-survey-data" id="toc-task-one-stormwater-drainage-survey-data" class="nav-link" data-scroll-target="#task-one-stormwater-drainage-survey-data"><span class="header-section-number">2</span> Task One: Stormwater Drainage Survey Data</a></li>
+  <li><a href="#worksheet-one-workflow-and-generating-data-in-rstudio" id="toc-worksheet-one-workflow-and-generating-data-in-rstudio" class="nav-link" data-scroll-target="#worksheet-one-workflow-and-generating-data-in-rstudio"><span class="header-section-number">2</span> Worksheet One: Workflow and Generating Data in RStudio</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -976,9 +976,19 @@ Important
 </ol>
 </section>
 </section>
-<section id="task-one-stormwater-drainage-survey-data" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Task One: Stormwater Drainage Survey Data</h1>
-<p>In Accra, June-July 2024, we carried out a stormwater drainage survey to identify exposed stormwater drainage points along street segments that were clogged with solid waste (i.e., plastics and rubbish) and stagnated for the purpose of reducing the burden of poor environmental sanitation and risk of mosquito-borne infestation.</p>
+<section id="worksheet-one-workflow-and-generating-data-in-rstudio" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Worksheet One: Workflow and Generating Data in RStudio</h1>
+<p>In this worksheet, we will put into practice some of the basics we learned in Introduction I and II. The aim of this worksheet is to transcribe the image data containing stormwater drain infrastructure and sanitation information using the following R code syntax:</p>
+<ul>
+<li>Assignment operator <code>&lt;-</code></li>
+<li>Combine function <code>c()</code></li>
+<li>Data frame function <code>data.frame()</code></li>
+<li>Display data structure of output <code>str()</code></li>
+<li>Using logical operators</li>
+<li>Save function <code>write.csv()</code></li>
+</ul>
+<p><strong>Scenario: Stormwater Drainage Survey Data</strong></p>
+<p>In Accra, between June and July 2024, we conducted a stormwater drainage survey to identify exposed drainage points along street segments that were clogged with solid waste (e.g., plastics and rubbish) and stagnant water, with the aim of reducing the burden of poor environmental sanitation and the risk of mosquito-borne infestation.</p>
 <p>Following information has been captured in annotated images:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -989,7 +999,7 @@ Important
 </div>
 </div>
 </div>
-<p>Use the information inside the images’ text box to construct a data frame in RStudio.</p>
+<p>Use the information in the white text box of each image to construct a data frame in RStudio.</p>
 <ol type="1">
 <li>Use the <code>c( )</code> function with assignment operator (<code>&lt;-</code>) to create the following vector objects with the names:</li>
 </ol>
@@ -1005,6 +1015,7 @@ Important
 </ul>
 <ol start="2" type="1">
 <li>Use the <code>data.frame()</code> with the assignment operator (<code>&lt;-</code>) to create the data frame object <code>drainage_data</code>.</li>
+<li>Use the <code>str()</code> to describe the structure of <code>drainage_data</code> data frame.</li>
 <li>Use the following row conditions i.e., drains classified as having <strong>Poor</strong> sanitary state <strong>AND</strong> it is a <strong>Breeding Spot</strong> for mosquitoes at the same time to perform a filter on the <code>drainage_data</code> object. At the same time, limit the filtered data to the following columns: <code>GoProID</code>, <code>Latitude</code>, <code>Longitude</code>, <code>Sanitation</code> and <code>Mosquitoes</code><br>
 </li>
 <li>Use the <code>write.csv()</code> to save your new filtered dataset.</li>
