@@ -167,7 +167,7 @@ View(air_quality_data)
 ```
 
 :::{.callout-important}
-What have we done here? The first value under the `NO2_est` column is 61, this value falls between 61-70 and hence under the `Group` column is was classed into the (61,70] interval by the `cut()` function. The second value in `NO2_est` is 59, and hence it was classed into the (51,60] interval, and so on. 
+**What have we done here?** The first value under the `NO2_est` column is **61**, this value falls between **61-70** and hence under the `Group` column is was classed into the `(60,70]` interval by the `cut()` function. The second value in `NO2_est` is **59**, and hence it was classed into the `(50,60]` interval, and so on. Note that the interval `(60, 70]` is the equivalent of saying: **"any numbers greater than `60` (i.e., from `60.01` onwards but excluding `60` from that interval), and at the same time being less than or equal to `70`, inclusively"**. The round bracket `(` represents any number greater than `60`, whilst the square bracket `]` closes the interval translating to any number being less than or equal `70` at the same time.  
 :::
 
 ### Computing the Frequency Distribution table
