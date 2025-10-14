@@ -1,0 +1,262 @@
+---
+title: "Examining Data I"
+---
+
+# Frequency Distribution
+
+## Learning outcomes
+
+By the end of this tutorial, you will be able to:
+
+1. Set your working directory on Mac and Windows
+2. Import a .csv file into RStudio
+3. Understand the structure of a data frame (rows and columns)
+4. Filter data using both numeric and categorical variables
+5. Combine multiple conditions with logical operators to perform further filtering of data
+6. Export data back into a .csv file
+
+These objectives, combined with those from last week, serve as a gateway to learning RStudio and building a strong foundation.
+
+:::{.callout-warning}
+Before we do anything - make sure to have downloaded the dataset for this computer session by clicking [**[HERE]**](https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/datasets/Dataset%20for%20Week%202.zip). It contains the file `Barcelona_Air_Pollution_data.csv` - this comma separated values (CSV) file contains the data needed to follow today's tutorial.
+
+**Instructions**
+In your computer, do the following:
+
+1. Create a new folder on your desktop and rename the folder **GEOG0186**
+2. Next, create a new sub-folder within **GEOG0186** and rename it as **Week 3**.
+3. From the downloaded folder **Dataset for Week 3**, make sure to unzip and transfer **ALL** the datasets directly to the **Week 3** folder.
+:::
+
+## Short Lecture Videos [OPTIONAL]
+
+Jump straight to the coding exercise by clicking [**HERE**]()
+
+### What is statistics and data in general?
+
+**Definition 1**: Statistics is a branch in the mathematical sciences that pertains to the collection, analysis, interpretation, and graphical presentation of data. The best thing about statistics is that it’s a highly applied branch of science which is applicable to many areas such as social science, politics, health (e.g., epidemiology), business & finance, environmental sciences and geography. 
+
+Statistics is broadly split into two main areas:
+
+1.	Descriptive statistics, which focuses on describing the visible characteristics about a dataset
+2.	Inferential statistics is more research-based, which focuses on making predictions (rather than stating facts) and testing hypothesis about a phenomenon.
+
+**Definition 2**: A variable is any characteristics, numbered value, or quantity that can be measured or counted. A variable can also be referred to a data Item. A variable can be broadly classified as discrete, continuous or categorical variable.
+
+We have provided two videos: the first which broadly explains why statistics as a subject is important; and the second explains in much details what statistics is as a subject, and what are the various data types.
+
+**[Theory] Why is statistics important? (Length: 13:21 minutes)**
+```{r video_6, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('BTQihTqIR8Y', height = 400) %>% use_align('center')
+```
+Watch on YouTube [[**LINK**]](https://youtu.be/BTQihTqIR8Y)
+
+**[Theory & Code] What is statistics, and the types of variables? (Length: 31:17 minutes)**
+```{r video_7, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('FJh6Cu-ATLM', height = 400) %>% use_align('center')
+```
+Watch on YouTube [[**LINK**]](https://youtu.be/FJh6Cu-ATLM)
+
+## Analysing air pollution data in Barcelona
+
+We will focus on descriptive statistics as an introduction introducing everyone to the absolute basics. Descriptive statistics is all about knowing the **data types** and finding the **distribution**, **central tendency** and **variability** in such data set. These four key words may sound intimidating – but trust me – it is very easy! Let us learn how to perform the following aspect of finding the distribution in RStudio using the air pollution data for Barcelona.
+
+Let us import for following dataset `Barcelona_Air_Pollution_data.csv` into RStudio, and call this object `air_ quality_data`.
+
+```{r set_up_path_GIF2, include = FALSE}
+knitr::opts_knit$set(root.dir = "/Users/anwarmusah/Documents/Websites/GEOG0186/datasets/All Data")
+knitr::opts_chunk$set(cache = FALSE)
+```
+
+Remember - always make sure that your work directory is linked to your folder containing your data.
+
+For Windows:
+
+```{r, eval=FALSE}
+setwd("C:/Users/accountName/Desktop/GEOG0186/Week 3")
+```
+
+For Macs:
+
+```{r, eval=FALSE}
+setwd("/Users/accountName/Desktop/GEOG0186/Week 3")
+```
+
+Now, import you the data set as follows:
+
+```{r import_dataset}
+air_quality_data <- read.csv("Barcelona_Air_Pollution_data.csv")
+```
+
+You use the command `View()` see the full data viewer, or `head()` to see the first five rows of the dataset. 
+
+```{r, eval=FALSE}
+# see imported dataset
+View(air_quality_data)
+```
+
+```{r, eval=FALSE}
+head(air_quality_data)
+```
+
+You will notice that the data contains six variables with the following information:
+
+**Variable name**|**Variable Type**|**Information**
+---------------- | ----------------- | ----------------------------------------
+Location| String/Text only | Name of location Eixample, Barcelona
+ReadingDate| Date | Data collection date for air quality measures
+NO2_est | Continuous | Measurements for Nitrogen dioxide (NO$_2$) (ppb)
+NO2_category | Categorical | Health impacts (negligible/low/moderate/high)
+PM10_est | Continuous | Measurements for Particulate matter (PM10)
+PM10_category | Categorical | Health impacts (negligible/low/moderate)
+
+:::{.callout-important}
+The `NO2_est`, for example, contains measurable items i.e., 718 observations for concentrations of ambient NO$_2$ in Eixample area of Barcelona, and hence its a continuous variable. These estimates have been categorised in accordance with their health dangers i.e., negligible ($<$ 10 ppb); low (11-50 ppb);
+:::
+
+Let us begin to analyse `NO2_est` and `NO2_category` with **frequency distributions**
+
+## Frequency distributions
+
+We use frequency distribution to analyse a set continuous data. In data handling in this context, there are two outputs generated: 
+
+1. **Frequency**, which tells us how often a particular result was obtained. From this we can calculate a percentage value which is referred to as **Relative Frequency**.  
+2. **Cumulative Frequency**, this is a cumulative sum of the frequencies, which indicates how often a result was obtained that is less than a stated value in our collection of data. Again, from this we can also calculate a cumulative percentage value which is referred to as **Cumulative Relative Frequency**.
+
+Suppose, we want to assess the 718 observations for air pollutant Nitrogen Dioxide (NO$_2$).
+
+Let's list the observations for Nitrogen Dioxide (NO$_2$) in Barcelona:
+
+```{r no2_list}
+air_quality_data$NO2_est
+```
+
+In a list format it is quite difficult to make head or tail on what observations appear frequently and its distribution. To summarise this - it will be helpful to classify the information into **Classes** and then obtain the **Frequency** and **Cumulative Frequency** in a table. We call this table a **Frequency Table**.
+
+The minimum value for NO$_2$ is 2 and the maximum is 130. We can group the 718 observations into 13 **classes** using an interval of 10s e.g., `1-10, 11-20, 21-30, 31-40, 41-50, 51-60, 61-70, 71-80, 81-90, 91-100, 101-110, 111-120` and `121-130`
+
+:::{.callout-important}
+The way and manner you specify the classes and interval are up to you really. Here, 10 is being used for convenience.
+:::
+
+The interval width is 10, we can generate sequence of number from 0 to 130, inclusively, to create the **classes** which in turn be used to group the 718 observations into 13 classes using the `seq()` and `cut()`.
+
+For example:
+
+```{r gen_seq}
+# using starting value as 0
+# using highest value as 130
+# using interval as 10
+
+#  specify in this order the lower, highest, interval value in seq() function
+classes <- seq(0, 130, 10)
+classes
+```
+
+The sequence of values are stored in the object called `classes`. Now, let us apply the `cut()` function to group the NO$_2$ data accordingly. We can do this by generating a new variable called `Groups`.
+
+```{r gen_classes}
+# tell the cut() function to group NO2_est using the classes object
+air_quality_data$Groups <- cut(air_quality_data$NO2_est, breaks=classes)
+air_quality_data$Groups
+```
+
+The observations have now been grouped to the classes. You can see this explicitly in the data viewer:
+
+```{r, eval=FALSE}
+View(air_quality_data)
+```
+
+:::{.callout-important}
+What have we done here? The first value under the `NO2_est` column is 61, this value falls between 61-70 and hence under the `Group` column is was classed into the (61,70] interval by the `cut()` function. The second value in `NO2_est` is 59, and hence it was classed into the (51,60] interval, and so on. 
+:::
+
+### Computing the Frequency Distribution table
+
+We can now generate our **frequency table** and hence determine **frequency** and **cumulative frequency** of the ambient levels of NO$_2$ in Eixample. We perform by using the `table()` function to tabulate the frequency of values that were grouped within an interval using the `Group` column. 
+
+```{r table_freq}
+table(air_quality_data$Groups)
+```
+
+Using `table()` function only shows results in the Console - lets store the table results in a **data frame** object and call it `frequency_results`:
+
+```{r table_freq_result1}
+frequency_results <- data.frame(table(air_quality_data$Groups))
+frequency_results
+```
+
+You can see column names `Var1` and `Freq`. The `Var1` is the original `Groups` columns which incidentally been renamed to `Var1`. The `Freq` column was generated from the `table()` function. We can rename the 1st and 2nd columns using `colnames()`.
+
+```{r column_name1}
+# rename first column t9 "Groups"
+# rename second column to "Frequency"
+# print new variable names in console using names() function
+
+colnames(frequency_results)[1] <- "Groups"    
+colnames(frequency_results)[2] <- "Frequency" 
+names(frequency_results) 
+frequency_results
+```
+
+Finally, we derive the **relative frequency** i.e., a percentage that is derived by dividing each frequency value from a group by the total number of observations (i.e., in this case: 718). We can add the `relativeFreq` column to the `frequency_results` table.
+
+```{r relative_freq}
+# generate a new column
+frequency_results$relativeFreq <- frequency_results$Frequency/718
+```
+
+:::{.callout-note}
+**Interpretation of frequency**: The above table output show the frequency distribution of a set of concentrations for Nitrogen Dioxide measured in Eixample (in Barcelona). The group with the highest frequency value is `50-60ppb` (i.e., 137) which accounts for 0.1908 (19.08%) of the data. These measurements typically fall under the category that's considered to cause moderate harm to humans.   
+:::
+
+Let's add the **cumulative frequency** and **cumulative relative frequency** i.e., percentage using this cumulative summation code i.e., `cumsum` function below:
+
+```{r cumulative_values}
+# add cumulativeFreq column to the data frame by adding Frequency using cumsum() function
+frequency_results$cumulativeFreq <- cumsum(frequency_results$Frequency)
+
+# add cumulativeRelFreq column to the data frame by adding Frequency using cumsum() function
+frequency_results$cumulativeRelFreq <- cumsum(frequency_results$relativeFreq)
+
+# print table results
+frequency_results
+```
+
+:::{.callout-warning}
+**Thoughts to self**: `cumsum` function... like WTF man?! 
+:::
+
+:::{.callout-note}
+**Interpretation of cumulative frequency**: The above table output show the cumulative frequency distribution ambient concentrations for Nitrogen Dioxide measured in Eixample (in Barcelona). We can see that there are  246 measurements or less with N0$_2$ concentrations to be considered as negligible or low impact to health (`<50ppb`). This corresponds to 0.3426 (34.26%) of the data. 
+
+Conversely, we can also say - we can see that there are 472 measurements with N0$_2$ concentrations more than `50ppb` which is considered to be moderate or high impact to human health. This corresponds to 0.6573 (65.73%) of the data. 
+:::
+
+### Graphical representation of frequency data
+
+The frequency table for **frequencies** and **cumulative frequencies** can be graphical represented in a form of **histogram** and **frequency diagram** respectively. Now, we need the data must be in its original form (i.e., not grouped) to plot the histogram, and we will need to use the `classes` object which we created earlier on from the `seq()` function so as to use as breaks in the `hist()` plot function:
+
+```{r histogramPlot}
+hist(air_quality_data$NO2_est, breaks = classes)
+```
+
+The above graph is not publication-worthy. It is missing key details such as the title and label for the x-axis. Let's apply some cosmetics such as a main title and label for the x-axis
+
+```{r histogram_cosmetics}
+hist(air_quality_data$NO2_est, breaks = classes, main = "Histogram for NO2 in Barcelona", xlab = "NO2 estimates (ppb)")
+```
+
+:::{.callout-note}
+**Interpretation of histogram**: The above figure output describes the shape for ambient measures of NO$_2$ in Barcelona which appears bell-shaped centered around 60ppb. Note that the frequency bars in this graph are essentially the same as the frequency values in the table.
+:::
+
+Lastly, we then compute its cumulative frequency with `cumsum()` to support the interpretation. The coding needs a bit of hacking because we need to force a starting zero element for this graph to work.
+
+```{r cumsum_plot}
+cumfreq0 <- c(0, cumsum(frequency_results$Frequency))
+plot(classes, cumfreq0, main="Cumulative Frequency for N02 in Barcelona", xlab="NO2 estimates (ppb)", ylab="Cumulative Frequencies")
+lines(classes, cumfreq0) 
+```
