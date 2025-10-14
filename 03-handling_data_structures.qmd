@@ -1,5 +1,5 @@
 ---
-title: "Introduction II"
+title: "Week 2: Introduction II"
 ---
 
 # Handling Data Structures in RStudio

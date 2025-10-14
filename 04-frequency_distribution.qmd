@@ -1,5 +1,5 @@
 ---
-title: "Examining Data I"
+title: "Week 3: Examining Data I"
 ---
 
 # Frequency Distribution

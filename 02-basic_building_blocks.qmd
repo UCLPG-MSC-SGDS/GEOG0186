@@ -1,5 +1,5 @@
 ---
-title: "Introduction I"
+title: "Week 1: Introduction I"
 ---
 
 # Basic Building Blocks of RStudio
