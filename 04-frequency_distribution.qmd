@@ -8,17 +8,14 @@ title: "Examining Data I"
 
 By the end of this tutorial, you will be able to:
 
-1. Set your working directory on Mac and Windows
-2. Import a .csv file into RStudio
-3. Understand the structure of a data frame (rows and columns)
-4. Filter data using both numeric and categorical variables
-5. Combine multiple conditions with logical operators to perform further filtering of data
-6. Export data back into a .csv file
-
-These objectives, combined with those from last week, serve as a gateway to learning RStudio and building a strong foundation.
+1. Understand frequency distributions
+2. How to categorise continuous measurements in classes/categorise using the `cut()`
+3. How to compute a frequency table
+4. How to provide an interpretation to such outputs
+5. How to translate a frequency distribution table into a histogram and cumulative frequency plot
 
 :::{.callout-warning}
-Before we do anything - make sure to have downloaded the dataset for this computer session by clicking [**[HERE]**](https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/datasets/Dataset%20for%20Week%202.zip). It contains the file `Barcelona_Air_Pollution_data.csv` - this comma separated values (CSV) file contains the data needed to follow today's tutorial.
+Before we do anything - make sure to have downloaded the dataset for this computer session by clicking [**[HERE]**](https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/datasets/Dataset%20for%20Week%203.zip). It contains the file `Barcelona_Air_Pollution_data.csv` - this comma separated values (CSV) file contains the data needed to follow today's tutorial.
 
 **Instructions**
 In your computer, do the following:
@@ -30,7 +27,7 @@ In your computer, do the following:
 
 ## Short Lecture Videos [OPTIONAL]
 
-Jump straight to the coding exercise by clicking [**HERE**]()
+Jump straight to the coding exercise by clicking [**HERE**](https://uclpg-msc-sgds.github.io/GEOG0186/04-frequency_distribution.html#analysing-air-pollution-data-in-barcelona) if you want to skip this section!
 
 ### What is statistics and data in general?
 

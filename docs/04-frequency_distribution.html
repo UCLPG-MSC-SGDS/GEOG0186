@@ -290,14 +290,12 @@ window.Quarto = {
 <h2 data-number="1.1" class="anchored" data-anchor-id="learning-outcomes"><span class="header-section-number">1.1</span> Learning outcomes</h2>
 <p>By the end of this tutorial, you will be able to:</p>
 <ol type="1">
-<li>Set your working directory on Mac and Windows</li>
-<li>Import a .csv file into RStudio</li>
-<li>Understand the structure of a data frame (rows and columns)</li>
-<li>Filter data using both numeric and categorical variables</li>
-<li>Combine multiple conditions with logical operators to perform further filtering of data</li>
-<li>Export data back into a .csv file</li>
+<li>Understand frequency distributions</li>
+<li>How to categorise continuous measurements in classes/categorise using the <code>cut()</code></li>
+<li>How to compute a frequency table</li>
+<li>How to provide an interpretation to such outputs</li>
+<li>How to translate a frequency distribution table into a histogram and cumulative frequency plot</li>
 </ol>
-<p>These objectives, combined with those from last week, serve as a gateway to learning RStudio and building a strong foundation.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -308,7 +306,7 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Before we do anything - make sure to have downloaded the dataset for this computer session by clicking <a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/datasets/Dataset%20for%20Week%202.zip"><strong>[HERE]</strong></a>. It contains the file <code>Barcelona_Air_Pollution_data.csv</code> - this comma separated values (CSV) file contains the data needed to follow today’s tutorial.</p>
+<p>Before we do anything - make sure to have downloaded the dataset for this computer session by clicking <a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/datasets/Dataset%20for%20Week%203.zip"><strong>[HERE]</strong></a>. It contains the file <code>Barcelona_Air_Pollution_data.csv</code> - this comma separated values (CSV) file contains the data needed to follow today’s tutorial.</p>
 <p><strong>Instructions</strong> In your computer, do the following:</p>
 <ol type="1">
 <li>Create a new folder on your desktop and rename the folder <strong>GEOG0186</strong></li>
@@ -320,7 +318,7 @@ Warning
 </section>
 <section id="short-lecture-videos-optional" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="short-lecture-videos-optional"><span class="header-section-number">1.2</span> Short Lecture Videos [OPTIONAL]</h2>
-<p>Jump straight to the coding exercise by clicking <a href=""><strong>HERE</strong></a></p>
+<p>Jump straight to the coding exercise by clicking <a href="https://uclpg-msc-sgds.github.io/GEOG0186/04-frequency_distribution.html#analysing-air-pollution-data-in-barcelona"><strong>HERE</strong></a> if you want to skip this section!</p>
 <section id="what-is-statistics-and-data-in-general" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="what-is-statistics-and-data-in-general"><span class="header-section-number">1.2.1</span> What is statistics and data in general?</h3>
 <p><strong>Definition 1</strong>: Statistics is a branch in the mathematical sciences that pertains to the collection, analysis, interpretation, and graphical presentation of data. The best thing about statistics is that it’s a highly applied branch of science which is applicable to many areas such as social science, politics, health (e.g., epidemiology), business &amp; finance, environmental sciences and geography.</p>

@@ -342,12 +342,12 @@ The above syntax should save a new CSV file named as `Filtered_example_data.csv`
 
 You have learned the following:
 
-1. Set your working directory for Windows/MAC
-2. Import and explore data
-3. Understand rows and columns
-4. Filter data using numeric and categorical variables
-5. Combine filters with logical operators
-6. Export your results to a new CSV file
+1. Set your working directory on Mac and Windows
+2. Import a .csv file into RStudio
+3. Understand the structure of a data frame (rows and columns)
+4. Filter data using both numeric and categorical variables
+5. Combine multiple conditions with logical operators to perform further filtering of data
+6. Export data back into a .csv file
 
 # Worksheet One: Workflow and Generating Data in RStudio
 
