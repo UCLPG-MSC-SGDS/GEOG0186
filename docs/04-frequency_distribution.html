@@ -827,11 +827,11 @@ Note
 <p><strong>Interpretation of histogram</strong>: The above figure output describes the shape for ambient measures of NO<span class="math inline">\(_2\)</span> in Barcelona which appears bell-shaped centered around 60ppb. Note that the frequency bars in this graph are essentially the same as the frequency values in the table.</p>
 </div>
 </div>
-<p>Lastly, we then compute its cumulative frequency with <code>cumsum()</code> to support the interpretation. The coding needs a bit of hacking because we need to force a starting zero element for this graph to work.</p>
+<p>Lastly, we then compute its cumulative frequency with the <code>cumsum()</code> function to support the interpretation. The coding needs a bit of hacking because we need to force a starting zero element for this graph to work.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>cumfreq0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">cumsum</span>(frequency_results<span class="sc">$</span>Frequency))</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(classes, cumfreq0, <span class="at">main=</span><span class="st">"Cumulative Frequency for N02 in Barcelona"</span>, <span class="at">xlab=</span><span class="st">"NO2 estimates (ppb)"</span>, <span class="at">ylab=</span><span class="st">"Cumulative Frequencies"</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(classes, cumfreq0) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>cumulfreq0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">cumsum</span>(frequency_results<span class="sc">$</span>Frequency))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(classes, cumulfreq0, <span class="at">main=</span><span class="st">"Cumulative Frequency for N02 in Barcelona"</span>, <span class="at">xlab=</span><span class="st">"NO2 estimates (ppb)"</span>, <span class="at">ylab=</span><span class="st">"Cumulative Frequencies"</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(classes, cumulfreq0) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">

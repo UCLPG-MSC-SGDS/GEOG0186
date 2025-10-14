@@ -250,10 +250,10 @@ hist(air_quality_data$NO2_est, breaks = classes, main = "Histogram for NO2 in Ba
 **Interpretation of histogram**: The above figure output describes the shape for ambient measures of NO$_2$ in Barcelona which appears bell-shaped centered around 60ppb. Note that the frequency bars in this graph are essentially the same as the frequency values in the table.
 :::
 
-Lastly, we then compute its cumulative frequency with `cumsum()` to support the interpretation. The coding needs a bit of hacking because we need to force a starting zero element for this graph to work.
+Lastly, we then compute its cumulative frequency with the `cumsum()` function to support the interpretation. The coding needs a bit of hacking because we need to force a starting zero element for this graph to work.
 
 ```{r cumsum_plot}
-cumfreq0 <- c(0, cumsum(frequency_results$Frequency))
-plot(classes, cumfreq0, main="Cumulative Frequency for N02 in Barcelona", xlab="NO2 estimates (ppb)", ylab="Cumulative Frequencies")
-lines(classes, cumfreq0) 
+cumulfreq0 <- c(0, cumsum(frequency_results$Frequency))
+plot(classes, cumulfreq0, main="Cumulative Frequency for N02 in Barcelona", xlab="NO2 estimates (ppb)", ylab="Cumulative Frequencies")
+lines(classes, cumulfreq0) 
 ```
