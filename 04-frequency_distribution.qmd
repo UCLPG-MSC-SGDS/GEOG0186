@@ -60,6 +60,14 @@ Watch on YouTube [[**LINK**]](https://youtu.be/FJh6Cu-ATLM)
 
 We will focus on descriptive statistics as an introduction introducing everyone to the absolute basics. Descriptive statistics is all about knowing the **data types** and finding the **distribution**, **central tendency** and **variability** in such data set. These four key words may sound intimidating – but trust me – it is very easy! Let us learn how to perform the following aspect of finding the distribution in RStudio using the air pollution data for Barcelona.
 
+### Setting Working Directory & Reading a CSV (Length: 00:13:54)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('unkwigmi2xY', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/unkwigmi2xY)
+
 Let us import for following dataset `Barcelona_Air_Pollution_data.csv` into RStudio, and call this object `air_ quality_data`.
 
 ```{r set_up_path_GIF2, include = FALSE}
@@ -69,13 +77,13 @@ knitr::opts_chunk$set(cache = FALSE)
 
 Remember - always make sure that your work directory is linked to your folder containing your data.
 
-For Windows:
+For **Windows**:
 
 ```{r, eval=FALSE}
 setwd("C:/Users/accountName/Desktop/GEOG0186/Week 3")
 ```
 
-For Macs:
+For **Macs**:
 
 ```{r, eval=FALSE}
 setwd("/Users/accountName/Desktop/GEOG0186/Week 3")
@@ -102,20 +110,20 @@ You will notice that the data contains six variables with the following informat
 
 **Variable name**|**Variable Type**|**Information**
 ---------------- | ----------------- | ----------------------------------------
-Location| String/Text only | Name of location Eixample, Barcelona
-ReadingDate| Date | Data collection date for air quality measures
-NO2_est | Continuous | Measurements for Nitrogen dioxide (NO$_2$) (ppb)
-NO2_category | Categorical | Health impacts (negligible/low/moderate/high)
-PM10_est | Continuous | Measurements for Particulate matter (PM10)
-PM10_category | Categorical | Health impacts (negligible/low/moderate)
+`Location`| String/Text only | Name of location Eixample, Barcelona
+`ReadingDate`| Date | Data collection date for air quality measures
+`NO2_est` | Continuous | Measurements for Nitrogen dioxide (NO$_2$) (ppb)
+`NO2_category` | Categorical | Health impacts (negligible/low/moderate/high)
+`PM10_est` | Continuous | Measurements for Particulate matter (PM$_10$)
+`PM10_category` | Categorical | Health impacts (negligible/low/moderate)
 
 :::{.callout-important}
 The `NO2_est`, for example, contains measurable items i.e., 718 observations for concentrations of ambient NO$_2$ in Eixample area of Barcelona, and hence its a continuous variable. These estimates have been categorised in accordance with their health dangers i.e., negligible ($<$ 10 ppb); low (11-50 ppb);
 :::
 
-Let us begin to analyse `NO2_est` and `NO2_category` with **frequency distributions**
+Let us begin to analyse `NO2_est` and `NO2_category` with **Frequency Distributions**
 
-## Frequency distributions
+## Frequency Distributions
 
 We use frequency distribution to analyse a set continuous data. In data handling in this context, there are two outputs generated: 
 
