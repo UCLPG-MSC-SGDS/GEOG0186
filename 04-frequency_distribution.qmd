@@ -29,7 +29,7 @@ In your computer, do the following:
 
 Jump straight to the coding exercise by clicking [**HERE**](https://uclpg-msc-sgds.github.io/GEOG0186/04-frequency_distribution.html#analysing-air-pollution-data-in-barcelona) if you want to skip this section!
 
-### What is statistics and data in general?
+### What is Statistics?
 
 **Definition 1**: Statistics is a branch in the mathematical sciences that pertains to the collection, analysis, interpretation, and graphical presentation of data. The best thing about statistics is that it’s a highly applied branch of science which is applicable to many areas such as social science, politics, health (e.g., epidemiology), business & finance, environmental sciences and geography. 
 
@@ -60,7 +60,7 @@ Watch on YouTube [[**LINK**]](https://youtu.be/FJh6Cu-ATLM)
 
 We will focus on descriptive statistics as an introduction introducing everyone to the absolute basics. Descriptive statistics is all about knowing the **data types** and finding the **distribution**, **central tendency** and **variability** in such data set. These four key words may sound intimidating – but trust me – it is very easy! Let us learn how to perform the following aspect of finding the distribution in RStudio using the air pollution data for Barcelona.
 
-### Setting Working Directory & Reading a CSV (Length: 00:13:54)
+### Setting Working Directory & Reading a CSV File (Length: 00:13:54)
 
 ```{r, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
@@ -254,7 +254,13 @@ frequency_results
 Conversely, we can also say - we can see that there are 472 measurements with N0$_2$ concentrations more than `50ppb` which is considered to be moderate or high impact to human health. This corresponds to **0.6573 (65.73%)** of the data. 
 :::
 
-### Graphical Representation of Frequency Data
+### Graphical Representation of Frequency Data (Length: 00:23:59)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('QifkfNmmcSA', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/QifkfNmmcSA)
 
 The frequency table for **Frequencies** and **Cumulative Frequencies** can be graphical represented in a form of **Histogram** and **Cumulative Frequency Plot** (or **Ogive Plot**) respectively. Now, the data we need must be in its original form (i.e., not grouped) to plot the histogram, and we will need to use the `classes` object which we created earlier on from the `seq()` function so as to be used as `breaks` in the `hist()` plot function:
 
@@ -290,3 +296,66 @@ cumulfreq0 <- c(0, cumsum(frequency_results$Frequency))
 plot(classes, cumulfreq0, main="Cumulative Frequency for N02 in Barcelona", xlab="NO2 estimates (ppb)", ylab="Cumulative Frequencies")
 lines(classes, cumulfreq0) 
 ```
+
+## Exercise
+
+1. Generate a **Frequency Distribution Table** for the PM$_10$ variable in the `air_quality_data` data frame object. It should contain the following:
+
+- Frequency
+- Relative Frequency
+- Cumulative Frequency
+- Cumulative Relative Frequency
+
+:::{.callout-note}
+**HINTS** to consider: 
+
+- Use the `min()` and `max()` functions to know the minimum and maximum values for PM$_10$ in the dataset.
+- Use the sequence function i.e., `seq()` to generate a sequence of numbers to be made classes for grouping the PM$_10$ values. Consider using the interval of **5** in your generating the sequence of numbers.
+- Use the `cut` accordingly to create the groups
+- Use both the `table()` and `data.frame()` functions accordingly to generate the desired outputs
+- For the cumulative estimates - use the `cumsum()` function
+:::
+
+2. What would the appropriate interpretation be for the relative frequency for highest PM$_10$ group measured in Barcelona?
+
+3. Generate a histogram plot using `hist()` function that is fully annotated with title and x- and y-titles.
+
+:::{callout-important}
+Have a go at these questions before revealing the solution codes and output below
+:::
+
+<details><summary>**Click here to see solution code:**</summary>
+
+```{r solutions}
+# Solutions for 1
+# Using PM10
+min(air_quality_data$PM10_est)
+max(air_quality_data$PM10_est)
+# create classes
+classes_PM10 <- seq(0, 60, 5)
+air_quality_data$Groups_PM10 <- cut(air_quality_data$PM10_est, breaks = classes_PM10)
+table(air_quality_data$Groups_PM10)
+# Generating Frequency Tables
+frequency_table_PM10 <- data.frame(table(air_quality_data$Groups_PM10))
+# renaming columns
+colnames(frequency_table_PM10)[1] <- "Groups"
+colnames(frequency_table_PM10)[2] <- "Frequency"
+# Calculation of relative frequency (proportion)
+frequency_table_PM10$relativeFreq <- frequency_table_PM10$Frequency/718
+# Calculation of cumulative frequency and cumulative relative frequency (proportion)
+frequency_table_PM10$cumulativeFreq <- cumsum(frequency_table_PM10$Frequency)
+frequency_table_PM10$cumulativeRelFreq <- cumsum(frequency_table_PM10$relativeFreq)
+# show table
+head(frequency_table_PM10, 12)
+
+# Solutions for 2
+# For PM10, the group with the highest frequency value is `25-30μm` (i.e., 143) which accounts for 0.1991
+# (19.91%) of the data.
+
+# Solutions for 3
+# histogram plot
+hist(air_quality_data$PM10_est, 
+	breaks = classes_PM10, main = "Histogram: PM10 in Barcelona", 
+	xlab = "PM10 estimates [μm]")
+```
+</details>

@@ -48,3 +48,52 @@ frequency_table$relativeFreq <- frequency_table$Frequency/718
 # Calculation of cumulative frequency and cumulative relative frequency (proportion)
 frequency_table$cumulativeFreq <- cumsum(frequency_table$Frequency)
 frequency_table$cumulativeRelFreq <- cumsum(frequency_table$relativeFreq)
+
+# Plotting in R
+# how to generate a histogram
+hist(air_quality_data$NO2_est, breaks = classes)
+
+# apply so cosmetic features to the histogram plot
+hist(air_quality_data$NO2_est, breaks = classes, 
+	main = "Histogram: NO2 levels in Barcelona", 
+	xlab = "NO2 ambient measurements [ppb]", 
+	ylab = "Frequency Distribution")
+
+# Cumulative Frequency Curve/Plot
+cumulfreq <- c(0, cumsum(frequency_table$Frequency))
+cumulfreq
+plot(classes, cumulfreq)
+
+# Apply the cosmetic features to graph
+plot(classes, cumulfreq, main = "Cumulative Frequency Plot: NO2 levels in Barcelona",
+	xlab = "NO2 ambient measurements [ppb]", ylab = "Cumulative Frequencies")
+lines(classes, cumulfreq)
+
+
+# PM10
+min(air_quality_data$PM10_est)
+max(air_quality_data$PM10_est)
+
+# create classes
+classes_PM10 <- seq(0, 60, 5)
+air_quality_data$Groups_PM10 <- cut(air_quality_data$PM10_est, breaks = classes_PM10)
+table(air_quality_data$Groups_PM10)
+
+# Generating Frequency Tables
+frequency_table_PM10 <- data.frame(table(air_quality_data$Groups_PM10))
+
+# renaming columns
+colnames(frequency_table_PM10)[1] <- "Groups"
+colnames(frequency_table_PM10)[2] <- "Frequency"
+
+# Calculation of relative frequency (proportion)
+frequency_table_PM10$relativeFreq <- frequency_table_PM10$Frequency/718
+
+# Calculation of cumulative frequency and cumulative relative frequency (proportion)
+frequency_table_PM10$cumulativeFreq <- cumsum(frequency_table_PM10$Frequency)
+frequency_table_PM10$cumulativeRelFreq <- cumsum(frequency_table_PM10$relativeFreq)
+
+# histogram plot
+hist(air_quality_data$PM10_est, 
+	breaks = classes_PM10, main = "Histogram: PM10 in Barcelona", 
+	xlab = "PM10 estimates [μm]")
