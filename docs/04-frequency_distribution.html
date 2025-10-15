@@ -259,8 +259,8 @@ window.Quarto = {
   <li><a href="#frequency-distributions" id="toc-frequency-distributions" class="nav-link" data-scroll-target="#frequency-distributions"><span class="header-section-number">1.4</span> Frequency Distributions</a>
   <ul class="collapse">
   <li><a href="#using-the-cut-seq-table-functions-length-001756" id="toc-using-the-cut-seq-table-functions-length-001756" class="nav-link" data-scroll-target="#using-the-cut-seq-table-functions-length-001756"><span class="header-section-number">1.4.1</span> Using the <code>cut()</code>, <code>seq()</code> &amp; <code>table()</code> functions (Length: 00:17:56)</a></li>
-  <li><a href="#computing-the-frequency-distribution-table" id="toc-computing-the-frequency-distribution-table" class="nav-link" data-scroll-target="#computing-the-frequency-distribution-table"><span class="header-section-number">1.4.2</span> Computing the Frequency Distribution table</a></li>
-  <li><a href="#graphical-representation-of-frequency-data" id="toc-graphical-representation-of-frequency-data" class="nav-link" data-scroll-target="#graphical-representation-of-frequency-data"><span class="header-section-number">1.4.3</span> Graphical representation of frequency data</a></li>
+  <li><a href="#computing-the-frequency-distribution-table" id="toc-computing-the-frequency-distribution-table" class="nav-link" data-scroll-target="#computing-the-frequency-distribution-table"><span class="header-section-number">1.4.2</span> Computing the Frequency Distribution Table</a></li>
+  <li><a href="#graphical-representation-of-frequency-data" id="toc-graphical-representation-of-frequency-data" class="nav-link" data-scroll-target="#graphical-representation-of-frequency-data"><span class="header-section-number">1.4.3</span> Graphical Representation of Frequency Data</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -684,7 +684,7 @@ Important
 </div>
 </section>
 <section id="computing-the-frequency-distribution-table" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="computing-the-frequency-distribution-table"><span class="header-section-number">1.4.2</span> Computing the Frequency Distribution table</h3>
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="computing-the-frequency-distribution-table"><span class="header-section-number">1.4.2</span> Computing the Frequency Distribution Table</h3>
 <p>We can now generate our <strong>Frequency Table</strong> and hence determine <strong>Frequency</strong> and <strong>Cumulative Frequency</strong> of the ambient levels of NO<span class="math inline">\(_2\)</span> in Eixample. We perform by using the <code>table()</code> function to tabulate the frequency of values that were grouped within an interval using the <code>Group</code> column.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(air_quality_data<span class="sc">$</span>Groups)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -821,7 +821,7 @@ Note
 </div>
 </section>
 <section id="graphical-representation-of-frequency-data" class="level3" data-number="1.4.3">
-<h3 data-number="1.4.3" class="anchored" data-anchor-id="graphical-representation-of-frequency-data"><span class="header-section-number">1.4.3</span> Graphical representation of frequency data</h3>
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="graphical-representation-of-frequency-data"><span class="header-section-number">1.4.3</span> Graphical Representation of Frequency Data</h3>
 <p>The frequency table for <strong>Frequencies</strong> and <strong>Cumulative Frequencies</strong> can be graphical represented in a form of <strong>Histogram</strong> and <strong>Cumulative Frequency Plot</strong> (or <strong>Ogive Plot</strong>) respectively. Now, the data we need must be in its original form (i.e., not grouped) to plot the histogram, and we will need to use the <code>classes</code> object which we created earlier on from the <code>seq()</code> function so as to be used as <code>breaks</code> in the <code>hist()</code> plot function:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(air_quality_data<span class="sc">$</span>NO2_est, <span class="at">breaks =</span> classes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

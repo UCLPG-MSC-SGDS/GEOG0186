@@ -186,7 +186,7 @@ View(air_quality_data)
 **What have we done here?** The first value under the `NO2_est` column is **61**, this value falls between **61-70** and hence under the `Group` column is was classed into the `(60,70]` interval by the `cut()` function. The second value in `NO2_est` is **59**, and hence it was classed into the `(50,60]` interval, and so on. Note that the interval `(60, 70]` is the equivalent of saying: **"any numbers greater than `60` (i.e., from `60.01` onwards but excluding `60` from that interval), and at the same time being less than or equal to `70`, inclusively"**. The round bracket `(` represents any number greater than `60`, whilst the square bracket `]` closes the interval translating to any number being less than or equal `70` at the same time.  
 :::
 
-### Computing the Frequency Distribution table
+### Computing the Frequency Distribution Table
 
 We can now generate our **Frequency Table** and hence determine **Frequency** and **Cumulative Frequency** of the ambient levels of NO$_2$ in Eixample. We perform by using the `table()` function to tabulate the frequency of values that were grouped within an interval using the `Group` column. 
 
@@ -248,7 +248,7 @@ frequency_results
 Conversely, we can also say - we can see that there are 472 measurements with N0$_2$ concentrations more than `50ppb` which is considered to be moderate or high impact to human health. This corresponds to 0.6573 (65.73%) of the data. 
 :::
 
-### Graphical representation of frequency data
+### Graphical Representation of Frequency Data
 
 The frequency table for **Frequencies** and **Cumulative Frequencies** can be graphical represented in a form of **Histogram** and **Cumulative Frequency Plot** (or **Ogive Plot**) respectively. Now, the data we need must be in its original form (i.e., not grouped) to plot the histogram, and we will need to use the `classes` object which we created earlier on from the `seq()` function so as to be used as `breaks` in the `hist()` plot function:
 
