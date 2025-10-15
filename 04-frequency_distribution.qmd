@@ -125,7 +125,15 @@ Let us begin to analyse `NO2_est` and `NO2_category` with **Frequency Distributi
 
 ## Frequency Distributions
 
-We use frequency distribution to analyse a set continuous data. In data handling in this context, there are two outputs generated: 
+### Using the `cut()`, `seq()` & `table()` functions (Length: 00:17:56)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('HzlL_PVdy6A', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/HzlL_PVdy6A)
+
+We use frequency distribution to analyse a set of continuous measurements. In data handling in this context, there are two outputs generated: 
 
 1. **Frequency**, which tells us how often a particular result was obtained. From this we can calculate a percentage value which is referred to as **Relative Frequency**.  
 2. **Cumulative Frequency**, this is a cumulative sum of the frequencies, which indicates how often a result was obtained that is less than a stated value in our collection of data. Again, from this we can also calculate a cumulative percentage value which is referred to as **Cumulative Relative Frequency**.
@@ -180,7 +188,7 @@ View(air_quality_data)
 
 ### Computing the Frequency Distribution table
 
-We can now generate our **frequency table** and hence determine **frequency** and **cumulative frequency** of the ambient levels of NO$_2$ in Eixample. We perform by using the `table()` function to tabulate the frequency of values that were grouped within an interval using the `Group` column. 
+We can now generate our **Frequency Table** and hence determine **Frequency** and **Cumulative Frequency** of the ambient levels of NO$_2$ in Eixample. We perform by using the `table()` function to tabulate the frequency of values that were grouped within an interval using the `Group` column. 
 
 ```{r table_freq}
 table(air_quality_data$Groups)
@@ -206,7 +214,7 @@ names(frequency_results)
 frequency_results
 ```
 
-Finally, we derive the **relative frequency** i.e., a percentage that is derived by dividing each frequency value from a group by the total number of observations (i.e., in this case: 718). We can add the `relativeFreq` column to the `frequency_results` table.
+Finally, we derive the **Relative Frequency** i.e., a percentage that is derived by dividing each frequency value from a group by the total number of observations (i.e., in this case: 718). We can add the `relativeFreq` column to the `frequency_results` table.
 
 ```{r relative_freq}
 # generate a new column
@@ -217,7 +225,7 @@ frequency_results$relativeFreq <- frequency_results$Frequency/718
 **Interpretation of frequency**: The above table output show the frequency distribution of a set of concentrations for Nitrogen Dioxide measured in Eixample (in Barcelona). The group with the highest frequency value is `50-60ppb` (i.e., 137) which accounts for 0.1908 (19.08%) of the data. These measurements typically fall under the category that's considered to cause moderate harm to humans.   
 :::
 
-Let's add the **cumulative frequency** and **cumulative relative frequency** i.e., percentage using this cumulative summation code i.e., `cumsum` function below:
+Let's add the **Cumulative Frequency** and **Cumulative Relative Frequency** i.e., percentage using this cumulative summation code i.e., `cumsum` function below:
 
 ```{r cumulative_values}
 # add cumulativeFreq column to the data frame by adding Frequency using cumsum() function
@@ -242,13 +250,13 @@ Conversely, we can also say - we can see that there are 472 measurements with N0
 
 ### Graphical representation of frequency data
 
-The frequency table for **frequencies** and **cumulative frequencies** can be graphical represented in a form of **histogram** and **frequency diagram** respectively. Now, we need the data must be in its original form (i.e., not grouped) to plot the histogram, and we will need to use the `classes` object which we created earlier on from the `seq()` function so as to use as breaks in the `hist()` plot function:
+The frequency table for **Frequencies** and **Cumulative Frequencies** can be graphical represented in a form of **Histogram** and **Cumulative Frequency Plot** (or **Ogive Plot**) respectively. Now, the data we need must be in its original form (i.e., not grouped) to plot the histogram, and we will need to use the `classes` object which we created earlier on from the `seq()` function so as to be used as `breaks` in the `hist()` plot function:
 
 ```{r histogramPlot}
 hist(air_quality_data$NO2_est, breaks = classes)
 ```
 
-The above graph is not publication-worthy. It is missing key details such as the title and label for the x-axis. Let's apply some cosmetics such as a main title and label for the x-axis
+The above graph is not to the expected standards! It is missing key details such as the title and label for the x-axis. Let's apply some cosmetics such as a main title and label for the x-axis
 
 ```{r histogram_cosmetics}
 hist(air_quality_data$NO2_est, breaks = classes, main = "Histogram for NO2 in Barcelona", xlab = "NO2 estimates (ppb)")

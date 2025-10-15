@@ -258,8 +258,9 @@ window.Quarto = {
   </ul></li>
   <li><a href="#frequency-distributions" id="toc-frequency-distributions" class="nav-link" data-scroll-target="#frequency-distributions"><span class="header-section-number">1.4</span> Frequency Distributions</a>
   <ul class="collapse">
-  <li><a href="#computing-the-frequency-distribution-table" id="toc-computing-the-frequency-distribution-table" class="nav-link" data-scroll-target="#computing-the-frequency-distribution-table"><span class="header-section-number">1.4.1</span> Computing the Frequency Distribution table</a></li>
-  <li><a href="#graphical-representation-of-frequency-data" id="toc-graphical-representation-of-frequency-data" class="nav-link" data-scroll-target="#graphical-representation-of-frequency-data"><span class="header-section-number">1.4.2</span> Graphical representation of frequency data</a></li>
+  <li><a href="#using-the-cut-seq-table-functions-length-001756" id="toc-using-the-cut-seq-table-functions-length-001756" class="nav-link" data-scroll-target="#using-the-cut-seq-table-functions-length-001756"><span class="header-section-number">1.4.1</span> Using the <code>cut()</code>, <code>seq()</code> &amp; <code>table()</code> functions (Length: 00:17:56)</a></li>
+  <li><a href="#computing-the-frequency-distribution-table" id="toc-computing-the-frequency-distribution-table" class="nav-link" data-scroll-target="#computing-the-frequency-distribution-table"><span class="header-section-number">1.4.2</span> Computing the Frequency Distribution table</a></li>
+  <li><a href="#graphical-representation-of-frequency-data" id="toc-graphical-representation-of-frequency-data" class="nav-link" data-scroll-target="#graphical-representation-of-frequency-data"><span class="header-section-number">1.4.3</span> Graphical representation of frequency data</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -458,7 +459,19 @@ Important
 </section>
 <section id="frequency-distributions" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="frequency-distributions"><span class="header-section-number">1.4</span> Frequency Distributions</h2>
-<p>We use frequency distribution to analyse a set continuous data. In data handling in this context, there are two outputs generated:</p>
+<section id="using-the-cut-seq-table-functions-length-001756" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="using-the-cut-seq-table-functions-length-001756"><span class="header-section-number">1.4.1</span> Using the <code>cut()</code>, <code>seq()</code> &amp; <code>table()</code> functions (Length: 00:17:56)</h3>
+<div class="cell" data-warnings="false">
+<div class="cell-output-display">
+<div class="vembedr" align="center">
+<div>
+<iframe src="https://www.youtube.com/embed/HzlL_PVdy6A" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+</div>
+<p><a href="https://youtu.be/HzlL_PVdy6A">[<strong>Watch on YouTube</strong>]</a></p>
+<p>We use frequency distribution to analyse a set of continuous measurements. In data handling in this context, there are two outputs generated:</p>
 <ol type="1">
 <li><strong>Frequency</strong>, which tells us how often a particular result was obtained. From this we can calculate a percentage value which is referred to as <strong>Relative Frequency</strong>.<br>
 </li>
@@ -669,9 +682,10 @@ Important
 <p><strong>What have we done here?</strong> The first value under the <code>NO2_est</code> column is <strong>61</strong>, this value falls between <strong>61-70</strong> and hence under the <code>Group</code> column is was classed into the <code>(60,70]</code> interval by the <code>cut()</code> function. The second value in <code>NO2_est</code> is <strong>59</strong>, and hence it was classed into the <code>(50,60]</code> interval, and so on. Note that the interval <code>(60, 70]</code> is the equivalent of saying: <strong>“any numbers greater than <code>60</code> (i.e., from <code>60.01</code> onwards but excluding <code>60</code> from that interval), and at the same time being less than or equal to <code>70</code>, inclusively”</strong>. The round bracket <code>(</code> represents any number greater than <code>60</code>, whilst the square bracket <code>]</code> closes the interval translating to any number being less than or equal <code>70</code> at the same time.</p>
 </div>
 </div>
-<section id="computing-the-frequency-distribution-table" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="computing-the-frequency-distribution-table"><span class="header-section-number">1.4.1</span> Computing the Frequency Distribution table</h3>
-<p>We can now generate our <strong>frequency table</strong> and hence determine <strong>frequency</strong> and <strong>cumulative frequency</strong> of the ambient levels of NO<span class="math inline">\(_2\)</span> in Eixample. We perform by using the <code>table()</code> function to tabulate the frequency of values that were grouped within an interval using the <code>Group</code> column.</p>
+</section>
+<section id="computing-the-frequency-distribution-table" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="computing-the-frequency-distribution-table"><span class="header-section-number">1.4.2</span> Computing the Frequency Distribution table</h3>
+<p>We can now generate our <strong>Frequency Table</strong> and hence determine <strong>Frequency</strong> and <strong>Cumulative Frequency</strong> of the ambient levels of NO<span class="math inline">\(_2\)</span> in Eixample. We perform by using the <code>table()</code> function to tabulate the frequency of values that were grouped within an interval using the <code>Group</code> column.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(air_quality_data<span class="sc">$</span>Groups)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -733,7 +747,7 @@ Important
 13 (120,130]         4</code></pre>
 </div>
 </div>
-<p>Finally, we derive the <strong>relative frequency</strong> i.e., a percentage that is derived by dividing each frequency value from a group by the total number of observations (i.e., in this case: 718). We can add the <code>relativeFreq</code> column to the <code>frequency_results</code> table.</p>
+<p>Finally, we derive the <strong>Relative Frequency</strong> i.e., a percentage that is derived by dividing each frequency value from a group by the total number of observations (i.e., in this case: 718). We can add the <code>relativeFreq</code> column to the <code>frequency_results</code> table.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate a new column</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>frequency_results<span class="sc">$</span>relativeFreq <span class="ot">&lt;-</span> frequency_results<span class="sc">$</span>Frequency<span class="sc">/</span><span class="dv">718</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -751,7 +765,7 @@ Note
 <p><strong>Interpretation of frequency</strong>: The above table output show the frequency distribution of a set of concentrations for Nitrogen Dioxide measured in Eixample (in Barcelona). The group with the highest frequency value is <code>50-60ppb</code> (i.e., 137) which accounts for 0.1908 (19.08%) of the data. These measurements typically fall under the category that’s considered to cause moderate harm to humans.</p>
 </div>
 </div>
-<p>Let’s add the <strong>cumulative frequency</strong> and <strong>cumulative relative frequency</strong> i.e., percentage using this cumulative summation code i.e., <code>cumsum</code> function below:</p>
+<p>Let’s add the <strong>Cumulative Frequency</strong> and <strong>Cumulative Relative Frequency</strong> i.e., percentage using this cumulative summation code i.e., <code>cumsum</code> function below:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add cumulativeFreq column to the data frame by adding Frequency using cumsum() function</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>frequency_results<span class="sc">$</span>cumulativeFreq <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(frequency_results<span class="sc">$</span>Frequency)</span>
@@ -806,9 +820,9 @@ Note
 </div>
 </div>
 </section>
-<section id="graphical-representation-of-frequency-data" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="graphical-representation-of-frequency-data"><span class="header-section-number">1.4.2</span> Graphical representation of frequency data</h3>
-<p>The frequency table for <strong>frequencies</strong> and <strong>cumulative frequencies</strong> can be graphical represented in a form of <strong>histogram</strong> and <strong>frequency diagram</strong> respectively. Now, we need the data must be in its original form (i.e., not grouped) to plot the histogram, and we will need to use the <code>classes</code> object which we created earlier on from the <code>seq()</code> function so as to use as breaks in the <code>hist()</code> plot function:</p>
+<section id="graphical-representation-of-frequency-data" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="graphical-representation-of-frequency-data"><span class="header-section-number">1.4.3</span> Graphical representation of frequency data</h3>
+<p>The frequency table for <strong>Frequencies</strong> and <strong>Cumulative Frequencies</strong> can be graphical represented in a form of <strong>Histogram</strong> and <strong>Cumulative Frequency Plot</strong> (or <strong>Ogive Plot</strong>) respectively. Now, the data we need must be in its original form (i.e., not grouped) to plot the histogram, and we will need to use the <code>classes</code> object which we created earlier on from the <code>seq()</code> function so as to be used as <code>breaks</code> in the <code>hist()</code> plot function:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(air_quality_data<span class="sc">$</span>NO2_est, <span class="at">breaks =</span> classes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -819,7 +833,7 @@ Note
 </div>
 </div>
 </div>
-<p>The above graph is not publication-worthy. It is missing key details such as the title and label for the x-axis. Let’s apply some cosmetics such as a main title and label for the x-axis</p>
+<p>The above graph is not to the expected standards! It is missing key details such as the title and label for the x-axis. Let’s apply some cosmetics such as a main title and label for the x-axis</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(air_quality_data<span class="sc">$</span>NO2_est, <span class="at">breaks =</span> classes, <span class="at">main =</span> <span class="st">"Histogram for NO2 in Barcelona"</span>, <span class="at">xlab =</span> <span class="st">"NO2 estimates (ppb)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
