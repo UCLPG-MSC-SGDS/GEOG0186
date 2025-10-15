@@ -186,7 +186,13 @@ View(air_quality_data)
 **What have we done here?** The first value under the `NO2_est` column is **61**, this value falls between **61-70** and hence under the `Group` column is was classed into the `(60,70]` interval by the `cut()` function. The second value in `NO2_est` is **59**, and hence it was classed into the `(50,60]` interval, and so on. Note that the interval `(60, 70]` is the equivalent of saying: **"any numbers greater than `60` (i.e., from `60.01` onwards but excluding `60` from that interval), and at the same time being less than or equal to `70`, inclusively"**. The round bracket `(` represents any number greater than `60`, whilst the square bracket `]` closes the interval translating to any number being less than or equal `70` at the same time.  
 :::
 
-### Computing the Frequency Distribution Table
+### Computing the Frequency Distribution Table (Length: 00:27:53)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('YPoGo74MWTY', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/YPoGo74MWTY)
 
 We can now generate our **Frequency Table** and hence determine **Frequency** and **Cumulative Frequency** of the ambient levels of NO$_2$ in Eixample. We perform by using the `table()` function to tabulate the frequency of values that were grouped within an interval using the `Group` column. 
 
@@ -269,6 +275,17 @@ hist(air_quality_data$NO2_est, breaks = classes, main = "Histogram for NO2 in Ba
 Lastly, we then compute its cumulative frequency with the `cumsum()` function to support the interpretation. The coding needs a bit of hacking because we need to force a starting zero element for this graph to work.
 
 ```{r cumsum_plot}
+cumulfreq0 <- c(0, cumsum(frequency_results$Frequency))
+plot(classes, cumulfreq0)
+```
+
+Apply the appropriate cosmetics to output by adding the following:
+
+- Main title
+- Axis titles for x- and y-axis
+- Connecting the points to form a full cumulative/ogive plot
+
+```{r cumsum_cosmetics}
 cumulfreq0 <- c(0, cumsum(frequency_results$Frequency))
 plot(classes, cumulfreq0, main="Cumulative Frequency for N02 in Barcelona", xlab="NO2 estimates (ppb)", ylab="Cumulative Frequencies")
 lines(classes, cumulfreq0) 

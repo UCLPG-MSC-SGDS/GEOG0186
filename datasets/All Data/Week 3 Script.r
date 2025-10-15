@@ -35,5 +35,16 @@ air_quality_data$Groups <- cut(air_quality_data$NO2_est, breaks = classes)
 
 table(air_quality_data$Groups)
 
+# Generating Frequency Tables
+frequency_table <- data.frame(table(air_quality_data$Groups))
 
+# renaming columns
+colnames(frequency_table)[1] <- "Groups"
+colnames(frequency_table)[2] <- "Frequency"
 
+# Calculation of relative frequency (proportion)
+frequency_table$relativeFreq <- frequency_table$Frequency/718
+
+# Calculation of cumulative frequency and cumulative relative frequency (proportion)
+frequency_table$cumulativeFreq <- cumsum(frequency_table$Frequency)
+frequency_table$cumulativeRelFreq <- cumsum(frequency_table$relativeFreq)

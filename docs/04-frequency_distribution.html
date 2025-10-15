@@ -259,7 +259,7 @@ window.Quarto = {
   <li><a href="#frequency-distributions" id="toc-frequency-distributions" class="nav-link" data-scroll-target="#frequency-distributions"><span class="header-section-number">1.4</span> Frequency Distributions</a>
   <ul class="collapse">
   <li><a href="#using-the-cut-seq-table-functions-length-001756" id="toc-using-the-cut-seq-table-functions-length-001756" class="nav-link" data-scroll-target="#using-the-cut-seq-table-functions-length-001756"><span class="header-section-number">1.4.1</span> Using the <code>cut()</code>, <code>seq()</code> &amp; <code>table()</code> functions (Length: 00:17:56)</a></li>
-  <li><a href="#computing-the-frequency-distribution-table" id="toc-computing-the-frequency-distribution-table" class="nav-link" data-scroll-target="#computing-the-frequency-distribution-table"><span class="header-section-number">1.4.2</span> Computing the Frequency Distribution Table</a></li>
+  <li><a href="#computing-the-frequency-distribution-table-length-002753" id="toc-computing-the-frequency-distribution-table-length-002753" class="nav-link" data-scroll-target="#computing-the-frequency-distribution-table-length-002753"><span class="header-section-number">1.4.2</span> Computing the Frequency Distribution Table (Length: 00:27:53)</a></li>
   <li><a href="#graphical-representation-of-frequency-data" id="toc-graphical-representation-of-frequency-data" class="nav-link" data-scroll-target="#graphical-representation-of-frequency-data"><span class="header-section-number">1.4.3</span> Graphical Representation of Frequency Data</a></li>
   </ul></li>
   </ul></li>
@@ -683,8 +683,18 @@ Important
 </div>
 </div>
 </section>
-<section id="computing-the-frequency-distribution-table" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="computing-the-frequency-distribution-table"><span class="header-section-number">1.4.2</span> Computing the Frequency Distribution Table</h3>
+<section id="computing-the-frequency-distribution-table-length-002753" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="computing-the-frequency-distribution-table-length-002753"><span class="header-section-number">1.4.2</span> Computing the Frequency Distribution Table (Length: 00:27:53)</h3>
+<div class="cell" data-warnings="false">
+<div class="cell-output-display">
+<div class="vembedr" align="center">
+<div>
+<iframe src="https://www.youtube.com/embed/YPoGo74MWTY" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+</div>
+<p><a href="https://youtu.be/YPoGo74MWTY">[<strong>Watch on YouTube</strong>]</a></p>
 <p>We can now generate our <strong>Frequency Table</strong> and hence determine <strong>Frequency</strong> and <strong>Cumulative Frequency</strong> of the ambient levels of NO<span class="math inline">\(_2\)</span> in Eixample. We perform by using the <code>table()</code> function to tabulate the frequency of values that were grouped within an interval using the <code>Group</code> column.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(air_quality_data<span class="sc">$</span>Groups)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -860,12 +870,29 @@ Note
 <p>Lastly, we then compute its cumulative frequency with the <code>cumsum()</code> function to support the interpretation. The coding needs a bit of hacking because we need to force a starting zero element for this graph to work.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>cumulfreq0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">cumsum</span>(frequency_results<span class="sc">$</span>Frequency))</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(classes, cumulfreq0, <span class="at">main=</span><span class="st">"Cumulative Frequency for N02 in Barcelona"</span>, <span class="at">xlab=</span><span class="st">"NO2 estimates (ppb)"</span>, <span class="at">ylab=</span><span class="st">"Cumulative Frequencies"</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(classes, cumulfreq0) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(classes, cumulfreq0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="04-frequency_distribution_files/figure-html/cumsum_plot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Apply the appropriate cosmetics to output by adding the following:</p>
+<ul>
+<li>Main title</li>
+<li>Axis titles for x- and y-axis</li>
+<li>Connecting the points to form a full cumulative/ogive plot</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>cumulfreq0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">cumsum</span>(frequency_results<span class="sc">$</span>Frequency))</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(classes, cumulfreq0, <span class="at">main=</span><span class="st">"Cumulative Frequency for N02 in Barcelona"</span>, <span class="at">xlab=</span><span class="st">"NO2 estimates (ppb)"</span>, <span class="at">ylab=</span><span class="st">"Cumulative Frequencies"</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(classes, cumulfreq0) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-frequency_distribution_files/figure-html/cumsum_cosmetics-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
