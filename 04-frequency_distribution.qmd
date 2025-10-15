@@ -49,7 +49,7 @@ embed_youtube('BTQihTqIR8Y', height = 400) %>% use_align('center')
 ```
 Watch on YouTube [[**LINK**]](https://youtu.be/BTQihTqIR8Y)
 
-**[Theory & Code] What is statistics, and the types of variables? (Length: 31:17 minutes)**
+**[Theory] What is statistics, and the types of variables? (Length: 31:17 minutes)**
 ```{r video_7, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
 embed_youtube('FJh6Cu-ATLM', height = 400) %>% use_align('center')
@@ -228,7 +228,7 @@ frequency_results$relativeFreq <- frequency_results$Frequency/718
 ```
 
 :::{.callout-note}
-**Interpretation of frequency**: The above table output show the frequency distribution of a set of concentrations for Nitrogen Dioxide measured in Eixample (in Barcelona). The group with the highest frequency value is `50-60ppb` (i.e., 137) which accounts for 0.1908 (19.08%) of the data. These measurements typically fall under the category that's considered to cause moderate harm to humans.   
+**Interpretation of frequency**: The above table output show the frequency distribution of a set of concentrations for Nitrogen Dioxide measured in Eixample (in Barcelona). The group with the highest frequency value is `50-60ppb` (i.e., 137) which accounts for **0.1908 (19.08%)** of the data. These measurements typically fall under the category that's considered to cause moderate harm to humans.   
 :::
 
 Let's add the **Cumulative Frequency** and **Cumulative Relative Frequency** i.e., percentage using this cumulative summation code i.e., `cumsum` function below:
@@ -249,9 +249,9 @@ frequency_results
 :::
 
 :::{.callout-note}
-**Interpretation of cumulative frequency**: The above table output show the cumulative frequency distribution ambient concentrations for Nitrogen Dioxide measured in Eixample (in Barcelona). We can see that there are  246 measurements or less with N0$_2$ concentrations to be considered as negligible or low impact to health (`<50ppb`). This corresponds to 0.3426 (34.26%) of the data. 
+**Interpretation of cumulative frequency**: The above table output show the cumulative frequency distribution ambient concentrations for Nitrogen Dioxide measured in Eixample (in Barcelona). We can see that there are  246 measurements or less with N0$_2$ concentrations to be considered as negligible or low impact to health (`<50ppb`). This corresponds to **0.3426 (34.26%)** of the data. 
 
-Conversely, we can also say - we can see that there are 472 measurements with N0$_2$ concentrations more than `50ppb` which is considered to be moderate or high impact to human health. This corresponds to 0.6573 (65.73%) of the data. 
+Conversely, we can also say - we can see that there are 472 measurements with N0$_2$ concentrations more than `50ppb` which is considered to be moderate or high impact to human health. This corresponds to **0.6573 (65.73%)** of the data. 
 :::
 
 ### Graphical Representation of Frequency Data
@@ -283,7 +283,7 @@ Apply the appropriate cosmetics to output by adding the following:
 
 - Main title
 - Axis titles for x- and y-axis
-- Connecting the points to form a full cumulative/ogive plot
+- Connecting the points to form a full cumulative frequency/ogive plot
 
 ```{r cumsum_cosmetics}
 cumulfreq0 <- c(0, cumsum(frequency_results$Frequency))

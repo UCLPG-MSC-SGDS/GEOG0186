@@ -344,7 +344,7 @@ Warning
 </div>
 </div>
 <p>Watch on YouTube <a href="https://youtu.be/BTQihTqIR8Y">[<strong>LINK</strong>]</a></p>
-<p><strong>[Theory &amp; Code] What is statistics, and the types of variables? (Length: 31:17 minutes)</strong></p>
+<p><strong>[Theory] What is statistics, and the types of variables? (Length: 31:17 minutes)</strong></p>
 <div class="cell" data-warnings="false">
 <div class="cell-output-display">
 <div class="vembedr" align="center">
@@ -772,7 +772,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Interpretation of frequency</strong>: The above table output show the frequency distribution of a set of concentrations for Nitrogen Dioxide measured in Eixample (in Barcelona). The group with the highest frequency value is <code>50-60ppb</code> (i.e., 137) which accounts for 0.1908 (19.08%) of the data. These measurements typically fall under the category that’s considered to cause moderate harm to humans.</p>
+<p><strong>Interpretation of frequency</strong>: The above table output show the frequency distribution of a set of concentrations for Nitrogen Dioxide measured in Eixample (in Barcelona). The group with the highest frequency value is <code>50-60ppb</code> (i.e., 137) which accounts for <strong>0.1908 (19.08%)</strong> of the data. These measurements typically fall under the category that’s considered to cause moderate harm to humans.</p>
 </div>
 </div>
 <p>Let’s add the <strong>Cumulative Frequency</strong> and <strong>Cumulative Relative Frequency</strong> i.e., percentage using this cumulative summation code i.e., <code>cumsum</code> function below:</p>
@@ -825,8 +825,8 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Interpretation of cumulative frequency</strong>: The above table output show the cumulative frequency distribution ambient concentrations for Nitrogen Dioxide measured in Eixample (in Barcelona). We can see that there are 246 measurements or less with N0<span class="math inline">\(_2\)</span> concentrations to be considered as negligible or low impact to health (<code>&lt;50ppb</code>). This corresponds to 0.3426 (34.26%) of the data.</p>
-<p>Conversely, we can also say - we can see that there are 472 measurements with N0<span class="math inline">\(_2\)</span> concentrations more than <code>50ppb</code> which is considered to be moderate or high impact to human health. This corresponds to 0.6573 (65.73%) of the data.</p>
+<p><strong>Interpretation of cumulative frequency</strong>: The above table output show the cumulative frequency distribution ambient concentrations for Nitrogen Dioxide measured in Eixample (in Barcelona). We can see that there are 246 measurements or less with N0<span class="math inline">\(_2\)</span> concentrations to be considered as negligible or low impact to health (<code>&lt;50ppb</code>). This corresponds to <strong>0.3426 (34.26%)</strong> of the data.</p>
+<p>Conversely, we can also say - we can see that there are 472 measurements with N0<span class="math inline">\(_2\)</span> concentrations more than <code>50ppb</code> which is considered to be moderate or high impact to human health. This corresponds to <strong>0.6573 (65.73%)</strong> of the data.</p>
 </div>
 </div>
 </section>
@@ -883,7 +883,7 @@ Note
 <ul>
 <li>Main title</li>
 <li>Axis titles for x- and y-axis</li>
-<li>Connecting the points to form a full cumulative/ogive plot</li>
+<li>Connecting the points to form a full cumulative frequency/ogive plot</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>cumulfreq0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">cumsum</span>(frequency_results<span class="sc">$</span>Frequency))</span>
