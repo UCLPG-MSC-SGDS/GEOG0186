@@ -51,3 +51,4 @@ website:
           - 02-basic_building_blocks.qmd
           - 03-handling_data_structures.qmd
           - 04-frequency_distribution.qmd
+          - 05-summary_measures.qmd

@@ -56,7 +56,7 @@ embed_youtube('FJh6Cu-ATLM', height = 400) %>% use_align('center')
 ```
 Watch on YouTube [[**LINK**]](https://youtu.be/FJh6Cu-ATLM)
 
-## Analysing air pollution data in Barcelona
+## Analysing air pollution data in Barcelona (Part I)
 
 We will focus on descriptive statistics as an introduction introducing everyone to the absolute basics. Descriptive statistics is all about knowing the **data types** and finding the **distribution**, **central tendency** and **variability** in such data set. These four key words may sound intimidating – but trust me – it is very easy! Let us learn how to perform the following aspect of finding the distribution in RStudio using the air pollution data for Barcelona.
 
