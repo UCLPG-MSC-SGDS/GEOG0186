@@ -27,7 +27,7 @@ In your computer, do the following:
 
 ## Short Lecture Videos [OPTIONAL]
 
-The **theory** videos are lectures covering what **central tendency measures**, **range values** and **measures for variability** are. You are welcome to jump straight to the coding exercise by clicking [**HERE**]() if you want to skip this section!
+The **theory** videos are lectures covering what **central tendency measures**, **range values** and **measures for variability** are. You are welcome to jump straight to the coding exercise by clicking [**HERE**](https://uclpg-msc-sgds.github.io/GEOG0186/05-summary_measures.html#analysing-air-pollution-data-in-barcelona-part-ii) if you want to skip this section!
 
 Central tendency measures contains a list of summary measurements that allows the user to summarize the data to some central measure and to gauge the spread of the data (i.e., errors/departures from central measure). It is best for continuous variables, we can hence compute the following summary measurements (watch video below see to definitions):
 
