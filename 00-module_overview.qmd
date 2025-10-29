@@ -1,5 +1,5 @@
 ---
-title: "GEOG0186: Quantitative Skills"
+title: "Quantitative Skills (QSkills)"
 ---
 
 ```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE}

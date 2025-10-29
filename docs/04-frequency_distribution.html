@@ -163,7 +163,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="https://www.ucl.ac.uk/module-catalogue/modules/foundations-of-geography-1-GEOG0186" class="sidebar-logo-link">
-      <img src="./assets/all_images/sidebar_cosmetics/00_ucl_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./assets/all_images/sidebar_cosmetics/00_ucl_custom_geog0186_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
@@ -240,6 +240,12 @@ window.Quarto = {
  <span class="menu-text">Week 4: Examining Data II</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-data_visualisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 5: Examining Data III</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -261,7 +267,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#analysing-air-pollution-data-in-barcelona-part-i" id="toc-analysing-air-pollution-data-in-barcelona-part-i" class="nav-link" data-scroll-target="#analysing-air-pollution-data-in-barcelona-part-i"><span class="header-section-number">1.3</span> Analysing air pollution data in Barcelona (Part I)</a>
   <ul class="collapse">
-  <li><a href="#setting-working-directory-reading-a-csv-file-length-001354" id="toc-setting-working-directory-reading-a-csv-file-length-001354" class="nav-link" data-scroll-target="#setting-working-directory-reading-a-csv-file-length-001354"><span class="header-section-number">1.3.1</span> Setting Working Directory &amp; Reading a CSV File (Length: 00:13:54)</a></li>
+  <li><a href="#setting-the-working-directory-reading-a-csv-file-length-001354" id="toc-setting-the-working-directory-reading-a-csv-file-length-001354" class="nav-link" data-scroll-target="#setting-the-working-directory-reading-a-csv-file-length-001354"><span class="header-section-number">1.3.1</span> Setting the Working Directory &amp; Reading a CSV File (Length: 00:13:54)</a></li>
   </ul></li>
   <li><a href="#frequency-distributions" id="toc-frequency-distributions" class="nav-link" data-scroll-target="#frequency-distributions"><span class="header-section-number">1.4</span> Frequency Distributions</a>
   <ul class="collapse">
@@ -321,7 +327,7 @@ Warning
 <p>Before we do anything - make sure to have downloaded the dataset for this computer session by clicking <a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/datasets/Dataset%20for%20Week%203.zip"><strong>[HERE]</strong></a>. It contains the file <code>Barcelona_Air_Pollution_data.csv</code> - this comma separated values (CSV) file contains the data needed to follow today’s tutorial.</p>
 <p><strong>Instructions</strong> In your computer, do the following:</p>
 <ol type="1">
-<li>Create a new folder on your desktop and rename the folder <strong>GEOG0186</strong></li>
+<li>Go to the folder named <strong>GEOG0186</strong> - this should have been created in <strong>Week 2</strong></li>
 <li>Next, create a new sub-folder within <strong>GEOG0186</strong> and rename it as <strong>Week 3</strong>.</li>
 <li>From the downloaded folder <strong>Dataset for Week 3</strong>, make sure to unzip and transfer <strong>ALL</strong> the datasets directly to the <strong>Week 3</strong> folder.</li>
 </ol>
@@ -368,8 +374,8 @@ Warning
 <section id="analysing-air-pollution-data-in-barcelona-part-i" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="analysing-air-pollution-data-in-barcelona-part-i"><span class="header-section-number">1.3</span> Analysing air pollution data in Barcelona (Part I)</h2>
 <p>We will focus on descriptive statistics as an introduction introducing everyone to the absolute basics. Descriptive statistics is all about knowing the <strong>data types</strong> and finding the <strong>distribution</strong>, <strong>central tendency</strong> and <strong>variability</strong> in such data set. These four key words may sound intimidating – but trust me – it is very easy! Let us learn how to perform the following aspect of finding the distribution in RStudio using the air pollution data for Barcelona.</p>
-<section id="setting-working-directory-reading-a-csv-file-length-001354" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="setting-working-directory-reading-a-csv-file-length-001354"><span class="header-section-number">1.3.1</span> Setting Working Directory &amp; Reading a CSV File (Length: 00:13:54)</h3>
+<section id="setting-the-working-directory-reading-a-csv-file-length-001354" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="setting-the-working-directory-reading-a-csv-file-length-001354"><span class="header-section-number">1.3.1</span> Setting the Working Directory &amp; Reading a CSV File (Length: 00:13:54)</h3>
 <div class="cell" data-warnings="false">
 <div class="cell-output-display">
 <div class="vembedr" align="center">

@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Week 5: Examining Data III</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./05-summary_measures.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e8fb9d25728d58bfeac61b497e4a6629.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-57a92833092fd6dc0d7710b6bdfff9c5.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-26a71f2b824b3e323bb4b2f87a684bec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-22f3b3604dd1545f9653ae63cc55d477.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="assets/all_css/styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Core Content</a></li><li class="breadcrumb-item"><a href="./06-data_visualisation.html">Week 5: Examining Data III</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="https://www.ucl.ac.uk/module-catalogue/modules/foundations-of-geography-1-GEOG0186" class="sidebar-logo-link">
+      <img src="./assets/all_images/sidebar_cosmetics/00_ucl_custom_geog0186_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+    <div id="quarto-search" class="quarto-navigation-tool px-1" title="Search"></div>
+</div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module Overview</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-module_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Getting Started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-what_is_rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What is RStudio (or R)?</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Core Content</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-basic_building_blocks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1: Introduction I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-handling_data_structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2: Introduction II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-frequency_distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3: Examining Data I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-summary_measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4: Examining Data II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-data_visualisation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Week 5: Examining Data III</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-visualisation" id="toc-data-visualisation" class="nav-link active" data-scroll-target="#data-visualisation"><span class="header-section-number">1</span> Data Visualisation</a>
+  <ul>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes"><span class="header-section-number">1.1</span> Learning outcomes</a></li>
+  <li><a href="#analysing-air-pollution-data-in-barcelona-part-iii" id="toc-analysing-air-pollution-data-in-barcelona-part-iii" class="nav-link" data-scroll-target="#analysing-air-pollution-data-in-barcelona-part-iii"><span class="header-section-number">1.2</span> Analysing air pollution data in Barcelona (Part III)</a>
+  <ul class="collapse">
+  <li><a href="#setting-working-directory-reading-a-csv-file" id="toc-setting-working-directory-reading-a-csv-file" class="nav-link" data-scroll-target="#setting-working-directory-reading-a-csv-file"><span class="header-section-number">1.2.1</span> Setting Working Directory &amp; Reading a CSV File</a></li>
+  <li><a href="#building-block-for-creating-a-plot" id="toc-building-block-for-creating-a-plot" class="nav-link" data-scroll-target="#building-block-for-creating-a-plot"><span class="header-section-number">1.2.2</span> Building Block for Creating a Plot</a>
+  <ul class="collapse">
+  <li><a href="#step-1-start-with-a-barebones-plot" id="toc-step-1-start-with-a-barebones-plot" class="nav-link" data-scroll-target="#step-1-start-with-a-barebones-plot"><span class="header-section-number">1.2.2.1</span> STEP 1: Start with a barebones plot</a></li>
+  <li><a href="#step-2-add-axis-labels-and-a-title" id="toc-step-2-add-axis-labels-and-a-title" class="nav-link" data-scroll-target="#step-2-add-axis-labels-and-a-title"><span class="header-section-number">1.2.2.2</span> STEP 2: Add axis labels and a title</a></li>
+  <li><a href="#step-3-scientific-typesetting-with-subscripts" id="toc-step-3-scientific-typesetting-with-subscripts" class="nav-link" data-scroll-target="#step-3-scientific-typesetting-with-subscripts"><span class="header-section-number">1.2.2.3</span> STEP 3: Scientific typesetting with subscripts</a></li>
+  <li><a href="#step-4-emphasise-labels-with-bold" id="toc-step-4-emphasise-labels-with-bold" class="nav-link" data-scroll-target="#step-4-emphasise-labels-with-bold"><span class="header-section-number">1.2.2.4</span> STEP 4: Emphasise labels with bold</a></li>
+  <li><a href="#step-5-control-the-axis-limits" id="toc-step-5-control-the-axis-limits" class="nav-link" data-scroll-target="#step-5-control-the-axis-limits"><span class="header-section-number">1.2.2.5</span> STEP 5: Control the axis limits</a></li>
+  <li><a href="#step-6-adjust-the-plot-frame" id="toc-step-6-adjust-the-plot-frame" class="nav-link" data-scroll-target="#step-6-adjust-the-plot-frame"><span class="header-section-number">1.2.2.6</span> STEP 6: Adjust the plot frame</a></li>
+  <li><a href="#step-7-adjusting-the-symbology-of-plot" id="toc-step-7-adjusting-the-symbology-of-plot" class="nav-link" data-scroll-target="#step-7-adjusting-the-symbology-of-plot"><span class="header-section-number">1.2.2.7</span> STEP 7: Adjusting the symbology of plot</a></li>
+  <li><a href="#step-8-adjusting-the-label-orientation-on-xy-axis" id="toc-step-8-adjusting-the-label-orientation-on-xy-axis" class="nav-link" data-scroll-target="#step-8-adjusting-the-label-orientation-on-xy-axis"><span class="header-section-number">1.2.2.8</span> STEP 8: Adjusting the label orientation on XY axis</a></li>
+  <li><a href="#step-9-customise-colours" id="toc-step-9-customise-colours" class="nav-link" data-scroll-target="#step-9-customise-colours"><span class="header-section-number">1.2.2.9</span> STEP 9: Customise colours</a></li>
+  <li><a href="#step-10-full-axis-control---custom-major-minor-ticks" id="toc-step-10-full-axis-control---custom-major-minor-ticks" class="nav-link" data-scroll-target="#step-10-full-axis-control---custom-major-minor-ticks"><span class="header-section-number">1.2.2.10</span> STEP 10: Full axis control - custom major &amp; minor ticks</a></li>
+  <li><a href="#step-11-map-colours-shapes-to-distinguish-categories-to-produce-a-legend" id="toc-step-11-map-colours-shapes-to-distinguish-categories-to-produce-a-legend" class="nav-link" data-scroll-target="#step-11-map-colours-shapes-to-distinguish-categories-to-produce-a-legend"><span class="header-section-number">1.2.2.11</span> STEP 11: Map colours &amp; shapes to distinguish categories to produce a Legend</a></li>
+  </ul></li>
+  <li><a href="#box-plotting" id="toc-box-plotting" class="nav-link" data-scroll-target="#box-plotting"><span class="header-section-number">1.2.3</span> Box plotting</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#worksheet-two-descriptive-analysis" id="toc-worksheet-two-descriptive-analysis" class="nav-link" data-scroll-target="#worksheet-two-descriptive-analysis"><span class="header-section-number">2</span> Worksheet Two: Descriptive Analysis</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Core Content</a></li><li class="breadcrumb-item"><a href="./06-data_visualisation.html">Week 5: Examining Data III</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Week 5: Examining Data III</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="data-visualisation" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Data Visualisation</h1>
+<section id="learning-outcomes" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="learning-outcomes"><span class="header-section-number">1.1</span> Learning outcomes</h2>
+<p>Data visualisation helps geographers see patterns, trends, and relationships that are not immediately clear from tables or numbers. For instance, plotting rainfall against temperature might show a seasonal pattern, or visualising air pollution across cities could reveal urban–rural contrasts.</p>
+<p>In R, data visualisation can be done using different libraries (e.g., <code>ggplot2</code>, <code>tmap</code> and many more), but <strong>Base R</strong> offers a powerful and flexible way to start — and it helps you understand what’s happening behind the scenes. The <code>plot()</code> function is the core tool for making quick, informative graphics in R.</p>
+<p>By the end of this tutorial, you will be able to:</p>
+<ol type="1">
+<li>Construct a plot from scratch using the <code>plot()</code> function. We will focus a lot on coding a <strong>scatterplot</strong>.</li>
+<li>Understand the syntax and arguments (i.e., <code>expression()</code>, <code>xlab</code>, <code>ylab</code>, <code>main</code>, <code>xlim</code>, <code>ylim</code> and many more) for fully customising a graphical plot</li>
+<li>How to add elements to an existing plot which includes additional functions like <strong>major</strong> and <strong>minor</strong> ticks to the x-y axis using the <code>axis()</code>, as well as <strong>control the boundary of the plot</strong> using <code>box()</code>, and incorporate a <strong>legend block</strong> in graph using the <code>legend()</code> function to distinguish between groups.</li>
+<li><strong>Base R</strong> offers simple tools for visualising distributions - examples include <code>hist()</code> and <code>boxplot()</code> which we had already covered. For the box plots, we will learn how to visualise <strong>multiple categories</strong>.</li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We will be using the following datasets, <code>Barcelona_Air_Pollution_DayNight-Time_data.csv</code>, for this week’s tutorial. You can download it from <a href=""><strong>[HERE]</strong></a>.</p>
+<p><strong>Instructions</strong> In your computer, do the following:</p>
+<ol type="1">
+<li>Go to the folder named <strong>GEOG0186</strong> - this should have already been created in <strong>Week 2</strong></li>
+<li>Next, create a new sub-folder within <strong>GEOG0186</strong> and rename it as <strong>Week 5</strong>.</li>
+<li>From the downloaded folder <strong>Dataset for Week 5</strong>, make sure to unzip and transfer <strong>ALL</strong> the datasets directly to the <strong>Week 5</strong> folder.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="analysing-air-pollution-data-in-barcelona-part-iii" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="analysing-air-pollution-data-in-barcelona-part-iii"><span class="header-section-number">1.2</span> Analysing air pollution data in Barcelona (Part III)</h2>
+<p>Last week, we learned how to summarise data using descriptive statistics such as measures of <strong>central tendency</strong> and <strong>variability</strong>. Now, we are going to create various plots to examine the relationship between nitrogen dioxide (NO₂) and particulate matter (PM₁₀) in Barcelona. Doing this type of analysis helps us visually explore the association between two air pollutants, identify possible trends or clusters, and better understand the patterns of air quality in the city.</p>
+<p>The emphasis is building a plot from scratch and fully customising it. Alright, let’s begin!</p>
+<section id="setting-working-directory-reading-a-csv-file" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="setting-working-directory-reading-a-csv-file"><span class="header-section-number">1.2.1</span> Setting Working Directory &amp; Reading a CSV File</h3>
+<p>Let us import for following dataset <code>Barcelona_Air_Pollution_DayNight-Time_data.csv</code> into RStudio, and call this object <code>air_pollution_daily_data</code>.</p>
+<p>Setting the work directory should be second nature to you now at the point. Remember - always make sure that your work directory is linked to your folder containing your data.</p>
+<p>For <strong>Windows</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/accountName/Desktop/GEOG0186/Week 5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For <strong>Macs</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/accountName/Desktop/GEOG0186/Week 5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, import you the data set as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>air_pollution_daily_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Barcelona_Air_Pollution_DayNight-Time_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Imported data contains daily measures (averaged) for Nitrogen Oxide and Particular Matter (10) for November from the 1s, up to the 30th, in 2018. The averaged measures for both air contaminants are categorised by time of observation i.e., <code>Day-Time</code> or <code>Night-Time</code>.</p>
+</div>
+</div>
+</section>
+<section id="building-block-for-creating-a-plot" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="building-block-for-creating-a-plot"><span class="header-section-number">1.2.2</span> Building Block for Creating a Plot</h3>
+<section id="step-1-start-with-a-barebones-plot" class="level4" data-number="1.2.2.1">
+<h4 data-number="1.2.2.1" class="anchored" data-anchor-id="step-1-start-with-a-barebones-plot"><span class="header-section-number">1.2.2.1</span> STEP 1: Start with a barebones plot</h4>
+<p>We begin by visualising the data using the <code>plot()</code> function without any customisation. This shows the basic relationship between daily average NO₂ and PM₁₀ concentrations in a form of <strong>scatterplot</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Barebones scatterplot</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average, air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/barebones_wk5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>What is this code doing?</strong></p>
+<ol type="1">
+<li><code>plot(x, y)</code> draws a default scatterplot of two numeric vectors with <code>NO2_Daily_Average</code> drawn on the x-axis and <code>PM10_Daily_Average</code> drawn on the y-axis.</li>
+<li>X-axis is <code>NO2_Daily_Average</code>; and Y-axis is <code>PM10_Daily_Average</code>.</li>
+<li>Default labels (i.e., variable names) as code and symbols are used and printed on the output.</li>
+<li>By default, no title is printed on the output.</li>
+</ol>
+</section>
+<section id="step-2-add-axis-labels-and-a-title" class="level4" data-number="1.2.2.2">
+<h4 data-number="1.2.2.2" class="anchored" data-anchor-id="step-2-add-axis-labels-and-a-title"><span class="header-section-number">1.2.2.2</span> STEP 2: Add axis labels and a title</h4>
+<p>Now we include the x-axis label, y-axis label, and an informative title using xlab, ylab, and main.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average, air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Daily Average NO2 (ppb)"</span>, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Daily Average PM10 (μg/m³)"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Scatterplot: Examining the impacts of NO2 on PM10 in Barcelona"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/add_labels_wk5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>What is this code doing?</strong></p>
+<ol type="1">
+<li><code>xlab</code> and <code>ylab</code> arguments in the <code>plot()</code>function sets human-readable axis titles (units included). Note that it still plain text (NO₂ and PM₁₀ are not yet typeset chemically with the appropriate subscript!).</li>
+<li><code>main</code> adds a descriptive title so the plot is self-contained.</li>
+</ol>
+</section>
+<section id="step-3-scientific-typesetting-with-subscripts" class="level4" data-number="1.2.2.3">
+<h4 data-number="1.2.2.3" class="anchored" data-anchor-id="step-3-scientific-typesetting-with-subscripts"><span class="header-section-number">1.2.2.3</span> STEP 3: Scientific typesetting with subscripts</h4>
+<p>For scientific notation (e.g., NO₂ and PM₁₀), we can use the <code>expression()</code> function wrapped around the whole text, and then apply the subscript notation <code>[ ]*</code> to the piece of text we want to render as a subscript.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding subscripts to axis labels</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average, air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="st">"Daily Average NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" (ppb)"</span>), </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="st">"Daily Average PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" (μg/m³)"</span>),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="st">"Scatterplot: Examining the impacts of NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" on PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" in Barcelona"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/add_subscript_wk5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>What is this code doing?</strong></p>
+<ol type="1">
+<li><code>expression()</code> lets R render block of text - particularly useful for maths notation.</li>
+<li>Use the square brackets <code>[ ]</code> on text/number to make it a subscript: e.g., <code>"NO"[2]" -&gt; NO₂</code>.</li>
+<li><code>*</code> concatenates text/math parts inside <code>expression()</code> (no space added unless in quotes).</li>
+</ol>
+</section>
+<section id="step-4-emphasise-labels-with-bold" class="level4" data-number="1.2.2.4">
+<h4 data-number="1.2.2.4" class="anchored" data-anchor-id="step-4-emphasise-labels-with-bold"><span class="header-section-number">1.2.2.4</span> STEP 4: Emphasise labels with bold</h4>
+<p>What about making the labels boldface? You can wrap the text labeling with the <code>bold()</code> function inside the <code>expression()</code> code. For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average, air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" (ppb)"</span>)), </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" (μg/m³)"</span>)),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Scatterplot: Examining the impacts of NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" on PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" in Barcelona"</span>))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/add_boldface_wk5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>What is this code doing?</strong></p>
+<ol type="1">
+<li><code>bold(...)</code> (inside expression) renders that text in bold. You can use for titles/labels you want to stand out in reports or slides.</li>
+<li>There are other functions like <code>bolditalic()</code> which you can experiment with in your own time.</li>
+<li>An important note - <code>bold()</code> or <code>bolditalic()</code> can only work inside <code>expression()</code> function.</li>
+</ol>
+</section>
+<section id="step-5-control-the-axis-limits" class="level4" data-number="1.2.2.5">
+<h4 data-number="1.2.2.5" class="anchored" data-anchor-id="step-5-control-the-axis-limits"><span class="header-section-number">1.2.2.5</span> STEP 5: Control the axis limits</h4>
+<p>You can use the following arguments - <code>ylim</code> and <code>xlim</code> to control the <strong>y-</strong> and <strong>x-axis</strong>, respectively. Before setting axis limits, check the data range with <code>summary()</code> function to have an idea of the minimum and maximum value to inform how you will do the set-up for this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  47.83   56.50   60.01   59.69   62.69   75.67 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  25.17   30.46   31.83   31.81   33.96   37.33 </code></pre>
+</div>
+</div>
+<p>Based on the printed output - we will set the limits of our y-axis to be between 20 to 40 for the NO₂ and PM₁₀; while for NO₂, it can be set between 40 to 80 for the x-axis for <code>ylim</code> and <code>xlim</code> arguments in the <code>plot()</code> function, respectively.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average, air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" (ppb)"</span>)), </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" (μg/m³)"</span>)),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Scatterplot: Examining the impacts of NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" on PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" in Barcelona"</span>)), </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">80</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/add_ranges_wk5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-6-adjust-the-plot-frame" class="level4" data-number="1.2.2.6">
+<h4 data-number="1.2.2.6" class="anchored" data-anchor-id="step-6-adjust-the-plot-frame"><span class="header-section-number">1.2.2.6</span> STEP 6: Adjust the plot frame</h4>
+<p>You can use <code>bty</code> argument in the <code>plot()</code> function to change which outer sides of the box/frame are drawn. The following options are:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Frame drawn</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>"o"</code></td>
+<td>complete box (default)</td>
+</tr>
+<tr class="even">
+<td><code>"n"</code></td>
+<td>no box</td>
+</tr>
+<tr class="odd">
+<td><code>"7"</code></td>
+<td>top + right</td>
+</tr>
+<tr class="even">
+<td><code>"L"</code></td>
+<td>bottom + left (recommended for clean visuals)</td>
+</tr>
+</tbody>
+</table>
+<p>Trust me on this… just pick <code>"L"</code> always! Anything else makes the plot look funky!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add "bty=..." to control the outer frame/box type of plot</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average, air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" (ppb)"</span>)), </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" (μg/m³)"</span>)),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Scatterplot: Examining the impacts of NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" on PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" in Barcelona"</span>)), </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">80</span>),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty =</span> <span class="st">"L"</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/add_frame_L_box-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>What is this code doing?</strong></p>
+<ol type="1">
+<li><code>bty = "L"</code> draws a minimalist L-shaped frame (bottom + left), which is a clean, modern look that reduces clutter.</li>
+</ol>
+</section>
+<section id="step-7-adjusting-the-symbology-of-plot" class="level4" data-number="1.2.2.7">
+<h4 data-number="1.2.2.7" class="anchored" data-anchor-id="step-7-adjusting-the-symbology-of-plot"><span class="header-section-number">1.2.2.7</span> STEP 7: Adjusting the symbology of plot</h4>
+<p>The <code>pch=</code> argument in <code>plot()</code> controls the symbology of points in the scatterplot. It contains up to 25 different symbols which are selectable from 1-25 (see above image). Here, we are choosing the 25th symbol which is a triangle.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Controlling the symbol type</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average, air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" (ppb)"</span>)), </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" (μg/m³)"</span>)),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Scatterplot: Examining the impacts of NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" on PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" in Barcelona"</span>)),</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>),</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">80</span>),</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty =</span> <span class="st">"L"</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">25</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/add_pch_plot_wk5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>What is this code doing?</strong></p>
+<ol type="1">
+<li><code>pch</code> chooses the plotting character (symbol).</li>
+<li><strong>Tip</strong>: Shapes 21–25 can be filled; include the argument <code>bg=</code> to set the fill colour of shape and <code>col=</code> for the outline.</li>
+</ol>
+</section>
+<section id="step-8-adjusting-the-label-orientation-on-xy-axis" class="level4" data-number="1.2.2.8">
+<h4 data-number="1.2.2.8" class="anchored" data-anchor-id="step-8-adjusting-the-label-orientation-on-xy-axis"><span class="header-section-number">1.2.2.8</span> STEP 8: Adjusting the label orientation on XY axis</h4>
+<p>The <code>las</code> argument in the <code>plot()</code> function controls the overall orientation of the numbers labelled on the ticks of <strong>BOTH</strong> axes.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Value</th>
+<th>Orientation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>parallel to the axis</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>horizontal</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>perpendicular</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>vertical</td>
+</tr>
+</tbody>
+</table>
+<p>At the moment, the orientation is parallel i.e., the numbers on the y-axis are parallel to the axis itself. We want it to be horizontal akin to how the values are already oriented on the x-axis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average, air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" (ppb)"</span>)), </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" (μg/m³)"</span>)),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Scatterplot: Examining the impacts of NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" on PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" in Barcelona"</span>)), </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">80</span>),</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty =</span> <span class="st">"L"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">25</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">las =</span> <span class="dv">1</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/add_orientation_wk5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-9-customise-colours" class="level4" data-number="1.2.2.9">
+<h4 data-number="1.2.2.9" class="anchored" data-anchor-id="step-9-customise-colours"><span class="header-section-number">1.2.2.9</span> STEP 9: Customise colours</h4>
+<p>You can control the overall colour scheme for points, titles, and axis labels with <code>col</code>, <code>col.main</code> and <code>col.lab</code>, respectively:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add colour to pooints</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># add colour to main title</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># add colour to axis title</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average, air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" (ppb)"</span>)), </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" (μg/m³)"</span>)),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Scatterplot: Examining the impacts of NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" on PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" in Barcelona"</span>)), </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>),</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">80</span>),</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty =</span> <span class="st">"L"</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">25</span>,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">las =</span> <span class="dv">1</span>,</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"darkolivegreen"</span>,</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.main =</span> <span class="st">"darkolivegreen"</span>,</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.lab =</span> <span class="st">"darkolivegreen"</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/add_colours_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-10-full-axis-control---custom-major-minor-ticks" class="level4" data-number="1.2.2.10">
+<h4 data-number="1.2.2.10" class="anchored" data-anchor-id="step-10-full-axis-control---custom-major-minor-ticks"><span class="header-section-number">1.2.2.10</span> STEP 10: Full axis control - custom major &amp; minor ticks</h4>
+<p>Here, we want to add major and minor ticks to the graph for it to look professional. We remove the default axes and redraw them manually with both major and minor ticks using the <code>axis()</code>. This is a function that works outside of <code>plot()</code>.</p>
+<p>There is extreme flexibility in how you can code a plot up!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the default axes for full control by adding `axes = FALSE` in the `plot()`</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average, air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" (ppb)"</span>)), </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" (μg/m³)"</span>)),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Scatterplot: Examining the impacts of NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" on PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" in Barcelona"</span>)), </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>),</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">80</span>),</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty =</span> <span class="st">"L"</span>,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">25</span>,</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">las =</span> <span class="dv">1</span>,</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"darkolivegreen"</span>,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.main =</span> <span class="st">"darkolivegreen"</span>,</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.lab =</span> <span class="st">"darkolivegreen"</span>,</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> <span class="cn">FALSE</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Here, we have full control of the x-axis - add the major ticks</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">tcl =</span> <span class="sc">-</span><span class="fl">0.7</span>)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Here, we have full control of the y-axis - add the major ticks</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="at">las =</span> <span class="dv">1</span>, <span class="at">tcl =</span> <span class="sc">-</span><span class="fl">0.7</span>)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, full control of the x-axis - add the minor ticks</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">labels =</span> <span class="cn">FALSE</span>, <span class="at">tcl =</span> <span class="sc">-</span><span class="fl">0.3</span>)</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, full control of the y-axis - add the minor ticks</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">labels =</span> <span class="cn">FALSE</span>, <span class="at">tcl =</span> <span class="sc">-</span><span class="fl">0.3</span>)</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Add "L" box back</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>(<span class="at">bty =</span> <span class="st">"L"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/add_axis_12_wk5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>What is this code doing?</strong></p>
+<ol type="1">
+<li><code>axes = FALSE</code> suppresses the default axes so you can rebuild them.</li>
+<li><code>axis(1, ...)</code>, <code>axis(2, ...)</code> draw the bottom (x) and left (y) axes, respectively.</li>
+<li><code>at</code> sets tick positions, where we draw a sequence of numbers starting from 40 to 80 at intervals of 10 on the x-axis using the <code>seq()</code>. A similar operation is carried out on y-axis.</li>
+<li><code>labels</code> controls tick label text where we apply the sequence on numbers to break axis accordingly with the ticks;</li>
+<li><code>tcl</code> sets tick length (negative points outward).</li>
+<li>Unlike the Major ticks, the Minor ticks have <code>labels = FALSE</code> where we don’t apply the numbers to avoid clutter.</li>
+<li><code>box(bty = "L")</code> simply redraws the minimalist “L-shaped” frame.</li>
+</ol>
+</section>
+<section id="step-11-map-colours-shapes-to-distinguish-categories-to-produce-a-legend" class="level4" data-number="1.2.2.11">
+<h4 data-number="1.2.2.11" class="anchored" data-anchor-id="step-11-map-colours-shapes-to-distinguish-categories-to-produce-a-legend"><span class="header-section-number">1.2.2.11</span> STEP 11: Map colours &amp; shapes to distinguish categories to produce a Legend</h4>
+<p>We can now distinguish day-time and night-time observations using colour and symbol differences. This will be involve some simple brute force coding to define the list of categories and map them to a symbol and colour:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define categories for legend</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>categories <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Day-time"</span>, <span class="st">"Night-time"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Map categories to colours and shapes automatically</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>colours <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"grey"</span>)[<span class="fu">as.factor</span>(air_pollution_daily_data<span class="sc">$</span>DayType)]</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>shapes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">17</span>)[<span class="fu">as.factor</span>(air_pollution_daily_data<span class="sc">$</span>DayType)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here, we converting the list of categorical string labels into a factor as <code>1 = "Day-Time"</code> and <code>2 = "Night-Time"</code>, and then map the colour scheme of <code>lightblue</code> to 1 and <code>grey</code> to 2. We are also mapping the symbology of 25 to 1, and 17 to 2.</p>
+<p>We insert these objects into the <code>plot()</code> for <code>pch</code>, <code>bg</code> and <code>col</code> to show the distinction between points based on category.</p>
+<p>Lastly, we add the <code>legend()</code> outside of the <code>plot()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Final customised plot</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average, air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" (ppb)"</span>)), </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Daily Average PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" (μg/m³)"</span>)),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Scatterplot: Examining the impacts of NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" on PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" in Barcelona"</span>)), </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>),</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">80</span>),</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty =</span> <span class="st">"L"</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> shapes,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> colours,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> colours,</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">las =</span> <span class="dv">1</span>,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.main =</span> <span class="st">"darkolivegreen"</span>,</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.lab =</span> <span class="st">"darkolivegreen"</span>,</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> <span class="cn">FALSE</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Add Major ticks</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">tcl =</span> <span class="sc">-</span><span class="fl">0.7</span>)</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="at">las =</span> <span class="dv">1</span>, <span class="at">tcl =</span> <span class="sc">-</span><span class="fl">0.7</span>)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Add Minor ticks</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">80</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">labels =</span> <span class="cn">FALSE</span>, <span class="at">tcl =</span> <span class="sc">-</span><span class="fl">0.3</span>)</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">labels =</span> <span class="cn">FALSE</span>, <span class="at">tcl =</span> <span class="sc">-</span><span class="fl">0.3</span>)</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Add box back</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>(<span class="at">bty =</span> <span class="st">"L"</span>)</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> categories, <span class="at">bty =</span> <span class="st">"n"</span>,</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">17</span>), </span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"grey"</span>),</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">pt.bg =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"grey"</span>),</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Observation Type"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/final_plot_wk5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>INTERPRETATION</strong>: The scatterplot shows the relationship between the two air pollution contaminants. By ‘eye-balling’ this, it seems that increasing levels of Nitrogen Dioxide increases the particular matter (10) as well. It is difficult to say however, without performing an evidence-based test like <strong>Correlation</strong> or a <strong>Linear Regression</strong> - which is a story for another day (i.e., Week 8).</p>
+</div>
+</div>
+<p>That’s how you build a graph! You have now been exposed to making a <code>boxplot()</code>, <code>hist()</code> and scatterplot through <code>plot()</code>. Let’s do a final stretch with the boxplots - when dealing with multiple categories!</p>
+</section>
+</section>
+<section id="box-plotting" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="box-plotting"><span class="header-section-number">1.2.3</span> Box plotting</h3>
+<p>Suppose we want to visual the distribution of these contaminants broken down by day/night-time. Instead of plotting them separately, you can use the <code>~</code> sign to achieve the breakdown.</p>
+<p>Box plot for NO2:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average <span class="sc">~</span> air_pollution_daily_data<span class="sc">$</span>DayType,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"grey"</span>),</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" Concentrations"</span>)),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Concentration (μg/m³)"</span>)),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">""</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/boxplot_breakdown_NO2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Box plot for PM10:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average <span class="sc">~</span> air_pollution_daily_data<span class="sc">$</span>DayType,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"grey"</span>),</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" Concentrations"</span>)),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Concentration (μg/m³)"</span>)),</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">""</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/boxplot_breakdown_PM10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If you want to visual the pair of images side-by-side, you can use the <code>par(mfrow = c(1,2))</code> code creates a grid with 2 columns to place each boxplot inside:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(air_pollution_daily_data<span class="sc">$</span>NO2_Daily_Average <span class="sc">~</span> air_pollution_daily_data<span class="sc">$</span>DayType,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"grey"</span>),</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"NO"</span>[<span class="dv">2</span>]<span class="sc">*</span><span class="st">" Concentrations"</span>)),</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Concentration (μg/m³)"</span>)),</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">""</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(air_pollution_daily_data<span class="sc">$</span>PM10_Daily_Average <span class="sc">~</span> air_pollution_daily_data<span class="sc">$</span>DayType,</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"grey"</span>),</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"PM"</span>[<span class="dv">10</span>]<span class="sc">*</span><span class="st">" Concentrations"</span>)),</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">bold</span>(<span class="st">"Concentration (μg/m³)"</span>)),</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">""</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-data_visualisation_files/figure-html/boxplot_paired_NO2_PM10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When using this code, <code>par(mfrow = c(1, 2))</code>. Your plot window is split into 2 grids, and that setting will remain like that until explicitly tell RStudio remove it. You can overide this setting by running the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reset plot layout</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="worksheet-two-descriptive-analysis" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Worksheet Two: Descriptive Analysis</h1>
+<p>In this worksheet, we will put into practice some of the basics we learned in Examining Data I, II and III. The aim of this worksheet is that you are tasked with conducting explorative analysis of the unemployment rates across the 73 Spanish neighbourhoods in Barcelona.</p>
+<ol type="1">
+<li>Use the techniques to provide the overall summary measures of the unemployment rates and provide an appropriate interpretation of this variable.</li>
+</ol>
+<p><strong>Hints</strong>: Consider using the following functions:</p>
+<ul>
+<li><code>summary()</code> and <code>sd()</code>.</li>
+<li>The interpretation should be all-rounded which includes the appropriate central tendency measure, a measure about how dispersed the records are and the appropriate range values.</li>
+</ul>
+<ol start="2" type="1">
+<li>Compare the unemployment rates between neighbourhoods within the following two selected districts: <strong>Horta-Guinardo</strong> and <strong>Nou Barris</strong>. Provide the following answers:</li>
+</ol>
+<ul>
+<li>3 to 5 lines of code chunks which shows how you would go about filtering the neighbourhoods to the two selected Districts</li>
+<li>A comparative interpretation of the unemployment rates based on summary measures using these two neighbourhoods</li>
+<li>Produce a dual boxplot to represent the second point graphically.</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please download both the dataset and answer sheet <a href=""><strong>HERE</strong></a>. You can use the <code>Answer sheet for task 2</code> to insert your answers into the appropriate sections. Please note that this <strong>Worksheet 2</strong>, in particular (along with <strong>Worksheets 1 and 3</strong>) will only be assessed in-person, and so feedback will be given in-person. Whereas <strong>Worksheets 4 and 5 - London Air Quality</strong> - will be formatively marked accordingly. You need to submit at least 2 (out of 5) QSkills worksheets in your final portfolio.</p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-summary_measures.html" class="pagination-link" aria-label="Week 4: Examining Data II">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 4: Examining Data II</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer><script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -20,7 +20,7 @@ We will using the same dataset from last week i.e., `Barcelona_Air_Pollution_dat
 **Instructions**
 In your computer, do the following:
 
-1. Create a new folder on your desktop and rename the folder **GEOG0186**
+1. Go to the folder named **GEOG0186** - this should have been created in **Week 2**
 2. Next, create a new sub-folder within **GEOG0186** and rename it as **Week 4**.
 3. From the downloaded folder **Dataset for Week 3** (using last week's dataset), make sure to unzip and transfer **ALL** the datasets directly to the **Week 4** folder.
 :::
@@ -86,6 +86,8 @@ Now, import you the data set as follows:
 ```{r import_dataset}
 air_quality_data <- read.csv("Barcelona_Air_Pollution_data.csv")
 ```
+
+We are going to compute the following measures:
 
 1.	Minimum and Maximum values
 2.	Upper and Lower Quartiles (or Interquartile ranges)

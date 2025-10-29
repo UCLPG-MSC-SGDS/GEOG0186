@@ -20,7 +20,7 @@ Before we do anything - make sure to have downloaded the dataset for this comput
 **Instructions**
 In your computer, do the following:
 
-1. Create a new folder on your desktop and rename the folder **GEOG0186**
+1. Go to the folder named **GEOG0186** - this should have been created in **Week 2**
 2. Next, create a new sub-folder within **GEOG0186** and rename it as **Week 3**.
 3. From the downloaded folder **Dataset for Week 3**, make sure to unzip and transfer **ALL** the datasets directly to the **Week 3** folder.
 :::
@@ -60,7 +60,7 @@ Watch on YouTube [[**LINK**]](https://youtu.be/FJh6Cu-ATLM)
 
 We will focus on descriptive statistics as an introduction introducing everyone to the absolute basics. Descriptive statistics is all about knowing the **data types** and finding the **distribution**, **central tendency** and **variability** in such data set. These four key words may sound intimidating – but trust me – it is very easy! Let us learn how to perform the following aspect of finding the distribution in RStudio using the air pollution data for Barcelona.
 
-### Setting Working Directory & Reading a CSV File (Length: 00:13:54)
+### Setting the Working Directory & Reading a CSV File (Length: 00:13:54)
 
 ```{r, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
