@@ -68,7 +68,13 @@ air_pollution_daily_data <- read.csv("Barcelona_Air_Pollution_DayNight-Time_data
 Imported data contains daily measures (averaged) for Nitrogen Oxide and Particular Matter (10) for November from the 1s, up to the 30th, in 2018. The averaged measures for both air contaminants are categorised by time of observation i.e., `Day-Time` or `Night-Time`.
 :::
 
-### Building Block for Creating a Plot
+### Building Block for Creating a Plot (Length: 00:52:57) {.unnumbered}
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('IGumO16Nrwk', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/IGumO16Nrwk)
 
 #### STEP 1: Start with a barebones plot
 
