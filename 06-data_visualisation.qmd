@@ -18,7 +18,7 @@ By the end of this tutorial, you will be able to:
 4. **Base R** offers simple tools for visualising distributions - examples include `hist()` and `boxplot()` which we had already covered. For the box plots, we will learn how to visualise **multiple categories**.
 
 :::{.callout-warning}
-We will be using the following datasets, `Barcelona_Air_Pollution_DayNight-Time_data.csv`, for this week's tutorial. You can download it from [**[HERE]**]().
+We will be using the following datasets, `Barcelona_Air_Pollution_DayNight-Time_data.csv`, for this week's tutorial. You can download it from [**[HERE]**](https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/datasets/Dataset%20for%20Week%205.zip).
 
 **Instructions**
 In your computer, do the following:
@@ -445,5 +445,5 @@ In this worksheet, we will put into practice some of the basics we learned in Ex
 - Produce a dual boxplot to represent the second point graphically.
 
 :::{.callout-important}
-Please download both the dataset and answer sheet [**HERE**](). You can use the `Answer sheet for task 2` to insert your answers into the appropriate sections. Please note that this **Worksheet 2**, in particular (along with **Worksheets 1 and 3**) will only be assessed in-person, and so feedback will be given in-person. Whereas **Worksheets 4 and 5 - London Air Quality** - will be formatively marked accordingly. You need to submit at least 2 (out of 5) QSkills worksheets in your final portfolio.
+Please download both the dataset and answer sheet [**HERE**](https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/tasks/Worksheet%202%20and%20Dataset.zip). You can use the `Answer sheet for task 2` to insert your answers into the appropriate sections. Please note that this **Worksheet 2**, in particular (along with **Worksheets 1 and 3**) will only be assessed in-person, and so feedback will be given in-person. Whereas **Worksheets 4 and 5 - London Air Quality** - will be formatively marked accordingly. You need to submit at least 2 (out of 5) QSkills worksheets in your final portfolio.
 :::
