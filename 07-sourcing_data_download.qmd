@@ -1,0 +1,199 @@
+---
+title: "Week 6: Sourcing Data I"
+---
+
+# Sourcing, Preparing & Analysing Open Data
+
+In many real-world research projects (including environmental epidemiology, quantitative criminology, or disaster risk reduction sciences), you will not start with a clean **ready-to-use** dataset. Instead, you will need to locate, download, inspect, clean, and then analyse the data particularly if your project is full-on quantitative or mixed methods. This tutorial uses waste related data from the [**London DATASTORE**](https://data.london.gov.uk) as working example to show you the typical workflow from sourcing, preparing and analysis open datasets.
+
+## Learning outcomes
+By the end of this tutorial, students will be able to:
+
+- Taking advantage of open-data sources.
+- How to perform a download (directly from website) and import the raw data into R using base functions i.e., `download.file()` utilising the data's Uniform Resource Locator (URL).
+- Show one instance of doing a descriptive analysis on groups using the `tapply()` function.
+
+:::{.callout-warning}
+**Instructions**
+
+This time around, no datasets are shared as we are going to download them in a streamlined way through RStudio as a demonstration. Therefore, in your computer, do the following:
+
+1. Go to the folder named **GEOG0186**.
+2. Next, create a new sub-folder within **GEOG0186** and rename it as **Week 6**.
+:::
+
+## What is the London DATASTORE (Length: 00:28:41)
+
+```{r, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('0mBd6EYAk3c', height=400, allowfullscreen = TRUE) %>% use_align('center')
+```
+[[**Watch on YouTube**]](https://youtu.be/0mBd6EYAk3c)
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('assets/all_images/open_source_website/00_website.png', error = FALSE) 
+```
+
+The [**London DATASTORE**](https://data.london.gov.uk) is an open data-sharing platform created and maintained by the **Greater London Authority (GLA)** to make data about London freely available to everyone — researchers, policymakers, journalists, businesses, and the public. This initiative was launched somewhere around 2010 as one of the first **open data** initiatives by a major city government to: 1.) promote transparency in how London is governed; 2.) encourage innovation by allowing developers and analysts to build tools and insights using public data; and 3.) support evidence-based policy and research on London’s economy, environment, transport, housing, health, and more.
+
+The London Datastore hosts thousands of cleaned datasets from across London’s public sector, including:
+
+- **Demographics**: population estimates, ethnicity, age structure, migration.
+- **Economy**: employment, business activity, income, inflation.
+- **Environment**: air quality, carbon emissions, green spaces.
+- **Housing**: affordability, homelessness, planning permissions.
+- **Transport**: cycling counts, traffic volumes, public transport usage.
+- **Health**: life expectancy, hospital admissions, wellbeing indicators.
+- **Crime and Safety**: police-recorded offences, fire brigade incidents.
+
+Datasets come directly from the GLA, Transport for London (TfL), Metropolitan Police, NHS, ONS, and other partners.
+
+We are going to download a series of datasets on waste related issues such as **recycling**, **waste reuse centers** and **fly-tipping** in order to establish a workflows. 
+
+So, let's begin!
+
+### Preparing the path location
+
+We start by setting the work directory to the appropriate folder location in our computer. In this step, we setting the directory to the folder called **Week 6**, so when we start the bulk downloads - the datasets are automatically sent to that folder and not in the **Downloads** location.
+
+At this point, you should be familiar with setting up your working directory with the `setwd()` function.
+
+For **Windows**:
+
+```{r, eval=FALSE}
+setwd("C:/Users/accountName/Desktop/GEOG0186/Week 6")
+```
+
+For **Macs**:
+
+```{r, eval=FALSE}
+setwd("/Users/accountName/Desktop/GEOG0186/Week 6")
+```
+
+### Getting the URL for remote file downloads with RStudio
+
+We are going to download the following datasets from the website: 
+
+1. **Household Waste Recycling Rates, Borough**
+2. **Waste Re-use Centres**
+3. **Fly-tipping Incidents**
+
+**Here are the steps for navigating through the webpage to these datasets:
+
+On the home page [**CLICK HERE**](https://data.london.gov.uk) click on the **[Data]** tab at the top-left corner of the webpage.
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('assets/all_images/open_source_website/01_Data_tab.png', error = FALSE) 
+```
+
+This should show the list of all available datasets at our disposal that are freely available to download. Let search of the above datasets by typing in the word **waste** in the search bar:
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('assets/all_images/open_source_website/02_Searchbar.png', error = FALSE) 
+```
+
+It will produce a list of all waste-related datasets. The one, we are going for, is the dataset titled: **[Household Waste Recycling Rates, Borough]**, which contains information proportion of household waste that are recycled or composted. Click on it.
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('assets/all_images/open_source_website/03_select_data.png', error = FALSE) 
+```
+
+It will show the META data behind this file. If you scroll down, you will see two versions of the file: 1.) An **EXCEL (.xls)** file; or 2.) A **Comma Separated Value (.csv)** file.
+
+We want CSV (.csv) file. Now, you can straight-up download the file by simply clicking on the **[Download]** button... but we are going to do the downloads and **coded fashion**. What we are going to do is extract the **URL** (aka **weblink**) associated with the **CSV** dataset that we want to download.
+
+We can do this by Right-clicking on the **[Download]** button for the **CSV version**, and then select **[Copy Link]** in the drop down menu - this copied piece of information is what we are going to feed into RStudio.
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('assets/all_images/open_source_website/04_right_click.png', error = FALSE)
+```
+
+Now, let us go into RStudio!
+
+### Downloading file from the internet
+
+The function `download.file()` can be used to download a single file as described by URL (i.e., the link of the dataset) from the internet and store it in destination set by our work directory. Please, the url which we hve copied must start with a scheme such as `http://`, `https://` or `file://` in order for it to work!
+
+Let's paste link and create it as an object:
+
+```{r, assign_link}
+# assign the link to a character object
+URL_london_recycling <- "https://data.london.gov.uk/download/vd67o/15ddc38a-0a37-4f69-98b5-e69e549b39d3/Household-rcycling-borough.csv"
+```
+
+```{r set_up_path_wk5, include = FALSE}
+knitr::opts_knit$set(root.dir = "/Users/anwarmusah/Documents/Websites/GEOG0186/datasets/All Data")
+knitr::opts_chunk$set(cache = FALSE)
+```
+
+We are going to use `download.file()` to download the dataset and save it with the file name `London_households_recycling_borough.csv`
+
+```{r, perform_downloads}
+# ask RStudio to download the CSV file to your working directory
+download.file(URL_london_recycling, 
+	destfile = "London_households_recycling_borough.csv", 
+	mode = "wb")
+```
+
+If you check in your work directory folder - you see that the dataset has been downloaded and automatically save there.
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('assets/all_images/open_source_website/05_downloaded.png', error = FALSE)
+```
+
+You can open the dataset and its all in order:
+
+```{r, open_downloaded_table1}
+# use read.csv() function to open it
+recycling_data <- read.csv("London_households_recycling_borough.csv")
+# inspection of data
+# show structure
+str(recycling_data)
+# show the header
+head(recycling_data, n = 5)
+```
+
+### Read-in data directly from URL
+
+Suppose you want to download and open the dataset straight away in RStudio. That is a straightforward case — since the link of the file is a direct CSV download link, you can read it straight into RStudio in a single line of code using the `read.csv()`.
+
+```{r, read_data_directly_with_link}
+# read directly from URL
+recycling_data_2 <- read.csv("https://data.london.gov.uk/download/vd67o/15ddc38a-0a37-4f69-98b5-e69e549b39d3/Household-rcycling-borough.csv")
+
+# inspection of data
+# show structure
+str(recycling_data_2)
+# show the header
+head(recycling_data_2)
+```
+
+We just simply inserted the link with CSV file name into `read.csv()` function.
+
+## `tapply()` for group analysis
+
+`tapply()` stands for “table apply” — it lets you apply a function (like mean(), sum(), or length()) to subgroups of a vector, defined by one or more grouping factors. Meaning that, it let's us calculate summaries by groups - for instance, we can calculate mean recycling rates by the Borough in London to see which one is doing well as a whole in terms of household waste management.
+
+This calculation is simple:
+
+```{r, use_tapply}
+avg_recycling_rates <- tapply(recycling_data$Recycling_Rates, recycling_data$Area, mean, na.rm = TRUE)
+avg_recycling_rates
+```
+
+### Exercise
+
+1. Have ago at using the `download.file()` function for saving and importing the remaining two datasets in RStudio
+
+- **Waste Re-use Centres**
+- **Fly-tipping Incidents**
+
+:::{.callout-important}
+**HINTS**
+
+- Go to the website: [**London DATASTORE**](https://data.london.gov.uk)
+- Navigate through the website. You can use the search bar search for the desired dataset.
+- Remember to extract the URL link to dataset by right-clicking the **[Download]** button and selecting **[Copy link]**
+- Use CSV version of the datasets.
+- Use the `read.csv()` to import the downloaded datasets into RStudio: 1.) name the fly-tipping records as `flytipping_data`; 2.) name the waste re-use centre records as `waste_reuse_data`.
+:::

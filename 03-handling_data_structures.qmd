@@ -79,7 +79,6 @@ embed_youtube('_r0MTEnoOhg', height=400, allowfullscreen = TRUE) %>% use_align('
 ```
 [[**Watch on YouTube**]](https://youtu.be/_r0MTEnoOhg)
 
-
 For Windows user (on **UCL PCs**), its marginally different - the path location to this folder on a **Windows** machine would be written as follows, `"N:/Desktop/GEOG00186/Week 2"`. You can access this piece of information simply by:
 
 1. Open the **GEOG0186** folder to reveal the **Week 2** folder.

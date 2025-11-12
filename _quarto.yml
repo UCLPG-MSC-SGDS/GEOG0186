@@ -52,3 +52,4 @@ website:
           - 04-frequency_distribution.qmd
           - 05-summary_measures.qmd
           - 06-data_visualisation.qmd
+          - 07-sourcing_data_download.qmd

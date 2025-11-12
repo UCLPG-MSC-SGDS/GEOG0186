@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>What is RStudio (or R)?</title>
+<title>Week 6: Sourcing Data I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./02-basic_building_blocks.html" rel="next">
-<link href="./00-module_overview.html" rel="prev">
+<link href="./06-data_visualisation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -251,7 +285,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-what_is_rstudio.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./01-what_is_rstudio.html">What is RStudio (or R)?</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Core Content</a></li><li class="breadcrumb-item"><a href="./07-sourcing_data_download.html">Week 6: Sourcing Data I</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -305,7 +339,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-what_is_rstudio.html" class="sidebar-item-text sidebar-link active">
+  <a href="./01-what_is_rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is RStudio (or R)?</span></a>
   </div>
 </li>
@@ -352,7 +386,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-sourcing_data_download.html" class="sidebar-item-text sidebar-link">
+  <a href="./07-sourcing_data_download.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Week 6: Sourcing Data I</span></a>
   </div>
 </li>
@@ -368,12 +402,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#sourcing-preparing-analysing-open-data" id="toc-sourcing-preparing-analysing-open-data" class="nav-link active" data-scroll-target="#sourcing-preparing-analysing-open-data"><span class="header-section-number">1</span> Sourcing, Preparing &amp; Analysing Open Data</a>
   <ul>
-  <li><a href="#download-and-installation-of-software" id="toc-download-and-installation-of-software" class="nav-link" data-scroll-target="#download-and-installation-of-software">Download and Installation of Software</a></li>
-  <li><a href="#rstudio-and-downloading-it-length-001135" id="toc-rstudio-and-downloading-it-length-001135" class="nav-link" data-scroll-target="#rstudio-and-downloading-it-length-001135">RStudio and Downloading it (Length: 00:11:35)</a></li>
-  <li><a href="#access-through-workstation-ucl-applications-store-length-000500" id="toc-access-through-workstation-ucl-applications-store-length-000500" class="nav-link" data-scroll-target="#access-through-workstation-ucl-applications-store-length-000500">Access through Workstation &amp; UCL Applications Store (Length: 00:05:00)</a></li>
-  <li><a href="#remotely-access-through-ucl-desktopanywhere-length-000934" id="toc-remotely-access-through-ucl-desktopanywhere-length-000934" class="nav-link" data-scroll-target="#remotely-access-through-ucl-desktopanywhere-length-000934">Remotely Access through UCL Desktop@Anywhere (Length: 00:09:34)</a></li>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes"><span class="header-section-number">1.1</span> Learning outcomes</a></li>
+  <li><a href="#what-is-the-london-datastore-length-002841" id="toc-what-is-the-london-datastore-length-002841" class="nav-link" data-scroll-target="#what-is-the-london-datastore-length-002841"><span class="header-section-number">1.2</span> What is the London DATASTORE (Length: 00:28:41)</a>
+  <ul class="collapse">
+  <li><a href="#preparing-the-path-location" id="toc-preparing-the-path-location" class="nav-link" data-scroll-target="#preparing-the-path-location"><span class="header-section-number">1.2.1</span> Preparing the path location</a></li>
+  <li><a href="#getting-the-url-for-remote-file-downloads-with-rstudio" id="toc-getting-the-url-for-remote-file-downloads-with-rstudio" class="nav-link" data-scroll-target="#getting-the-url-for-remote-file-downloads-with-rstudio"><span class="header-section-number">1.2.2</span> Getting the URL for remote file downloads with RStudio</a></li>
+  <li><a href="#downloading-file-from-the-internet" id="toc-downloading-file-from-the-internet" class="nav-link" data-scroll-target="#downloading-file-from-the-internet"><span class="header-section-number">1.2.3</span> Downloading file from the internet</a></li>
+  <li><a href="#read-in-data-directly-from-url" id="toc-read-in-data-directly-from-url" class="nav-link" data-scroll-target="#read-in-data-directly-from-url"><span class="header-section-number">1.2.4</span> Read-in data directly from URL</a></li>
+  </ul></li>
+  <li><a href="#tapply-for-group-analysis" id="toc-tapply-for-group-analysis" class="nav-link" data-scroll-target="#tapply-for-group-analysis"><span class="header-section-number">1.3</span> <code>tapply()</code> for group analysis</a>
+  <ul class="collapse">
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">1.3.1</span> Exercise</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -382,9 +424,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-what_is_rstudio.html">Getting Started</a></li><li class="breadcrumb-item"><a href="./01-what_is_rstudio.html">What is RStudio (or R)?</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Core Content</a></li><li class="breadcrumb-item"><a href="./07-sourcing_data_download.html">Week 6: Sourcing Data I</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">What is RStudio (or R)?</h1>
+<h1 class="title">Week 6: Sourcing Data I</h1>
 </div>
 
 
@@ -401,69 +443,269 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level1 unnumbered">
-<h1 class="unnumbered">Introduction</h1>
-<p>R (or RStudio) is a statistical programming package that allows users to carry out a wide range of statistical analyses. It can also function as GIS software, enabling various types of analysis on geographical data. In the same way, it can be used for data management and geoprocessing—for example, importing different types of data, whether non-spatial or spatial, and preparing them for analysis.</p>
-<p>There are two versions:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/all_images/getting_started/00_R_versiontypes.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<section id="sourcing-preparing-analysing-open-data" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Sourcing, Preparing &amp; Analysing Open Data</h1>
+<p>In many real-world research projects (including environmental epidemiology, quantitative criminology, or disaster risk reduction sciences), you will not start with a clean <strong>ready-to-use</strong> dataset. Instead, you will need to locate, download, inspect, clean, and then analyse the data particularly if your project is full-on quantitative or mixed methods. This tutorial uses waste related data from the <a href="https://data.london.gov.uk"><strong>London DATASTORE</strong></a> as working example to show you the typical workflow from sourcing, preparing and analysis open datasets.</p>
+<section id="learning-outcomes" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="learning-outcomes"><span class="header-section-number">1.1</span> Learning outcomes</h2>
+<p>By the end of this tutorial, students will be able to:</p>
+<ul>
+<li>Taking advantage of open-data sources.</li>
+<li>How to perform a download (directly from website) and import the raw data into R using base functions i.e., <code>download.file()</code> utilising the data’s Uniform Resource Locator (URL).</li>
+<li>Show one instance of doing a descriptive analysis on groups using the <code>tapply()</code> function.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p><strong>Instructions</strong></p>
+<p>This time around, no datasets are shared as we are going to download them in a streamlined way through RStudio as a demonstration. Therefore, in your computer, do the following:</p>
+<ol type="1">
+<li>Go to the folder named <strong>GEOG0186</strong>.</li>
+<li>Next, create a new sub-folder within <strong>GEOG0186</strong> and rename it as <strong>Week 6</strong>.</li>
+</ol>
 </div>
-<p>The famous icon on the left is the version for <a href="https://www.r-project.org"><strong>R (Base)</strong></a>, and the one on the right is the version for <a href="https://www.rstudio.com"><strong>RStudio</strong></a>. Both software packages are the same. The only difference is that RStudio is attractive, intuitive, and more importantly, it is user-friendly than Base R. So, we will be using this version (i.e., RStudio) throughout this workshop.</p>
-<p>Let us talk about the installation of RStudio on your personal computer.</p>
-<section id="download-and-installation-of-software" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="download-and-installation-of-software">Download and Installation of Software</h2>
+</div>
 </section>
-<section id="rstudio-and-downloading-it-length-001135" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="rstudio-and-downloading-it-length-001135">RStudio and Downloading it (Length: 00:11:35)</h2>
+<section id="what-is-the-london-datastore-length-002841" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="what-is-the-london-datastore-length-002841"><span class="header-section-number">1.2</span> What is the London DATASTORE (Length: 00:28:41)</h2>
 <div class="cell" data-warnings="false">
 <div class="cell-output-display">
 <div class="vembedr" align="center">
 <div>
-<iframe src="https://www.youtube.com/embed/4TAAwv0En6o" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+<iframe src="https://www.youtube.com/embed/0mBd6EYAk3c" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
 </div>
 </div>
 </div>
 </div>
-<p><a href="https://youtu.be/4TAAwv0En6o">[<strong>Watch on YouTube</strong>]</a></p>
-<p>RStudio is an open-source software, it is free. It is widely recommended in data science, scientific research, and technical communication because it is easy to access, download, and install.</p>
-<p>To use RStudio, you must first install R (Base) before installing RStudio. Follow the steps below to install both programs for your operating system (Windows or Mac).</p>
-<p><strong>Steps</strong></p>
+<p><a href="https://youtu.be/0mBd6EYAk3c">[<strong>Watch on YouTube</strong>]</a></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/open_source_website/00_website.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The <a href="https://data.london.gov.uk"><strong>London DATASTORE</strong></a> is an open data-sharing platform created and maintained by the <strong>Greater London Authority (GLA)</strong> to make data about London freely available to everyone — researchers, policymakers, journalists, businesses, and the public. This initiative was launched somewhere around 2010 as one of the first <strong>open data</strong> initiatives by a major city government to: 1.) promote transparency in how London is governed; 2.) encourage innovation by allowing developers and analysts to build tools and insights using public data; and 3.) support evidence-based policy and research on London’s economy, environment, transport, housing, health, and more.</p>
+<p>The London Datastore hosts thousands of cleaned datasets from across London’s public sector, including:</p>
+<ul>
+<li><strong>Demographics</strong>: population estimates, ethnicity, age structure, migration.</li>
+<li><strong>Economy</strong>: employment, business activity, income, inflation.</li>
+<li><strong>Environment</strong>: air quality, carbon emissions, green spaces.</li>
+<li><strong>Housing</strong>: affordability, homelessness, planning permissions.</li>
+<li><strong>Transport</strong>: cycling counts, traffic volumes, public transport usage.</li>
+<li><strong>Health</strong>: life expectancy, hospital admissions, wellbeing indicators.</li>
+<li><strong>Crime and Safety</strong>: police-recorded offences, fire brigade incidents.</li>
+</ul>
+<p>Datasets come directly from the GLA, Transport for London (TfL), Metropolitan Police, NHS, ONS, and other partners.</p>
+<p>We are going to download a series of datasets on waste related issues such as <strong>recycling</strong>, <strong>waste reuse centers</strong> and <strong>fly-tipping</strong> in order to establish a workflows.</p>
+<p>So, let’s begin!</p>
+<section id="preparing-the-path-location" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="preparing-the-path-location"><span class="header-section-number">1.2.1</span> Preparing the path location</h3>
+<p>We start by setting the work directory to the appropriate folder location in our computer. In this step, we setting the directory to the folder called <strong>Week 6</strong>, so when we start the bulk downloads - the datasets are automatically sent to that folder and not in the <strong>Downloads</strong> location.</p>
+<p>At this point, you should be familiar with setting up your working directory with the <code>setwd()</code> function.</p>
+<p>For <strong>Windows</strong>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/accountName/Desktop/GEOG0186/Week 6"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>For <strong>Macs</strong>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/accountName/Desktop/GEOG0186/Week 6"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="getting-the-url-for-remote-file-downloads-with-rstudio" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="getting-the-url-for-remote-file-downloads-with-rstudio"><span class="header-section-number">1.2.2</span> Getting the URL for remote file downloads with RStudio</h3>
+<p>We are going to download the following datasets from the website:</p>
 <ol type="1">
-<li>Download the R (Base) installer from the table below, then run the file to complete the installation.</li>
-<li>Next, download the RStudio installer from the table below, then run the file to complete the installation.</li>
+<li><strong>Household Waste Recycling Rates, Borough</strong></li>
+<li><strong>Waste Re-use Centres</strong></li>
+<li><strong>Fly-tipping Incidents</strong></li>
 </ol>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th><strong>OS User type</strong></th>
-<th><strong>R (Base)</strong></th>
-<th><strong>RStudio Desktop</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Windows</td>
-<td><a href="https://cran.r-project.org/bin/windows/base/R-4.5.1-win.exe"><strong>R-4.5.1-win.exe</strong></a></td>
-<td><a href="https://download1.rstudio.org/electron/windows/RStudio-2025.09.0-387.exe"><strong>RStudio-2025.09.0-387.exe</strong></a></td>
-</tr>
-<tr class="even">
-<td>MAC (Intel)</td>
-<td><a href="https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.5.1-x86_64.pkg"><strong>R-4.5.1-x86_64.pkg</strong></a></td>
-<td><a href="https://download1.rstudio.org/electron/macos/RStudio-2025.09.0-387.dmg"><strong>RStudio-2025.09.0-387.dmg</strong></a></td>
-</tr>
-<tr class="odd">
-<td>MAC (M1, M2 or M3)</td>
-<td><a href="https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.5.1-arm64.pkg"><strong>R-4.5.1-arm64.pkg</strong></a></td>
-<td><a href="https://download1.rstudio.org/electron/macos/RStudio-2025.09.0-387.dmg"><strong>RStudio-2025.09.0-387.dmg</strong></a></td>
-</tr>
-</tbody>
-</table>
+<p>**Here are the steps for navigating through the webpage to these datasets:</p>
+<p>On the home page <a href="https://data.london.gov.uk"><strong>CLICK HERE</strong></a> click on the <strong>[Data]</strong> tab at the top-left corner of the webpage.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/open_source_website/01_Data_tab.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This should show the list of all available datasets at our disposal that are freely available to download. Let search of the above datasets by typing in the word <strong>waste</strong> in the search bar:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/open_source_website/02_Searchbar.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It will produce a list of all waste-related datasets. The one, we are going for, is the dataset titled: <strong>[Household Waste Recycling Rates, Borough]</strong>, which contains information proportion of household waste that are recycled or composted. Click on it.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/open_source_website/03_select_data.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It will show the META data behind this file. If you scroll down, you will see two versions of the file: 1.) An <strong>EXCEL (.xls)</strong> file; or 2.) A <strong>Comma Separated Value (.csv)</strong> file.</p>
+<p>We want CSV (.csv) file. Now, you can straight-up download the file by simply clicking on the <strong>[Download]</strong> button… but we are going to do the downloads and <strong>coded fashion</strong>. What we are going to do is extract the <strong>URL</strong> (aka <strong>weblink</strong>) associated with the <strong>CSV</strong> dataset that we want to download.</p>
+<p>We can do this by Right-clicking on the <strong>[Download]</strong> button for the <strong>CSV version</strong>, and then select <strong>[Copy Link]</strong> in the drop down menu - this copied piece of information is what we are going to feed into RStudio.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/open_source_website/04_right_click.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now, let us go into RStudio!</p>
+</section>
+<section id="downloading-file-from-the-internet" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="downloading-file-from-the-internet"><span class="header-section-number">1.2.3</span> Downloading file from the internet</h3>
+<p>The function <code>download.file()</code> can be used to download a single file as described by URL (i.e., the link of the dataset) from the internet and store it in destination set by our work directory. Please, the url which we hve copied must start with a scheme such as <code>http://</code>, <code>https://</code> or <code>file://</code> in order for it to work!</p>
+<p>Let’s paste link and create it as an object:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assign the link to a character object</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>URL_london_recycling <span class="ot">&lt;-</span> <span class="st">"https://data.london.gov.uk/download/vd67o/15ddc38a-0a37-4f69-98b5-e69e549b39d3/Household-rcycling-borough.csv"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>We are going to use <code>download.file()</code> to download the dataset and save it with the file name <code>London_households_recycling_borough.csv</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ask RStudio to download the CSV file to your working directory</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(URL_london_recycling, </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">destfile =</span> <span class="st">"London_households_recycling_borough.csv"</span>, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="st">"wb"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If you check in your work directory folder - you see that the dataset has been downloaded and automatically save there.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/open_source_website/05_downloaded.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can open the dataset and its all in order:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use read.csv() function to open it</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>recycling_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"London_households_recycling_borough.csv"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># inspection of data</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># show structure</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(recycling_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   903 obs. of  4 variables:
+ $ Code           : chr  "E09000001" "E09000002" "E09000003" "E09000004" ...
+ $ Area           : chr  "City of London" "Barking and Dagenham" "Barnet" "Bexley" ...
+ $ Year           : chr  "2003/04" "2003/04" "2003/04" "2003/04" ...
+ $ Recycling_Rates: int  8 5 16 21 10 20 19 14 15 16 ...</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the header</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(recycling_data, <span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Code                 Area    Year Recycling_Rates
+1 E09000001       City of London 2003/04               8
+2 E09000002 Barking and Dagenham 2003/04               5
+3 E09000003               Barnet 2003/04              16
+4 E09000004               Bexley 2003/04              21
+5 E09000005                Brent 2003/04              10</code></pre>
+</div>
+</div>
+</section>
+<section id="read-in-data-directly-from-url" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="read-in-data-directly-from-url"><span class="header-section-number">1.2.4</span> Read-in data directly from URL</h3>
+<p>Suppose you want to download and open the dataset straight away in RStudio. That is a straightforward case — since the link of the file is a direct CSV download link, you can read it straight into RStudio in a single line of code using the <code>read.csv()</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read directly from URL</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>recycling_data_2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://data.london.gov.uk/download/vd67o/15ddc38a-0a37-4f69-98b5-e69e549b39d3/Household-rcycling-borough.csv"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspection of data</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># show structure</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(recycling_data_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   903 obs. of  4 variables:
+ $ Code           : chr  "E09000001" "E09000002" "E09000003" "E09000004" ...
+ $ Area           : chr  "City of London" "Barking and Dagenham" "Barnet" "Bexley" ...
+ $ Year           : chr  "2003/04" "2003/04" "2003/04" "2003/04" ...
+ $ Recycling_Rates: int  8 5 16 21 10 20 19 14 15 16 ...</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the header</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(recycling_data_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Code                 Area    Year Recycling_Rates
+1 E09000001       City of London 2003/04               8
+2 E09000002 Barking and Dagenham 2003/04               5
+3 E09000003               Barnet 2003/04              16
+4 E09000004               Bexley 2003/04              21
+5 E09000005                Brent 2003/04              10
+6 E09000006              Bromley 2003/04              20</code></pre>
+</div>
+</div>
+<p>We just simply inserted the link with CSV file name into <code>read.csv()</code> function.</p>
+</section>
+</section>
+<section id="tapply-for-group-analysis" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="tapply-for-group-analysis"><span class="header-section-number">1.3</span> <code>tapply()</code> for group analysis</h2>
+<p><code>tapply()</code> stands for “table apply” — it lets you apply a function (like mean(), sum(), or length()) to subgroups of a vector, defined by one or more grouping factors. Meaning that, it let’s us calculate summaries by groups - for instance, we can calculate mean recycling rates by the Borough in London to see which one is doing well as a whole in terms of household waste management.</p>
+<p>This calculation is simple:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>avg_recycling_rates <span class="ot">&lt;-</span> <span class="fu">tapply</span>(recycling_data<span class="sc">$</span>Recycling_Rates, recycling_data<span class="sc">$</span>Area, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>avg_recycling_rates</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Barking and Dagenham                   Barnet                   Bexley 
+                24.28571                 31.14286                 47.09524 
+                   Brent                  Bromley                   Camden 
+                30.71429                 42.42857                 28.00000 
+          City of London                  Croydon                   Ealing 
+                29.61905                 33.90476                 38.90476 
+                    East            East Midlands                  Enfield 
+                44.28571                 41.23810                 32.04762 
+                 England                Greenwich                  Hackney 
+                38.71429                 31.95238                 23.33333 
+  Hammersmith and Fulham                 Haringey                   Harrow 
+                24.42857                 27.61905                 37.66667 
+                Havering               Hillingdon                 Hounslow 
+                30.47619                 37.90476                 30.04762 
+               Islington   Kensington and Chelsea     Kingston upon Thames 
+                27.14286                 25.42857                 40.47619 
+                 Lambeth                 Lewisham                   London 
+                26.80952                 19.71429                 29.80952 
+                  Merton                   Newham               North East 
+                34.14286                 16.76190                 31.66667 
+              North West                Redbridge     Richmond upon Thames 
+                39.23810                 25.47619                 39.14286 
+              South East               South West                Southwark 
+                40.80952                 43.66667                 27.28571 
+                  Sutton            Tower Hamlets           Waltham Forest 
+                37.85714                 20.28571                 29.28571 
+              Wandsworth            West Midlands              Westminster 
+                22.85714                 36.66667                 20.61905 
+Yorkshire and the Humber 
+                37.19048 </code></pre>
+</div>
+</div>
+<section id="exercise" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="exercise"><span class="header-section-number">1.3.1</span> Exercise</h3>
+<ol type="1">
+<li>Have ago at using the <code>download.file()</code> function for saving and importing the remaining two datasets in RStudio</li>
+</ol>
+<ul>
+<li><strong>Waste Re-use Centres</strong></li>
+<li><strong>Fly-tipping Incidents</strong></li>
+</ul>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -474,60 +716,19 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>R (Base)</strong> is very particular about the operating system! Please be sure to use the correct installer for your computer:</p>
+<p><strong>HINTS</strong></p>
 <ul>
-<li><strong>Windows</strong> users: use the files in the first row.</li>
-<li><strong>Mac (Intel)</strong> users: use the files in the second row.</li>
-<li><strong>Mac (M1, M2, or M3 chip)</strong> users: use the files in the third row.</li>
+<li>Go to the website: <a href="https://data.london.gov.uk"><strong>London DATASTORE</strong></a></li>
+<li>Navigate through the website. You can use the search bar search for the desired dataset.</li>
+<li>Remember to extract the URL link to dataset by right-clicking the <strong>[Download]</strong> button and selecting <strong>[Copy link]</strong></li>
+<li>Use CSV version of the datasets.</li>
+<li>Use the <code>read.csv()</code> to import the downloaded datasets into RStudio: 1.) name the fly-tipping records as <code>flytipping_data</code>; 2.) name the waste re-use centre records as <code>waste_reuse_data</code>.</li>
 </ul>
 </div>
 </div>
-<p>This section covers how to download and install RStudio for it to be used locally on your machine. There are several ways to access RStudio:</p>
-<ul>
-<li>Directly through UCL Workstation PC</li>
-<li>Remotely through the UCL Desktop@Anywhere remote service with your laptop.</li>
-</ul>
-<p>Let us quickly go through these options.</p>
-</section>
-<section id="access-through-workstation-ucl-applications-store-length-000500" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="access-through-workstation-ucl-applications-store-length-000500">Access through Workstation &amp; UCL Applications Store (Length: 00:05:00)</h2>
-<div class="cell" data-warnings="false">
-<div class="cell-output-display">
-<div class="vembedr" align="center">
-<div>
-<iframe src="https://www.youtube.com/embed/M0aC9GqNt3M" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
-</div>
-</div>
-</div>
-</div>
-<p><a href="https://youtu.be/M0aC9GqNt3M">[<strong>Watch on YouTube</strong>]</a></p>
-<p>Go to any PC cluster in UCL and simply log on to a computer. Use the UCL Applications tool to access the desired software.</p>
-</section>
-<section id="remotely-access-through-ucl-desktopanywhere-length-000934" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="remotely-access-through-ucl-desktopanywhere-length-000934">Remotely Access through UCL Desktop@Anywhere (Length: 00:09:34)</h2>
-<div class="cell" data-warnings="false">
-<div class="cell-output-display">
-<div class="vembedr" align="center">
-<div>
-<iframe src="https://www.youtube.com/embed/hwGHlFZ9UDY" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
-</div>
-</div>
-</div>
-</div>
-<p><a href="https://youtu.be/hwGHlFZ9UDY">[<strong>Watch on YouTube</strong>]</a></p>
-<p>To use RStudio (or any other software which UCL provides as service to students) remotely from your laptop/PC/tablet, you can:</p>
-<ul>
-<li>Go to <a href="https://www.ucl.ac.uk/isd/services/computers/remote-access/desktopucl-anywhere">https://www.ucl.ac.uk/isd/services/computers/remote-access/desktopucl-anywhere</a>.</li>
-<li>Click on the blue button that says: “<strong>Log in to Desktop @ UCL Anywhere.</strong>”</li>
-<li>You will be prompted to enter your UCL username (username@ucl.ac.uk) and password. Enter the correct credentials to gain access to the remote portal.</li>
-<li>If you see the option “<strong>Use Web Browser</strong>”, select it to run the remote functions directly in your browser without installing the Citrix Workspace application.</li>
-<li>You should now see a Desktop @ UCL Anywhere button – click this button to complete the login. At this point, it will feel as though you are using a UCL workstation in a cluster room or library, but remotely.</li>
-<li>On the desktop, click the UCL Applications icon and search for RStudio.</li>
-<li>Select the latest version available (check the year) and open it with a single click (not multiple clicks).</li>
-</ul>
-<p>Voilà! You now have remote access to RStudio.</p>
 
 
+</section>
 </section>
 </section>
 
@@ -947,14 +1148,11 @@ Important
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./00-module_overview.html" class="pagination-link" aria-label="Welcome">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="./06-data_visualisation.html" class="pagination-link" aria-label="Week 5: Examining Data III">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 5: Examining Data III</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02-basic_building_blocks.html" class="pagination-link" aria-label="Week 1: Introduction I">
-        <span class="nav-page-text">Week 1: Introduction I</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
