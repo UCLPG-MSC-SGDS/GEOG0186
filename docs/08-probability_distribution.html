@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Week 7: Sourcing Data II</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./07-sourcing_data_download.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-a14e345711173c227b21482e2eb4cc70.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6d7e0e055978adcb0dc3bbe98a6d8351.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-a14e345711173c227b21482e2eb4cc70.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6b8658ecaa42f34dfb83e89c305171f2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-87f5ed8b884f981cef75eebe188fc88d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-6b8658ecaa42f34dfb83e89c305171f2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link href="site_libs/vembedr-0.1.5/css/vembedr.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="assets/all_css/styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Core Content</a></li><li class="breadcrumb-item"><a href="./08-probability_distribution.html">Week 7: Sourcing Data II</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="https://www.ucl.ac.uk/module-catalogue/modules/foundations-of-geography-1-GEOG0186" class="sidebar-logo-link">
+      <img src="./assets/all_images/sidebar_cosmetics/00_ucl_custom_geog0186_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./assets/all_images/sidebar_cosmetics/00_ucl_custom_geog0186_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+    <div id="quarto-search" class="quarto-navigation-tool px-1" title="Search"></div>
+</div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Module Overview</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-module_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Getting Started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-what_is_rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What is RStudio (or R)?</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Core Content</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-basic_building_blocks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1: Introduction I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-handling_data_structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2: Introduction II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-frequency_distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3: Examining Data I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-summary_measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4: Examining Data II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-data_visualisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 5: Examining Data III</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-sourcing_data_download.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6: Sourcing Data I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-probability_distribution.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Week 7: Sourcing Data II</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-probability-distribution" id="toc-introduction-to-probability-distribution" class="nav-link active" data-scroll-target="#introduction-to-probability-distribution"><span class="header-section-number">1</span> Introduction to Probability Distribution</a>
+  <ul>
+  <li><a href="#quick-recap" id="toc-quick-recap" class="nav-link" data-scroll-target="#quick-recap"><span class="header-section-number">1.1</span> Quick Recap</a></li>
+  <li><a href="#what-are-probability-distributions-length-0434-minutes" id="toc-what-are-probability-distributions-length-0434-minutes" class="nav-link" data-scroll-target="#what-are-probability-distributions-length-0434-minutes"><span class="header-section-number">1.2</span> What are Probability Distributions? (Length: 04:34 minutes)</a></li>
+  <li><a href="#how-to-generate-a-normal-distribution-curve-length-3253-minutes" id="toc-how-to-generate-a-normal-distribution-curve-length-3253-minutes" class="nav-link" data-scroll-target="#how-to-generate-a-normal-distribution-curve-length-3253-minutes"><span class="header-section-number">1.3</span> How to generate a Normal Distribution curve (Length: 32:53 minutes)</a></li>
+  <li><a href="#using-the-normal-distribution-for-making-a-prediction-length-1750-minutes" id="toc-using-the-normal-distribution-for-making-a-prediction-length-1750-minutes" class="nav-link" data-scroll-target="#using-the-normal-distribution-for-making-a-prediction-length-1750-minutes"><span class="header-section-number">1.4</span> Using the Normal Distribution for making a prediction (Length: 17:50 minutes)</a>
+  <ul class="collapse">
+  <li><a href="#scenario-1-the-probabilities-for-at-most" id="toc-scenario-1-the-probabilities-for-at-most" class="nav-link" data-scroll-target="#scenario-1-the-probabilities-for-at-most"><span class="header-section-number">1.4.1</span> Scenario 1: The Probabilities for (<strong>“at most”</strong>)</a></li>
+  <li><a href="#scenario-2-the-probabilities-for-at-least" id="toc-scenario-2-the-probabilities-for-at-least" class="nav-link" data-scroll-target="#scenario-2-the-probabilities-for-at-least"><span class="header-section-number">1.4.2</span> Scenario 2: The Probabilities for (<strong>“at least”</strong>)</a></li>
+  <li><a href="#scenario-3-the-probabilities-for-within-a-range" id="toc-scenario-3-the-probabilities-for-within-a-range" class="nav-link" data-scroll-target="#scenario-3-the-probabilities-for-within-a-range"><span class="header-section-number">1.4.3</span> Scenario 3: The Probabilities for (<strong>“within a range”</strong>)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#worksheet-three-sourcing-data" id="toc-worksheet-three-sourcing-data" class="nav-link" data-scroll-target="#worksheet-three-sourcing-data"><span class="header-section-number">2</span> Worksheet Three: Sourcing Data</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-basic_building_blocks.html">Core Content</a></li><li class="breadcrumb-item"><a href="./08-probability_distribution.html">Week 7: Sourcing Data II</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Week 7: Sourcing Data II</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction-to-probability-distribution" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction to Probability Distribution</h1>
+<section id="quick-recap" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="quick-recap"><span class="header-section-number">1.1</span> Quick Recap</h2>
+<p>In <strong>Week 3 &amp; 4’s Examining Data II</strong>, we learnt how to perform some basic descriptive analysis of air pollution data (specifically 718 observations of Nitrogen Dioxide (NO<span class="math inline">\(_2\)</span>) in <strong>Eixample, Barcelona</strong>. We derived the following outputs:</p>
+<ol type="1">
+<li><p><strong>Frequency distribution and table for ambient NO<span class="math inline">\(_2\)</span> levels in Barcelona</strong>, which told us how often a particular measure for NO<span class="math inline">\(_2\)</span> was observed. For instance, we found that in Barcelona, the common measure for ambient NO<span class="math inline">\(_2\)</span> were values that fell in the range of 50-60ppb that accounted for <code>19.08%</code> of the data.</p></li>
+<li><p><strong>Cumulative frequency distribution of ambient NO<span class="math inline">\(_2\)</span> levels in Barcelona</strong>, which - based on a stated value/threshold of interest - indicated how often a particular measure for N0<span class="math inline">\(_2\)</span> was observed. For example, based on this threshold <code>&lt;50ppb</code>, we found that it corresponds to 246 measurements for NO<span class="math inline">\(_2\)</span> below <code>50ppb</code> which composed of <code>0.3426 (34.26%)</code> of the data.</p></li>
+<li><p><strong>Histogram</strong>, which was simply a graphically representation that reflected our Frequency distribution. For instance, the image we produced last week:</p></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/probability/image6_histogram.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li><strong>Central Tendency Measures, Variance &amp; Standard Deviation</strong>: These are a set of statistical estimates we used to provide a concise summary of the data. There more important measures were the <strong>mean (or average)</strong> and <strong>standard deviation</strong>. Recall in our air pollution data, we found the overall mean air pollutions level for NO<span class="math inline">\(_2\)</span> in <strong>Eixample, Barcelona</strong> was <code>59.69ppb</code> with a standard deviation (i.e., error) of <code>±20.63pbb</code>.</li>
+</ol>
+<p>These four recap points were brought up because they are all connected to <strong>Probability Distributions</strong>. Probability distributions are indeed the basis of data sciences, we actually use to these help model our world, enabling us to estimate or predict the probability that an event (e.g., disease outbreak, mosquito infestation, crime outcome, wildfire hazard etc.,) may occur or not. More importantly, we use these specifically in <strong>Hypothesis Testing</strong> when conducting <strong>Inferential Statistics</strong>.</p>
+<p>There are a tonne of different probability distributions; but, for this tutorial, you will only be introduced to the <strong>Normal Distribution</strong>, a famous one which has its place in statistical analysis.</p>
+</section>
+<section id="what-are-probability-distributions-length-0434-minutes" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="what-are-probability-distributions-length-0434-minutes"><span class="header-section-number">1.2</span> What are Probability Distributions? (Length: 04:34 minutes)</h2>
+<div class="cell" data-warnings="false">
+<div class="cell-output-display">
+<div class="vembedr" align="center">
+<div>
+<iframe src="https://www.youtube.com/embed/fiY01v3Zpc0" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+</div>
+<p>Watch on <a href="https://youtu.be/fiY01v3Zpc0"><strong>[YouTube]</strong></a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I want to acknowledge that this video is a re-used asset from the old <strong>GEOG0013: Geography in the Field I</strong> module which no longer exist.</p>
+</div>
+</div>
+<p>Do remember a time in our GSCEs when we were asked to compute the probability of an event such as - let’s say - what the probability of throwing a die just once and it showing the value “six” as an outcome? The obvious answer to that is <code>1/6</code>. Here, we computed the <strong>probability</strong> of just a <strong>single outcome</strong>. <strong>Probability Distributions</strong> on the other hand allows us to compute <strong>probabilities</strong> for <strong>ALL possible outcomes</strong>. There are <a href="https://en.wikipedia.org/wiki/List_of_probability_distributions"><strong>several</strong></a> different types of probability distributions; however, the most common types you will come across in data science are:</p>
+<ul>
+<li><strong>Normal Distribution</strong> for continuous data that are <em>measurable</em> (e.g., height, age, air pollution levels etc.)</li>
+<li><strong>Poisson Distribution</strong> for discrete data that are <em>countable</em> (e.g., number of COVID-19 cases, reported number of phone snatched victims etc.,)</li>
+<li><strong>Uniform Distribution</strong> for continuous or discrete data are <em>measurable</em> or <em>countable</em>, respectively, where every data point is assumed to have an equal chance of being observed.</li>
+<li><strong>Bernoulli Distribution</strong> for binary data that contain two categories that are of a <em>Yes/No</em>, <em>Success/Failure</em>, <em>In/Out</em> or <em>Win/Lose</em> format (e.g., a disease outcome of a patient (Yes, No), A victim of theft (Yes, No) and so on).</li>
+</ul>
+<p>Probability distributions are always represented in a graphical format as a curve. As stated, the <strong>Normal Distribution</strong>, which is a <strong>bell-shaped curve</strong>, is the most “famous” and widely used probability distribution because - surprisingly - a lot of measurable phenomena that are continuous data tend to be approximately <strong>bell-shaped</strong>.</p>
+<p>For instance, let’s take our previous example of the histogram graph we created from the NO<span class="math inline">\(_2\)</span> data in Barcelona. While the graph shows the frequency of NO<span class="math inline">\(_2\)</span> data using rectangles. The height of a rectangle (the vertical axis) basically represents the distribution frequency for the NO<span class="math inline">\(_2\)</span> measure, as in, the amount, or how often that value was measured.</p>
+<p>Now, notice how the above figure output takes on shape that is somewhat akin to that of a bell-curve? The histogram indeed describes the shape for the ambient NO<span class="math inline">\(_2\)</span> measures as a distribution that’s bell-shaped which was centered on the mean value of <code>59.69ppb</code> and error (i.e., standard deviation away from the mean) was plus or minus <code>20.63pbb</code>. This output reproduced in image <strong>[A]</strong> was generated from the data that follows <strong>Normal Distribution</strong>.</p>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/probability/image7_normal_curve.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Sometimes, we can be in a situation where we are dealing with a data science problem but do not have any data at our disposal. But with probability distributions, we can do a work around if have <strong>prior knowledge</strong> or <strong>prior information</strong> of the problem. For instance, it is possible for us to generate a theoretical distribution for these NO<span class="math inline">\(_2\)</span> values based on our knowledge of its <strong>mean</strong> and <strong>standard deviation</strong> with the assumption that its bell-shaped in the first place as shown in image <strong>[B]</strong>. This curve will show us the probability of observing every single possible value for the NO<span class="math inline">\(_2\)</span> in Barcelona, as well as simulate a similar dataset.</p>
+<p>Let us learn how to generate this curve shown in image <strong>B</strong> as a step-by-step demonstration.</p>
+</section>
+<section id="how-to-generate-a-normal-distribution-curve-length-3253-minutes" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="how-to-generate-a-normal-distribution-curve-length-3253-minutes"><span class="header-section-number">1.3</span> How to generate a Normal Distribution curve (Length: 32:53 minutes)</h2>
+<div class="cell" data-warnings="false">
+<div class="cell-output-display">
+<div class="vembedr" align="center">
+<div>
+<iframe src="https://www.youtube.com/embed/tE-TnsHz43s" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+</div>
+<p>Watch on <a href="https://youtu.be/tE-TnsHz43s"><strong>[YouTube]</strong></a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I want to acknowledge that this video is a re-used asset from the old <strong>GEOG0013: Geography in the Field I</strong> module which no longer exist.</p>
+</div>
+</div>
+<p>We will need to re-import the <code>Barcelona_Air_Pollution_data.csv</code> into RStudio and call this object <code>air_quality_data</code>. Recall, we used this data in Week 3 - you can get the dataset from here and view instructions accordingly <a href="https://uclpg-msc-sgds.github.io/GEOG0186/04-frequency_distribution.html#learning-outcomes"><strong>[HERE]</strong></a>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>air_quality_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Barcelona_Air_Pollution_data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Let’s use the <code>mean()</code>, <code>sd()</code>, <code>min()</code> and <code>max()</code> function on the <code>NO2_est</code> variable to compute some important values which will use as a basis to create the normal distribution plot.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculates the mean of NO2</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(air_quality_data<span class="sc">$</span>NO2_est)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 59.6922</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculates the standard deviation of NO2</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(air_quality_data<span class="sc">$</span>NO2_est)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20.60876</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># finds the lowest value for NO2</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(air_quality_data<span class="sc">$</span>NO2_est)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># finds the maximum value for NO2</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(air_quality_data<span class="sc">$</span>NO2_est)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 130</code></pre>
+</div>
+</div>
+<p>For the graph, we will need to create a template for the <strong>x-axis</strong> in a way that contains clean intervals of <code>10</code>’s starting from <code>0</code>, and ending up to <code>130</code> so as to capture the minimum and maximum values for NO<span class="math inline">\(_2\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the intervals for the x-axis</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>intervals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">130</span>, <span class="dv">10</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>intervals</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]   0  10  20  30  40  50  60  70  80  90 100 110 120 130</code></pre>
+</div>
+</div>
+<p>Now, we are going to create the a vector for the <strong>x-axis</strong> which will contain a sequence of <strong>every</strong> possible value for the NO<span class="math inline">\(_2\)</span> within the range of <code>2ppb</code> (minimum) to <code>130ppb</code> (maximum). Here, we will create a series of clean values of equal intervals of <code>0.01</code> starting from <code>2</code> (lowest possible value), and up to <code>130</code> (highest possible value) that we know from our dataset.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create actual x-axis for every single possible value between 2 to 130</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>x_axis <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">130</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>IMPORTANT NOTE</strong>: The above code will create a sequence of values starting from 2 and ending at 130. These values will be <code>2.00</code>, <code>2.01</code>, <code>2.02</code>, <code>2.03</code> … and so on and so forth.</p>
+</div>
+</div>
+<p>Now, we are going to use a new function called <code>dnorm()</code> which allows us to compute the <strong>probability density</strong> for each of the values along the <code>x_axis</code> object we created. In this function, we will need to specify our <strong>prior information</strong> which is our knowledge about the pollution levels in Barcelona. Hence, we will specify the <strong>mean</strong> and <strong>standard deviation</strong>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we use to x_axis and our known mean and SD </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>probability_estimates <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x_axis, <span class="at">mean =</span> <span class="fl">59.69</span>, <span class="at">sd =</span> <span class="fl">20.63</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The above code is estimating the exact probability of each value contained in that <code>x_axis</code> object. Hence, each value i.e., <code>2.00</code>, <code>2.01</code>, <code>2.02</code>, <code>2.03</code> … and so on and so forth, will have its own probability estimate which is called a <strong>probability density</strong></p>
+</div>
+</div>
+<p>Now that we have the key ingredients to visualise our probability distribution for the NO<span class="math inline">\(_2\)</span> values in Barcelona. We can proceed to create our graph from scratch. We start with using the <code>plot()</code> and applying the labels.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a plot from scratch</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x_axis, probability_estimates, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Probability [Normal] Distribution for NO2 in Barcelona"</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"NO2 values"</span>, <span class="at">ylab =</span> <span class="st">"Probability Density"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-probability_distribution_files/figure-html/dnorm_plot_part1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is full-on custom graph we are making in RStudio. As there is no conventional way of producing such a graph. This is where the programming and hacks come to play, and brute forcing it <a href="https://www.youtube.com/watch?v=xSM_nz6gKOI"><strong>[John Wick style]</strong></a> until we get the desired result!</p>
+<p><strong>About the code:</strong></p>
+<ul>
+<li><code>plot(x_axis, probability_estimates...)</code>, we are saying apply the values from <code>x_axis</code> on to the x-axis and those from <code>probability_estimates</code> on to the y-axis.</li>
+<li>The <code>type = "l"</code>, we are saying that this is a line/curve plot.</li>
+<li><code>lwd = 3</code>, this controls the thickness of the line width. Here, we have set this to 3.</li>
+<li><code>axes = FALSE</code>, we have deliberately set this to not appear. We want to fully customise our graph as you will see in the next set of codes.</li>
+<li><code>main = "..."</code>, set the title of plot</li>
+<li><code>xlab = "..."</code>, set the title for the x-axis</li>
+<li><code>ylab = "..."</code>, set the title for the y-axis</li>
+</ul>
+</div>
+</div>
+<p>Let’s add our custom made x-axis.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a plot from scratch</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x_axis, probability_estimates, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Probability [Normal] Distribution for NO2 in Barcelona"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"NO2 values"</span>, <span class="at">ylab =</span> <span class="st">"Probability Density"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add x-axis and use the interval breaks we created earlier on</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> intervals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-probability_distribution_files/figure-html/dnorm_plot_part2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let see the maximum probability density estimate, this information will help us to customise the y-axis appropriately</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(probability_estimates)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.01933797</code></pre>
+</div>
+</div>
+<p>Its <code>0.01933797</code>. Okay then, so let’s add y-axis which starts from <code>0</code> and end at <code>0.020</code> spaced at intervals of <code>0.005</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a plot from scratch</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x_axis, probability_estimates, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Probability [Normal] Distribution for NO2 in Barcelona"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"NO2 values"</span>, <span class="at">ylab =</span> <span class="st">"Probability Density"</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add x-axis and use the interval breaks we created earlier on</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> intervals)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add y-axis and start from 0 and end at 0.020 at intervals of 0.005</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.005</span>, <span class="fl">0.010</span>, <span class="fl">0.015</span>, <span class="fl">0.020</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-probability_distribution_files/figure-html/dnorm_plot_part3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We created the normal distribution curve. Now, we add the reference lines for the <strong>mean</strong> as well as the lower and upper bounds for the <strong>standard deviation</strong>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a plot from scratch</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x_axis, probability_estimates, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Probability [Normal] Distribution for NO2 in Barcelona"</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"NO2 values"</span>, <span class="at">ylab =</span> <span class="st">"Probability Density"</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add x-axis and use the classes breaks from the histogram</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> intervals)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add y-axis and start from 0 and end at 0.020 at intervals of 0.005</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.005</span>, <span class="fl">0.010</span>, <span class="fl">0.015</span>, <span class="fl">0.020</span>))</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># add vertical line for mean = 59.69</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">59.69</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>, <span class="at">col=</span><span class="st">"black"</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># add two vertical lines for the plus and minus values for our sd = 20.63</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># lower = 59.69 - 20.63</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># upper = 59.69 + 20.63</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">c</span>(<span class="fl">39.16</span>, <span class="fl">80.22</span>), <span class="at">lty=</span><span class="st">"dashed"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>, <span class="at">col=</span><span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-probability_distribution_files/figure-html/dnorm_plot_part4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The centre black line represents the position of the mean on the x-axis. Whilst the red dashed lines are the plus and minus limits from the standard deviations.</p>
+<p><strong>About the code:</strong></p>
+<ul>
+<li><code>abline(...)</code>, we are saying apply the reference line on main plot.</li>
+<li><code>v = ...</code>, we are adding a vertical line to a specified value on the x-axis</li>
+<li><code>lty = "dashed"</code>, controls the style format of line. Here, its “dashed”</li>
+</ul>
+</div>
+</div>
+<p>This is the expected output. Let’s demonstrate how to use it for making a prediction about the air pollution levels for NO<span class="math inline">\(_2\)</span>.</p>
+</section>
+<section id="using-the-normal-distribution-for-making-a-prediction-length-1750-minutes" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="using-the-normal-distribution-for-making-a-prediction-length-1750-minutes"><span class="header-section-number">1.4</span> Using the Normal Distribution for making a prediction (Length: 17:50 minutes)</h2>
+<div class="cell" data-warnings="false">
+<div class="cell-output-display">
+<div class="vembedr" align="center">
+<div>
+<iframe src="https://www.youtube.com/embed/1OLAnjj2yjc" width="711" height="400" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+</div>
+</div>
+</div>
+</div>
+<p>Watch on <a href="https://youtu.be/1OLAnjj2yjc"><strong>[YouTube]</strong></a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I want to acknowledge that this video is a re-used asset from the old <strong>GEOG0013: Geography in the Field I</strong> module which no longer exist.</p>
+</div>
+</div>
+<p>From the above graph - the image shows that for each value of NO<span class="math inline">\(_2\)</span> along the x-axis corresponds to some <strong>probability density</strong> estimate on the y-axis. For instance, the <strong>probability density</strong> for NO<span class="math inline">\(_2\)</span> levels being <strong>exactly</strong> equal to <code>63ppb</code> is <code>0.01911</code> (<code>1.911%</code>); and for an example, the <strong>probability density</strong> for NO<span class="math inline">\(_2\)</span> levels being <strong>exactly</strong> equal to <code>80ppb</code> is <code>0.01191</code> (<code>1.1191%</code>) etc.</p>
+<p>Now, traditionally, we are not interested in computing these <strong>probability densities</strong> for these exact values because these estimates for a <strong>single value</strong> are always <strong>negligible</strong>! But rather - what we are interested in estimating the <strong>cumulative probability density</strong> i.e., finding the probability that such an outcome is either <em>“up to”</em> (or <em>at most</em>) or alternatively <em>“at least”</em> some threshold, or even being <em>“within a range”</em> of values. The questions we usually ask to predict something are typically framed like:</p>
+<ul>
+<li>What is the probability that the air pollution levels of NO<span class="math inline">\(_2\)</span> in Barcelona <em><strong>reaches up to</strong></em> (or is <em><strong>at most</strong></em>) <code>45ppb</code>?</li>
+<li>What is the probability that the air pollution levels of NO<span class="math inline">\(_2\)</span> in Barcelona <em><strong>exceeds</strong></em> (or <strong><em>is at least</em></strong>) <code>80ppb</code>?</li>
+<li>What is the probability that the air pollution levels of NO<span class="math inline">\(_2\)</span> in Barcelona <em><strong>falls within the range of</strong></em> (or <strong><em>is between</em></strong>) <code>45-80ppb</code>?</li>
+</ul>
+<p>Let see how to answer each scenario.</p>
+<section id="scenario-1-the-probabilities-for-at-most" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="scenario-1-the-probabilities-for-at-most"><span class="header-section-number">1.4.1</span> Scenario 1: The Probabilities for (<strong>“at most”</strong>)</h3>
+<p>Suppose that we want to compute the probability that air pollution levels for NO<span class="math inline">\(_2\)</span> in Barcelona <em><strong>reaches up to</strong></em> <code>45ppb</code>. First of all, note that this is an <em>“<strong>at most</strong>”</em> scenario. The way in which this is represented graphically under our Normal Distribution where our <strong>mean</strong> is <code>59.69</code> and a <strong>standard deviation</strong> of <code>±20.63</code> is:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/probability/image8_atmost_scene.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The <strong>red shaded area</strong> on the <strong>left-side</strong> under this normal curve represents the <strong>cumulative probabilities</strong> for the NO<span class="math inline">\(_2\)</span> levels being <strong>at most</strong> <code>45ppb</code>. Here, we can calculate this cumulative probability by using the <code>pnorm()</code> function. All we need to do is insert our value of interest along with the <strong>mean</strong> and <strong>standard deviation</strong> to obtain our result.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the cumulative probability for 45</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">45</span>, <span class="at">mean=</span><span class="fl">59.69</span>, <span class="at">sd=</span><span class="fl">20.63</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2382108</code></pre>
+</div>
+</div>
+<p>We get <code>0.2397141</code> or <code>23.97%</code>. So we have therefore predicted that there’s a <code>23.97%</code> chance that NO<span class="math inline">\(_2\)</span> levels in Barcelona <strong>reach up to</strong> <code>45ppb</code>. Please note that the code for generating the above plot for this scenario is shown below. It builds on that custom plot code we made earlier:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a plot from with shaded areas</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x_axis, probability_estimates, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Probability of NO2 being at most (or reaching) 45ppb"</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"NO2 values"</span>, <span class="at">ylab =</span> <span class="st">"Probability Density"</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add x-axis and use the classes breaks from the histogram</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> intervals)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add y-axis and start from 0 and end at 0.020 at intervals of 0.005</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.005</span>, <span class="fl">0.010</span>, <span class="fl">0.015</span>, <span class="fl">0.020</span>))</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># add mean reference line</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">59.69</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>, <span class="at">lty =</span> <span class="st">"dashed"</span>, <span class="at">col=</span><span class="st">"black"</span>)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add shaded area under the curve (left-side)</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="fu">min</span>(x_axis), x_axis[x_axis <span class="sc">&lt;</span> <span class="dv">45</span>], <span class="dv">45</span>), </span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">0</span>, probability_estimates[x_axis <span class="sc">&lt;</span> <span class="dv">45</span>], <span class="dv">0</span>),  </span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">col=</span><span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="{callout-note}">
+<p>In the above custom code for creating the plot, we have just added the <code>polgyon()</code> function to shade that portion of interest in red. You can replace the <code>45</code> with a different value if you want to reproduce this “left-sided” plot.</p>
+</div>
+</section>
+<section id="scenario-2-the-probabilities-for-at-least" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="scenario-2-the-probabilities-for-at-least"><span class="header-section-number">1.4.2</span> Scenario 2: The Probabilities for (<strong>“at least”</strong>)</h3>
+<p>Suppose that we want to compute the probability that air pollution levels for NO<span class="math inline">\(_2\)</span> in Barcelona <em><strong>exceeds</strong></em> <code>80ppb</code>. Please, note that this problem is an <em>“<strong>at least</strong>”</em> scenario. The way in which this is represented graphically under our Normal Distribution where we use our <strong>mean</strong> of <code>59.69</code> and <strong>standard deviation</strong> of <code>±20.63</code> is as follows:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/probability/image9_atleast_scene.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The <strong>red shaded area</strong> on the <strong>right-side</strong> under this normal curve represents the <strong>cumulative probabilities</strong> for the NO<span class="math inline">\(_2\)</span> levels being <strong>at least</strong> <code>80ppb</code>. Note that when calculating probabilities of this scenario, we need to do <code>1 - pnorm()</code> to calculate the <strong>red shaded area</strong> on the right side of this graph.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the cumulative probability for 80</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">80</span>, <span class="at">mean=</span><span class="fl">59.69</span>, <span class="at">sd=</span><span class="fl">20.63</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1624377</code></pre>
+</div>
+</div>
+<p>We get <code>0.1612494</code> or <code>16.12494%</code>. So we have therefore predicted that there’s a <code>16.12%</code> chance that air concentrations of NO<span class="math inline">\(_2\)</span> levels in Barcelona <strong>exceeds</strong> <code>80ppb</code>. Again, note that the code for generating the above plot for this scenario is shown below. It builds on that custom plot code we made earlier:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a plot from scratch</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x_axis, probability_estimates, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Probability of NO2 being at least (or exceeding) 80ppb"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"NO2 values"</span>, <span class="at">ylab =</span> <span class="st">"Probability Density"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add x-axis and use the classes breaks from the histogram</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> intervals)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add y-axis and start from 0 and end at 0.020 at intervals of 0.005</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.005</span>, <span class="fl">0.010</span>, <span class="fl">0.015</span>, <span class="fl">0.020</span>))</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co"># add mean reference line</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">59.69</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>, <span class="at">lty =</span> <span class="st">"dashed"</span>, <span class="at">col=</span><span class="st">"black"</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add shaded area under the curve (right-side)</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(x_axis[x_axis<span class="sc">&gt;=</span><span class="dv">80</span>], <span class="dv">80</span>), </span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(probability_estimates[x_axis<span class="sc">&gt;=</span><span class="dv">80</span>], probability_estimates[x_axis<span class="sc">==</span><span class="fu">max</span>(x_axis)]), </span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">col=</span><span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the above custom code for the plot, we have only added the <code>polgyon()</code> function to shade that portion of interest in red. You can replace the <code>80</code> with a different value if you want to reproduce this “right-sided” plot.</p>
+</div>
+</div>
+</section>
+<section id="scenario-3-the-probabilities-for-within-a-range" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="scenario-3-the-probabilities-for-within-a-range"><span class="header-section-number">1.4.3</span> Scenario 3: The Probabilities for (<strong>“within a range”</strong>)</h3>
+<p>Suppose that we want to compute the probability that air pollution levels for NO<span class="math inline">\(_2\)</span> in Barcelona <em><strong>falls between</strong></em> <code>45ppb and 80ppb</code>. Please, note that this problem is an <em>“<strong>within a range</strong>”</em> scenario. The way in which this problem is represented graphically under our Normal Distribution with <strong>mean</strong> of <code>59.69</code> and <strong>standard deviation</strong> of <code>±20.63</code> is:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/all_images/probability/image10_between_scene.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The <strong>red shaded area</strong> in the <strong>middle</strong> portion under this normal curve represents the <strong>cumulative probabilities</strong> for the NO<span class="math inline">\(_2\)</span> levels being <strong>between</strong> <code>45ppb and 80ppb</code>. Note that when calculating probabilities of this scenario, we only need to do <code>pnorm(80...) - pnorm(45..)</code> to calculate the <strong>red shaded area</strong> in middle portion of this graph.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the cumulative probability for 80</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">80</span>, <span class="at">mean=</span><span class="fl">59.69</span>, <span class="at">sd=</span><span class="fl">20.63</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">45</span>, <span class="at">mean=</span><span class="fl">59.69</span>, <span class="at">sd=</span><span class="fl">20.63</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5993516</code></pre>
+</div>
+</div>
+<p>We get <code>0.5993516</code> or <code>59.93516%</code>. So we have therefore predicted that there’s a <code>59.93%</code> chance that air concentrations of NO<span class="math inline">\(_2\)</span> levels in Barcelona <strong>fall between</strong> <code>45ppb and 80ppb</code>. Again, note that the code for generating the above plot for this scenario is shown below. It builds on that custom plot code we made earlier:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a plot from scratch</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x_axis, probability_estimates, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Probability of NO2 being between 45ppb and 80ppb"</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"NO2 values"</span>, <span class="at">ylab =</span> <span class="st">"Probability Density"</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add x-axis and use the classes breaks from the histogram</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> intervals)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add y-axis and start from 0 and end at 0.020 at intervals of 0.005</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.005</span>, <span class="fl">0.010</span>, <span class="fl">0.015</span>, <span class="fl">0.020</span>))</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co"># add shaded area under the curve (middle)</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">45</span>, x_axis[x_axis<span class="sc">&gt;=</span><span class="dv">45</span> <span class="sc">&amp;</span> x_axis<span class="sc">&lt;=</span><span class="dv">80</span>], <span class="dv">80</span>), </span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="dv">0</span>, probability_estimates[x_axis<span class="sc">&gt;=</span><span class="dv">45</span> <span class="sc">&amp;</span> x_axis<span class="sc">&lt;=</span><span class="dv">80</span>] ,<span class="dv">0</span>),</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">col=</span><span class="st">"red"</span>)</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co"># add mean reference line</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">59.69</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>, <span class="at">lty =</span> <span class="st">"dashed"</span>, <span class="at">col=</span><span class="st">"black"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the above custom code for the plot, we have only added the <code>polgyon()</code> function to shade that portion of interest in red. You can replace the lower (i.e., <code>45</code>) and upper (i.e., <code>80</code>) values with a different numbers to shade out the middle portion under this curve plot.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="worksheet-three-sourcing-data" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Worksheet Three: Sourcing Data</h1>
+<p>In this worksheet, we will put into practice some of the basics we learned in Sourcing Data I and II.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./07-sourcing_data_download.html" class="pagination-link" aria-label="Week 6: Sourcing Data I">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 6: Sourcing Data I</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer><script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

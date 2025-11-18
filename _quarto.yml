@@ -53,3 +53,4 @@ website:
           - 05-summary_measures.qmd
           - 06-data_visualisation.qmd
           - 07-sourcing_data_download.qmd
+          - 08-probability_distribution.qmd
