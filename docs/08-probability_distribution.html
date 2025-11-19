@@ -956,7 +956,29 @@ Note
 </section>
 <section id="worksheet-three-sourcing-data" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Worksheet Three: Sourcing Data</h1>
-<p>In this worksheet, we will put into practice some of the basics we learned in Sourcing Data I and II.</p>
+<p>In this worksheet, we will put into practice some of the basics we learned in Sourcing Data I and II. The aim of this worksheet is that you are tasked with conducting an exploration of <strong>risk of housing insecurity</strong> and its burden in England.</p>
+<ol type="1">
+<li>The <a href="https://pldr.org"><strong>Place-Based Longitudinal Data Resource</strong></a> brings together datasets that track changes in the determinants of health and health outcomes, in places over time. A very useful resource for public health and social science research. You are task with downloading the following dataset: <strong>Families at Risk of Housing Insecurity Index (FRoHII)</strong>. We will be using the columns - <code>risk_score</code>, <code>risk_bin</code> and <code>label</code> in particular.</li>
+</ol>
+<p><strong>Hints</strong> - consider the following:</p>
+<ul>
+<li>Use the search tool for finding the appropriate dataset</li>
+<li>Use the <code>download.file()</code> function to do a direct load of the dataset into your system</li>
+<li>Make sure the work directory is set to allow ease of loading the dataset into RStudio</li>
+</ul>
+<ol start="2" type="1">
+<li>How many Lower Super Output Areas (or postcodes) fall under the following risk categories (i.e., <strong>Very low [0-2]</strong>, <strong>Low [2-4]</strong>, <strong>Medium [4-6]</strong>, <strong>High [6-8]</strong> or <strong>Very high [8-12]</strong>) for being identified as areas with families at risk of housing insecurity? Show the numbers and their proportion.</li>
+</ol>
+<p><strong>Hints</strong> - consider using the following functions:</p>
+<ul>
+<li><code>table()</code></li>
+<li><code>prop.table(table())</code></li>
+</ul>
+<ol start="3" type="1">
+<li>The mean risk score for housing insecurity across England is <code>3.488815</code>, with a standard deviation of <code>1.660645</code>. This outcome is just one of many possible values we might observe if we were to collect the data again. Assuming that risk score for housing insecurity follows a normal distribution, what is the probability that some areas in England would be classified, <strong>at least</strong>, as a <strong>High</strong> risk area?</li>
+</ol>
+<p>Generate a probability distribution curve to support this result.</p>
+<p><strong>Hints</strong> - look at sections <a href="https://uclpg-msc-sgds.github.io/GEOG0186/08-probability_distribution.html#using-the-normal-distribution-for-making-a-prediction-length-1750-minutes"><strong>1.4</strong></a> and <a href="https://uclpg-msc-sgds.github.io/GEOG0186/08-probability_distribution.html#scenario-2-the-probabilities-for-at-least"><strong>1.4.2</strong></a>.</p>
 
 
 </section>
