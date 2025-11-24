@@ -276,7 +276,7 @@ In this worksheet, the aim of this worksheet is conduct exploration analysis of 
 - **Particular matter** (`pm10`)
 - **Year** (`2025`)
 
-From the above information, use the `importAURN()` code to extract all 2025 measure for **PM2.5** and **PM10** from **CA1** and **CLL2** locations. 
+From the above information, use the `importAURN()` code to extract all 2025 measure for **PM2.5** and **PM10** from **CA1** and **CLL2** locations. What is the code syntax for this operation?
 
 **HINT**: The code syntax should resemble the follow: `importAURN(site = , year = , data_type = , pollutant = c())`
 
@@ -303,5 +303,5 @@ Provide the necessary interpretation of their relationship.
 
 The above date is a hard deadline!
 
-Please download the answer sheet **HERE**. You can use the answer sheet for this worksheet to insert your answers into the appropriate sections. Please note that this Worksheet 4, in particular will only be marked with individualised feedback to the script.
+Please download the answer sheet [**HERE**](https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/tasks/Answers%20sheet%20for%20task%204.docx). You can use the answer sheet for this worksheet to insert your answers into the appropriate sections. Please note that this Worksheet 4, in particular will only be marked with individualised feedback to the script.
 :::

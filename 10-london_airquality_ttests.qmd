@@ -84,5 +84,5 @@ Using the field collected data - you must explore the differences between two gr
 
 The above date is a hard deadline!
 
-Please download the answer sheet **HERE**. You can use the answer sheet for this worksheet to insert your answers into the appropriate sections. Please note that this Worksheet 5, in particular will only be marked with individualised feedback to the script.
+Please download the answer sheet [**HERE**](https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/tasks/Answers%20sheet%20for%20task%205.docx). You can use the answer sheet for this worksheet to insert your answers into the appropriate sections. Please note that this Worksheet 5, in particular will only be marked with individualised feedback to the script.
 :::
