@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -379,8 +414,18 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#fieldwork-exploration-of-air-quality-on-the-streets-of-london" id="toc-fieldwork-exploration-of-air-quality-on-the-streets-of-london" class="nav-link active" data-scroll-target="#fieldwork-exploration-of-air-quality-on-the-streets-of-london"><span class="header-section-number">1</span> Fieldwork Exploration of Air Quality on the Streets of London</a>
+  <ul>
+  <li><a href="#what-is-a-t-test" id="toc-what-is-a-t-test" class="nav-link" data-scroll-target="#what-is-a-t-test"><span class="header-section-number">1.1</span> What is a t-test?</a></li>
+  </ul></li>
+  <li><a href="#worksheet-five-london-air-quality-ii" id="toc-worksheet-five-london-air-quality-ii" class="nav-link" data-scroll-target="#worksheet-five-london-air-quality-ii"><span class="header-section-number">2</span> Worksheet Five: London Air Quality II</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -405,8 +450,135 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="fieldwork-exploration-of-air-quality-on-the-streets-of-london" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Fieldwork Exploration of Air Quality on the Streets of London</h1>
+<p>Last week, we used open source air pollution secondary data to perform a <strong>descriptive time-series analysis</strong>, <strong>correlation</strong> and a <strong>linear regression</strong> model.</p>
+<p>In this practical, you will step into the role of an urban air-quality investigator. Over the past week, most of you have taken handheld air-pollution monitors into the streets of London to collect real-time data on the air they breathe. These monitors capture small-scale variations in pollutants—variations that can shift dramatically over just a few metres. In dense urban environments, these subtle changes matter: they shape not only the spatial patterns we observe in datasets, but also the personal exposure risks faced by people moving through the city each day.</p>
+<p>With that said, you will work with the dataset collected during these field surveys. Your task is to explore how air quality changes around your assigned field location and to test a hypothesis of your choosing. The nature of your hypothesis should reflect the features of your street or the environmental processes you think might be at play. For example, you might investigate whether:</p>
+<ul>
+<li>Air quality is worse in areas with slow or congested traffic</li>
+<li>Pollution decreases as you move further from the main road</li>
+<li>Outdoor smoking areas outside pubs or cafés influence local air quality</li>
+</ul>
+<p>These are just starting points but you are free to formulate any hypothesis grounded in plausible urban processes. As you proceed, remember that your analysis in the computer practical will require comparing two groups (e.g., near vs.&nbsp;far from the road, high traffic vs.&nbsp;low traffic zones, or street number 1 versus street number 2 etc.). Keep this in mind when designing your hypothesis and exploring the dataset. Also note that meaningful statistical testing (i.e., <strong>unpaired t-test</strong>) often requires more data than expected, so be prepared for sample size considerations as you evaluate significance.</p>
+<div class="callout callout-style-default callout-warning callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p>By the end of this activity, you should have a deeper appreciation for how dynamic and localised air pollution can be—and how thoughtful data collection and analysis can help us make sense of complex urban environments.</p>
+<p>Let’s begin!</p>
+<section id="what-is-a-t-test" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-a-t-test"><span class="header-section-number">1.1</span> What is a t-test?</h2>
+<p>A <strong>t-test</strong> is a statistical method used to determine whether the <strong>mean (average)</strong> of a numerical variable differs significantly between two groups. It tests whether any observed difference in means is likely due to real differences between the groups or simply random variation.</p>
+<p>In the context of the air pollution problem - an example would be comparing two monitoring AURN stations. For instance, suppose you have <strong>PM2.5</strong> data from:</p>
+<ul>
+<li>Station A (e.g., <strong>London North Kensington</strong> (Code: <strong>KC1</strong>))</li>
+<li>Station B (e.g., <strong>London Farringdon Street</strong> (Code: <strong>LOFS</strong>))</li>
+</ul>
+<p>We want to compare if there’s any differences in the levels of <strong>PM2.5</strong> between these locations, an <strong>unpaired two-sample t-test</strong> can be used to answer this question.</p>
+<p>Let show you how by using open source data as a motivating example:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"openair"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>air_data_ttest <span class="ot">&lt;-</span> <span class="fu">importAURN</span>(<span class="at">site =</span> <span class="fu">c</span>(<span class="st">"KC1"</span>, <span class="st">"LOFS"</span>), <span class="at">year =</span> <span class="dv">2025</span>, <span class="at">data_type =</span> <span class="st">"daily"</span>, <span class="at">pollutant =</span> <span class="st">"pm2.5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Importing AQ Data ■■■■■■■■■■■■■■■■                  50% |  ETA:  2s</code></pre>
+</div>
+</div>
+<p>First thing, since we are comparing groups i.e., <strong>KC1</strong> and <strong>LOFS</strong>. Explore the mean <strong>PM2.5</strong> by stations using <code>tapply()</code> function:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span>, air_data_ttest<span class="sc">$</span>code, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     KC1     LOFS 
+8.786574 7.605366 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span>, air_data_ttest<span class="sc">$</span>code, sd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     KC1     LOFS 
+7.450127 3.405972 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span> <span class="sc">~</span> air_data_ttest<span class="sc">$</span>code, <span class="at">ylab =</span> <span class="st">"Daily Average PM2.5 (μg/m³)"</span>, <span class="at">xlab =</span> <span class="st">"Location"</span>, <span class="at">outline =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="10-london_airquality_ttests_files/figure-html/mean_groups_analysis-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can see, at face-value, the average <strong>PM2.5</strong> at <strong>KC1</strong> (i.e., Kensington) is 8.786, which is a slightly higher than <strong>LOFS</strong> (i.e., Farringdon) which has an average of 7.605. Visually, however, it is difficult based on medians, but KC1 has a wide distribution with more extreme values.</p>
+<p>Now, we want to know if this difference are indeed <strong>statistical significant</strong>. We can do this by using the <code>t.test()</code> and declaring <code>paired = FALSE</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span>[air_data_ttest<span class="sc">$</span>code <span class="sc">==</span> <span class="st">"KC1"</span>], air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span>[air_data_ttest<span class="sc">$</span>code <span class="sc">==</span> <span class="st">"LOFS"</span>], <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  air_data_ttest$pm2.5[air_data_ttest$code == "KC1"] and air_data_ttest$pm2.5[air_data_ttest$code == "LOFS"]
+t = 2.48, df = 490.6, p-value = 0.01347
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.2453977 2.1170178
+sample estimates:
+mean of x mean of y 
+ 8.786574  7.605366 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Interpretation:</strong> This t-test examines whether the average PM2.5 concentration differs between two air-quality monitoring stations: KC1 and LOFS. It shows the following:</p>
+<ol type="1">
+<li><p><strong>Difference</strong> in means i.e., PM2.5 at KC1: <strong>8.79 µg/m³</strong>, and LOFS is <strong>7.61 µg/m³</strong>. So KC1 has a higher average PM2.5 than LOFS by about 1.18 µg/m³.</p></li>
+<li><p><strong>Statistical significance</strong> with <strong>p = 0.01347</strong> which less than less than 0.05. Therefore, the difference in mean PM2.5 between the two stations is <strong>statistically significant</strong>. This means that at <strong>KC1</strong>, it genuinely tends to experience higher PM2.5 levels than LOFS.</p></li>
+</ol>
+</div>
+</div>
+<p>That is how you execute a <strong>t-test</strong>. Now, you should be able to do final worksheet.</p>
+</section>
+</section>
+<section id="worksheet-five-london-air-quality-ii" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Worksheet Five: London Air Quality II</h1>
+<p>Using the field collected data - you must explore the differences between two groups. The question is: <strong>Are there any significant difference in the mean air quality indicator measured between the two streets you were designated with?</strong></p>
+<ol type="1">
+<li>Carry out a descriptive analysis comparing the mean and standard deviation - use the <code>tapply()</code> function for the purpose.</li>
+<li>Generate a boxplot to compare the distribution between groups.</li>
+<li>Use the <strong>Unpaired t-test</strong> must be performed as the statistical test to answer the above question. Provide full interpretation of whether the differences are statistical significant or not.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Submission Deadline: Wednesday 10th December, 2025</strong></p>
+<p>The above date is a hard deadline!</p>
+<p>Please download the answer sheet <strong>HERE</strong>. You can use the answer sheet for this worksheet to insert your answers into the appropriate sections. Please note that this Worksheet 4, in particular will only be marked with individualised feedback to the script.</p>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -836,5 +1008,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer><script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/UCLPG-MSC-SGDS/GEOG0186/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer><script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

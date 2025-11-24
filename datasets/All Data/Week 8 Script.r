@@ -120,4 +120,5 @@ axis(2, at = seq(20, 40, by = 1), labels = FALSE, tcl = -0.3)
 box(bty = "L")
 
 
-
+library("openair")
+air_data_ttest <- importAURN(site = c("KC1", "LOFS"), year = 2025, data_type = "daily", pollutant = "pm2.5")
