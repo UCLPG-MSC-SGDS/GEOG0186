@@ -301,7 +301,7 @@ Provide the necessary interpretation of their relationship.
 :::{.callout-important}
 **Submission Deadline: Thursday 27th November, 2025**
 
-The above date is a hard deadline!
+The above date is a hard deadline! You need to submit the work via Moodle, through the [**GEOG0186: LONDON** page](https://moodle.ucl.ac.uk/course/view.php?id=51594).
 
 Please download the answer sheet [**HERE**](https://github.com/UCLPG-MSC-SGDS/GEOG0186/raw/main/tasks/Answers%20sheet%20for%20task%204.docx). You can use the answer sheet for this worksheet to insert your answers into the appropriate sections. Please note that this Worksheet 4, in particular will only be marked with individualised feedback to the script.
 :::
