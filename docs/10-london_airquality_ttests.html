@@ -421,7 +421,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#fieldwork-exploration-of-air-quality-on-the-streets-of-london" id="toc-fieldwork-exploration-of-air-quality-on-the-streets-of-london" class="nav-link active" data-scroll-target="#fieldwork-exploration-of-air-quality-on-the-streets-of-london"><span class="header-section-number">1</span> Fieldwork Exploration of Air Quality on the Streets of London</a>
   <ul>
-  <li><a href="#what-is-a-t-test" id="toc-what-is-a-t-test" class="nav-link" data-scroll-target="#what-is-a-t-test"><span class="header-section-number">1.1</span> What is a t-test?</a></li>
+  <li><a href="#what-is-a-t-test-how-to-do-it" id="toc-what-is-a-t-test-how-to-do-it" class="nav-link" data-scroll-target="#what-is-a-t-test-how-to-do-it"><span class="header-section-number">1.1</span> What is a t-test &amp; how to do it?</a></li>
   </ul></li>
   <li><a href="#worksheet-five-london-air-quality-ii" id="toc-worksheet-five-london-air-quality-ii" class="nav-link" data-scroll-target="#worksheet-five-london-air-quality-ii"><span class="header-section-number">2</span> Worksheet Five: London Air Quality II</a></li>
   </ul>
@@ -461,23 +461,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Outdoor smoking areas outside pubs or cafés influence local air quality</li>
 </ul>
 <p>These are just starting points but you are free to formulate any hypothesis grounded in plausible urban processes. As you proceed, remember that your analysis in the computer practical will require comparing two groups (e.g., near vs.&nbsp;far from the road, high traffic vs.&nbsp;low traffic zones, or street number 1 versus street number 2 etc.). Keep this in mind when designing your hypothesis and exploring the dataset. Also note that meaningful statistical testing (i.e., <strong>unpaired t-test</strong>) often requires more data than expected, so be prepared for sample size considerations as you evaluate significance.</p>
-<div class="callout callout-style-default callout-warning callout-empty-content callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
 <p>By the end of this activity, you should have a deeper appreciation for how dynamic and localised air pollution can be—and how thoughtful data collection and analysis can help us make sense of complex urban environments.</p>
 <p>Let’s begin!</p>
-<section id="what-is-a-t-test" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-a-t-test"><span class="header-section-number">1.1</span> What is a t-test?</h2>
+<section id="what-is-a-t-test-how-to-do-it" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-a-t-test-how-to-do-it"><span class="header-section-number">1.1</span> What is a t-test &amp; how to do it?</h2>
 <p>A <strong>t-test</strong> is a statistical method used to determine whether the <strong>mean (average)</strong> of a numerical variable differs significantly between two groups. It tests whether any observed difference in means is likely due to real differences between the groups or simply random variation.</p>
 <p>In the context of the air pollution problem - an example would be comparing two monitoring AURN stations. For instance, suppose you have <strong>PM2.5</strong> data from:</p>
 <ul>
@@ -552,11 +539,12 @@ Important
 </section>
 <section id="worksheet-five-london-air-quality-ii" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Worksheet Five: London Air Quality II</h1>
-<p>Using the field collected data - you must explore the differences between two groups. The question is: <strong>Are there any significant difference in the mean air quality indicator measured between the two streets you were designated with?</strong></p>
+<p>Using the field collected data - you must explore the differences between two groups. The question is:</p>
+<p><strong>Are there any significant difference in the mean air quality indicator measured between the two streets you were designated with?</strong></p>
 <ol type="1">
 <li>Carry out a descriptive analysis comparing the mean and standard deviation - use the <code>tapply()</code> function for the purpose.</li>
 <li>Generate a boxplot to compare the distribution between groups.</li>
-<li>Use the <strong>Unpaired t-test</strong> must be performed as the statistical test to answer the above question. Provide full interpretation of whether the differences are statistical significant or not.</li>
+<li>Use the <strong>Unpaired t-test</strong> to perform the statistical test to answer the above question. Provide full interpretation of whether the differences are statistical significant or not.</li>
 </ol>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">

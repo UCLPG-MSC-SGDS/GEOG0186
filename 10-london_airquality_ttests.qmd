@@ -16,15 +16,11 @@ With that said, you will work with the dataset collected during these field surv
 
 These are just starting points but you are free to formulate any hypothesis grounded in plausible urban processes. As you proceed, remember that your analysis in the computer practical will require comparing two groups (e.g., near vs. far from the road, high traffic vs. low traffic zones, or street number 1 versus street number 2 etc.). Keep this in mind when designing your hypothesis and exploring the dataset. Also note that meaningful statistical testing (i.e., **unpaired t-test**) often requires more data than expected, so be prepared for sample size considerations as you evaluate significance.
 
-:::{.callout-warning}
-
-:::
-
 By the end of this activity, you should have a deeper appreciation for how dynamic and localised air pollution can be—and how thoughtful data collection and analysis can help us make sense of complex urban environments.
 
 Let's begin!
 
-## What is a t-test?
+## What is a t-test & how to do it?
 
 A **t-test** is a statistical method used to determine whether the **mean (average)** of a numerical variable differs significantly between two groups. It tests whether any observed difference in means is likely due to real differences between the groups or simply random variation.
 
@@ -71,11 +67,13 @@ That is how you execute a **t-test**. Now, you should be able to the do final wo
 
 # Worksheet Five: London Air Quality II
 
-Using the field collected data - you must explore the differences between two groups. The question is: **Are there any significant difference in the mean air quality indicator measured between the two streets you were designated with?**
+Using the field collected data - you must explore the differences between two groups. The question is: 
+
+**Are there any significant difference in the mean air quality indicator measured between the two streets you were designated with?**
 
 1. Carry out a descriptive analysis comparing the mean and standard deviation - use the `tapply()` function for the purpose.
 2. Generate a boxplot to compare the distribution between groups.
-3. Use the **Unpaired t-test** must be performed as the statistical test to answer the above question. Provide full interpretation of whether the differences are statistical significant or not.
+3. Use the **Unpaired t-test** to perform the statistical test to answer the above question. Provide full interpretation of whether the differences are statistical significant or not.
 
 :::{.callout-important}
 **Submission Deadline: Wednesday 10th December, 2025**
