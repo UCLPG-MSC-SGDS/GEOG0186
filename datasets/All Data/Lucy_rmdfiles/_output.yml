@@ -1,0 +1,10 @@
+bookdown::gitbook:
+  css: assets/custom.css
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li class = "toc-logo">
+        <a href="https://www.ucl.ac.uk/module-catalogue/modules/GEOG0014"><img src="images/ucl_logo.png">
+        </a></li>
+    edit: https://github.com/lucyrroberts/GEOG0014/edit/main/%s

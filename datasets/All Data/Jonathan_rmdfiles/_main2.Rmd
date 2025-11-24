@@ -1,0 +1,69 @@
+--- 
+title: "Analysis of Air Quality Data - Practical Exercise"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+link-citations: yes
+github-repo: "ProfJAHolmes/GIF2_air_quality"
+bibliography: [book.bib, packages.bib]
+description: "Air Quality Practical"
+editor_options:
+  markdown:
+    wrap: 72
+---
+
+# Introduction to analysis of air-quality data DATA {.unnumbered}
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('images/general/London.png')
+```
+
+In this practical, you'll be plotting and undertaking some statistical analysis of air-quality data from Camden. You will use and build on some of the techniques you have learned earlier in the term.
+
+___________________________________________________________________________
+
+**Prof Jonathan A. Holmes**    
+Department of Geography | Room 211 NW Wing
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('images/general/PM10.png')
+```
+
+
+
+
+ 
+
+# Overview and getting help
+
+Air quality is measured at numerous sites across the UK, using both automated and manual equipment. In the London Brough of Camden, there are two automated stations: Camden Kerbside (latitude/longitude: 51.544210, -0.175269) and London Bloomsbury (51.522290, -0.125889) that form part of the Automatic Urban and Rural Network (AURN). Air-quality data are available from the UK Defra air information resource.
+
+**The aim of this practical** is to undertake statistical analysis of Camden air quality data that you will download from the Defra air information resource. Data analysis will be undertaken using R. The exercises only require you to use base R and you do not need to install any packages, although you are welcome to use packages such as ggplot2 for graphing if you already know how to do this.
+
+**There are plenty of opportunities to get help with this exercise if you are stuck** 
+First, watch the introductory video below. You are **very strongly** recommended to you watch this **before** attemthe practical class. Second, you can ask one of the staff or PGTAs during the practical class or  seminar. Finally, if you have watched the video and attended all of the face-to-face sessions but are still having problems, you can come along to my [office hours](https://outlook.office.com/bookwithme/user/1e3725c33fe04c61a37c497da26ae943%40ucl.ac.uk/meetingtype/3653e16b-07f3-4c6c-9f0d-a7a468b48404?anonymous), but **please** do not email code that does not work to me, other staff or to the PGTAs expecting us to fix it for you.
+
+**Video: Introduction to the Air Quality practical (Length: XX minutes)**
+```{r video_1, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_msstream('4e37c5a5-d11d-484b-b6d9-cfbded53a36b') %>% use_align('center')
+```
+
+<!--chapter:end:index.Rmd-->
+
+
+# Tasks
+
+Placeholder
+
+
+## Data download 
+## Reading data into R
+## Plotting and data analysis
+### **Descriptive statistics** [25 marks in total] 
+### Time-series plot [25 marks in total] 
+### Difference between sites [25 marks in total] 
+### Difference between the two variables 
+
+<!--chapter:end:01-mainbody.Rmd-->
+

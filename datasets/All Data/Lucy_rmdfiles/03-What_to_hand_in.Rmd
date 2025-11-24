@@ -1,0 +1,24 @@
+# What to hand in {-}
+As a group you must produce and hand-in a short report based on the measurements you have taken. You should hand in your group report, in a single document maximum of 3 sides of A4 (including references, Figures and Tables) that has 2 cm margins all round. Graphs should be appropriately titled, labelled and scaled: they should be large enough to be legible but not excessively large. Text should be in 11pt Times or Arial and adhere to the report length stated above. Any text that exceeds this limit will be disregarded and not marked. Your group’s report must contain the following elements: 
+
+|  | |
+|:---|:-------------------|
+| **Title** |
+| **Hypothesis** |
+| **Location** | Briefly describe where you undertook the research and the rationale behind the site selection. |
+| **Methods** | Briefly describe how you undertook the research and the equipment used. |
+| **Results** | The raw data you collect should be in your individual field notebooks but briefly summarise your results. Use Graphs and Tables as appropriate. | 
+| **Interpretation** | Describe how you have used your data to determine whether they support your hypothesis. |
+| **Conclusions** | Summarise your key findings as 1 or 2 bullet points. |
+| **Reflection** | What worked well or badly? If you were doing it again, what would you change? Were there other unforeseen factors that influenced your results? |
+| **References** | Include any references that you have used | 
+
+<br>
+In your report, you must also address the following questions:
+
+- Which t-test did you undertake and why? 
+- What, if any, assumptions have you made about your data? 
+
+Your file should be submitted anonymously by **12:00 (noon) on Friday 14th February 2025** using the Turnitin link on the course Moodle page entitled **Worksheet Number 1**. This worksheet is a group exercise and only one file should be submitted per group. Follow the guidelines for group submissions, which can be found on the module Moodle pages. Make sure that you adhere strictly to the file name instructions: if you do not, there is a chance that we will not be able to link the submission to you and that you will not receive the marks for it as a result. 
+
+

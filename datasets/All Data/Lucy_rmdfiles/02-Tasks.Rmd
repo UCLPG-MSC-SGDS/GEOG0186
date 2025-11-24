@@ -1,0 +1,72 @@
+# Tasks {-}
+The tasks are described below. You will explore the differences between two groups in order to test your chosen hypothesis. 
+
+## Organising your data {-}
+
+You should have recorded your data in the field in your field notebook. You will need to type this up in Excel and save it as .csv file. Save this in a sensible location. Set your working directory in R to that location and load the .csv file using the ```read.csv()``` command. You can use the ```view()``` command to see the full data viewer.
+
+<div class = "note">
+**Tip** Look back at GEOG0013 and think how you should organise your data in Excel. If you have undertaken your measurements in the same location but under different categories/scenarios, consider if a heading other than location is most appropriate. 
+</div>
+
+## Summary Statistics {-}
+
+Calculate summary statistics (e.g the mean, standard deviation etc.) of your dataset(s) using the ```mean()```, ```sd()```, ```min()```functions etc. 
+
+<div class = "note">
+**Tip** Think about how your data is organised. If you have 'grouped' data by locations or categories, you will need to define the rows that your categories are in e.g rows 1 to 10 would be [1:10] and is inserted as follows: 
+```summary statistic of choice(data$variable[rowstart:rowendofcategory], na.rm=TRUE)```
+</div>
+
+<Br>
+Now, visualise the distribution of your data using the ```boxplot()``` function. 
+Unlike your previous practical, you may want to plot more than one boxplot in the same figure frame. To do this you will need to define the following aspects in your code ```boxplot(yaxis~xaxis,data=your data......)```
+
+<br>
+What does this plot tell you? Think about what you need to visualise this way in order to test your hypothesis. 
+
+## Comparing two or more groups {-}
+
+Now you will test how statistically significant the differences between your groups are. The below video explains why and how we test for statistical significance. It includes some important information that may help later so I recommend watching this before proceeding. 
+
+```{r warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+embed_youtube('GlgG1MGQOvA', height = 400) %>% use_align('center')
+```
+
+For our data, we will undertake a t-test. The t-test compares sample mean and standard deviations while considering sample size and the degree of variability of the data to determine if there is a significant difference between the means of the two groups. There are one-sample and two-sample t-tests; paired and unpaired t-tests. **Using the information in the video and the below, consider which is most appropriate for your data.** 
+
+
+| **Test** | |
+|:--------|:-------------------|
+| One sample | Calculates if there is a significant difference between the sample mean and hypothesis or assumed population mean. For example, the PM~2.5~ concentration within a metre of someone smoking is >250.5 µg m^-3^.|
+| Two sample paired sample t-test | Compares two population means in the case of two samples that are correlated. For instance, air quality before and after rain or before and after rush hour in the same location. | 
+| Two sample unpaired t-test (or independent t-test) | Compares the means of two independent or unrelated groups to determine if there is a significant difference between the two. For instance, comparing air quality during rush hour in Barcelona and London i.e. between two locations. |
+
+<br>
+We can use the ```t.test()``` function in R. 
+
+- To define the groups for a Two Sample t-test, we can use the same approach to the code the boxplot. i.e. ```variable~category, data =```
+
+- To perform Two Sample t-tests with equal variance, we have to set ```var.equal=TRUE```
+
+- To perform a Paired t-test in R, we have to set ```paired=TRUE``` 
+
+<div class = "note">
+You might want to think about what assumptions you might have made about your datasets when undertaking these analyses. 
+</div>
+
+The higher the t-score, the larger the difference between the two sample sets and it is less likely that this was due to chance. 
+
+<div class = "note">
+A minus sign of a t-value is not a lower value, the ± indicates the direction.
+</div>
+
+## P-value {-} 
+
+The ‘p’ in p-value represents ‘probability’ and it is a measure of how likely any observed difference between groups is due to chance. A p-value is provided in the output of the t.test() function, but what does it mean? 
+
+Simply, the lower the p-value, the greater the statistical significance of the observed difference. P-values are calculated as a percentage (from 0-100%), but the output is a decimal. For example, a p-value of 5% is 0.05 and means there was a 5% chance that these results occurred by chance. **A p-value of 0.05 or lower is considered statistically significant.**
+
+
+

@@ -1,0 +1,12 @@
+book_filename: "GEOG0014: GIF2"
+rmd_files:
+- index.Rmd
+- 01-Overview.Rmd
+- 02-Tasks.Rmd
+- 03-What_to_hand_in.Rmd
+
+language:
+  ui:
+    chapter_name: ""
+delete_merged_file: true
+output_dir: "docs"

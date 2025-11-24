@@ -1,0 +1,34 @@
+# Tasks
+The tasks are described below. You should present the results of your calculations and plots, as indicated, together with any comments on the data. Make sure that your comments adhere to the length limits specified. This is an independent piece of work. Although you are welcome to discuss the exercise with your colleagues, all of the analyses and plots should be your own work.
+
+## Data download 
+Download data for the calendar year 2020 from the Defra data selector for both of the Camden monitoring stations by clicking [**here**](https://uk-air.defra.gov.uk/data/data_selector_service?show=auto&submit=Reset&f_limit_was=1) First, select 'Search hourly networks' and then, for the various options, choose as follows: data type = daily mean; date range = the year in question, monitoring sites = local authority and then London Borough of Camden (choose Camden Kerbside and London Bloomsbury from the list) select pollutants =  by monitoring network and AURN and then select the following two variables from the drop-down list: PM10 particulate matter (hourly measured) and PM2.5 Particulate matter (hourly measured). You can either chose to view the data on screen and then copy and paste them into excel OR have the data emailed to you as a csv file. Note that the email option has not been working so copying and pasting from the on-screen option into a csv file may be best. If you do chose this option however, make sure that the data from the two sites appear in separate columns in your csv file. Once the file has been received or created, save it onto your N:/ drive (or your desktop if using your own computer). Before reading the dataset into R, you will need to perform a basic clean-up to replace the entry in those cells for which there are no values (marked ‘No data’) with empty cells, using the search and replace function in excel.
+
+## Reading data into R
+Read the cleaned data file into R using the read.csv command, skipping the first four lines (which contain neither the column headings nor values). Then create a new dataset comprising only the date column and the columns containing values (i.e. omit the columns labelled ‘status’). This dataset is used for all subsequent analyses described below. 
+
+## Plotting and data analysis
+
+### **Descriptive statistics**  
+Calculate the mean and standard deviation for PM10 and PM2.5 for both sites: calculate the mean and standard deviation for the entire year first of all, and then for each quarter. Present these values in a simple table.
+
+### Time-series plot
+Produce two time-series plots for Camden Kerbside, one for PM10  and a second for PM2.5. Make sure that you label the x-axis with the date, and the y axis with the name of the variable and the units of measurement. 
+
+Comment briefly on the variations in the variable. How similar are the time series for the two variables? [5 lines]
+
+### Difference between sites 
+You will now investigate further any differences or similarities between the two Camden sites, using either PM10 or PM2.5 (you only need to make one plot).
+
+First, plot the data for the two sites on a bivariate scatter plot, clearly noting which axis represents which site by appropriate labelling. Then fit a linear regression line through the dataset. Give the regression equation for the regression line and calculate the correlation coefficient between the two variables.
+
+
+### Difference between the two variables [25 marks in total] 
+You will now investigate the relationship between the two variables (PM10 and PM2.5) for one of the sites. For either Camden Kerbside or London Bloomsbury, plot PM10 and PM2.5 on a bivariate scatter plot, clearly noting which axis represents which variable by appropriate labelling and indicating which site you have chosen in the plot title. Then fit a linear regression line through the dataset. Give the regression equation for the regression line and calculate the correlation coefficient between the two variables.
+
+
+# What to hand in
+You should hand in the graphs, results of statistical tests and table, as noted above, in a single document that has 2 cm margins all round and does not exceed 2 A4 pages in length. Graphs and tables should be appropriately titled, labelled and scaled: they should be large enough to be legible but not excessively large.  
+
+NOTE - this text may need to be amended depening on subnission instructions for Foundations of Geography 1 formative assessment. Your file should be submitted anonymously using the turnitin link on the course moodle page entitled worksheet number 2. **Make sure you follow exactly the submission instructions on moodle.**
+

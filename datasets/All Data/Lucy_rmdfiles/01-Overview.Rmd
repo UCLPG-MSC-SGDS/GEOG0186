@@ -1,0 +1,24 @@
+# Overview {-}
+The pollutants that reduce air quality in urban environments can vary considerably on small spatial scales. This is an important consideration when interpreting patterns in air quality data but is also important for individual personal exposure. 
+
+**The aim of this practical** is to try and determine changes in air quality around your allocated field location in order to test a hypothesis of your choosing. Your hypothesis may depend on the features of your street and can be anything that you like, for example:
+
+- Air quality is worse in areas of slow moving traffic.
+- Air quality improves further from roads. 
+- Pub smoking areas impact local air quality. 
+
+<div class = "note">
+**Remember** You will need to compare two groups during the computer practical, so please bear this in mind when choosing and testing your hypothesis. The sample size requirement is likely much larger than you think in order to test significance. 
+</div>
+
+## In the field {-}
+
+You should use the air quality monitor to test your hypothesis. Think about the best places and times to take measurements, the number of replicate measurements that you need to take, how often you should undertake the measurements and so on. These measured data should be recorded in your field notebooks along with the usual information of dates, times, location, personnel. Also, think about any additional data or observations that you need to take in order to undertake the statistical test and to better interpret your measurements.
+
+<div class = "note">
+**Remember** Your group is responsible for your monitor. They are not designed to be left outside and will be damaged if they get wet.  
+</div>
+
+## During the computer practical {-}
+
+By this point, you should have already decided on your hypothesis and visited your allocated street to undertake your measurements. We will analyse the data that you have collected in the field using R. More information is available on the “Tasks” page. 

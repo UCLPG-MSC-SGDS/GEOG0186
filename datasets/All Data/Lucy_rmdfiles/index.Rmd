@@ -1,0 +1,42 @@
+--- 
+title: "GEOG0014: Geography in the Field 2 (GIF2) 2024/25"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+github-repo: "lucyrroberts/GEOG0014"
+description: "GEOG0014: Geography in the Field 2 (GIF2)"
+editor_options:
+  markdown:
+    wrap: 72
+---
+
+# Introduction {-}
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE}
+knitr::include_graphics('images/Welcome_page_image.jpeg')
+```
+
+Welcome to the first GEOG0014 Geography in the Field 2 practical. You will use and build on some of the techniques you learned in Term 1 in GEOG0013 Geography in the Field 1. Data analysis will be undertaken using R, which was introduced to you in Term 1 by Dr Anwar Musah. 
+
+<div class = "note">
+**Important!** If you did not download R/RStudio on your personal computer for the GEOG0013 practicals, then you will need to do so before attending your timetabled practical for GEOG0014 as these will not be held in UCL cluster rooms. If you are having difficulties installing RStudio, and installation is not possible because you are using a tablet, you can use the UCL Desktop Cloud system to work remotely and gain access to RStudio from your laptop/PC/tablet.
+</div>
+
+For help getting started with R, you can revisit Anwar’s video [**‘Introduction to Statistics’ 'Part 1 Getting started with R studio’**](https://uclpg-msc-sgds.github.io/GEOG0013/part-1-getting-started-with-rstudio.html) You will also find it helpful to refer more generally to the [**GEOG0013 introduction to statistics**](https://uclpg-msc-sgds.github.io/GEOG0013/index.html) from term 1.
+
+Since you will hand in a group report, you can complete the practical together as a group. You will need to complete the next R practical individually; now would be a good opportunity to work together, so that all your group have (re)familiarised themselves with R and know how to complete the practical. 
+
+## Timetable {-}
+| **Date** | **Session**|
+|:---------- |:-------------------|
+| **Monday 20th Jan (12-1pm)** | **Lecture + introduction to the practical**|
+| **Tuesday 21st Jan (10am-12pm)** | **Collection of monitors** One representative from each group must visit Ian Patmore (Basement lab; North-west Wing) to collect, sign out and be instructed in the use of the air quality monitor.|
+|**Friday 24th Jan (2-5pm)** | **Timetabled period for the field practical** (but in practice, you have from the afternoon of 21st Jan to Thursday 30th to undertake the fieldwork) |
+| **Friday 31st Jan** (check your timetable for your allocated practical) | **Computer practical for statistical analysis of your field data** It is recommended to have read through this practical handbook before attending the practical.|
+|**Tuesday 4th Feb OR Thursday 6th Feb** (depending on your timetable) | **Drop in seminar for help with the practical** You must also sign back your air quality monitors at this session. **Important: Your report will not be accepted as complete until the monitors are returned unless there are extenuating circumstances**|
+| **Friday 14th Feb (12 noon)** | **Deadline for handing in group reports on Moodle** | 
+
+## Getting Help {-}
+
+Your first point of call to receive help is to attend the practical and the seminar for your group. At these, you can speak to me and/or the PGTAs. There is also a wealth of help and support for R on the internet; you may wish to search for a solution on [**stack overflow**](https://stackoverflow.com/questions). If you have followed these steps and are still stuck, you can book my [**ASF hours**](https://outlook.office.com/bookwithme/user/6a902a354f31468da81a876fb11be2af@ucl.ac.uk/meetingtype/09CpNqbsxkqKNmAuG7aaZw2?anonymous&ep=mLinkFromTile). **Please do not email questions to the PGTA leading your seminar and do not send code via email to any of the teaching team expecting them to correct any errors.**
+
