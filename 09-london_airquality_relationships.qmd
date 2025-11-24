@@ -299,7 +299,7 @@ Provide the necessary interpretation of their relationship.
 **HINTS**: Because the data points are time-series - make sure to use the `diff()` in the `cor.test()` or `lm()` to de-trend observations, as well as remove any autocorrelation between lagged values for both **PM2.5** and **PM10**.
 
 :::{.callout-important}
-**Submission Deadline: Wednesday 3rd December, 2025**
+**Submission Deadline: Thursday 27th November, 2025**
 
 The above date is a hard deadline!
 

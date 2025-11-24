@@ -471,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Station A (e.g., <strong>London North Kensington</strong> (Code: <strong>KC1</strong>))</li>
 <li>Station B (e.g., <strong>London Farringdon Street</strong> (Code: <strong>LOFS</strong>))</li>
 </ul>
-<p>We want to compare if there’s any differences in the levels of <strong>PM2.5</strong> between these locations, an <strong>unpaired two-sample t-test</strong> can be used to answer this question.</p>
+<p>We want to compare if there’s any differences in the levels of <strong>PM2.5</strong> between these two <strong>different</strong> locations, an <strong>unpaired two-sample t-test</strong> can be used to answer this question for this scenario!</p>
 <p>Let show you how by using open source data as a motivating example:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"openair"</span>)</span>
@@ -527,14 +527,17 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Interpretation:</strong> This t-test examines whether the average PM2.5 concentration differs between two air-quality monitoring stations: KC1 and LOFS. It shows the following:</p>
+<p><strong>Interpretation:</strong> This <strong>unpaired t-test</strong> examines whether the average PM2.5 concentration differs between two air-quality monitoring stations: KC1 and LOFS. It shows the following:</p>
 <ol type="1">
 <li><p><strong>Difference</strong> in means i.e., PM2.5 at KC1: <strong>8.79 µg/m³</strong>, and LOFS is <strong>7.61 µg/m³</strong>. So KC1 has a higher average PM2.5 than LOFS by about 1.18 µg/m³.</p></li>
 <li><p><strong>Statistical significance</strong> with <strong>p = 0.01347</strong> which less than less than 0.05. Therefore, the difference in mean PM2.5 between the two stations is <strong>statistically significant</strong>. This means that at <strong>KC1</strong>, it genuinely tends to experience higher PM2.5 levels than LOFS.</p></li>
 </ol>
 </div>
 </div>
-<p>That is how you execute a <strong>t-test</strong>. Now, you should be able to the do final worksheet, and adapt the codes to your own dataset.</p>
+<div class="(.callout-warning)">
+<p>Suppose that repeat pollution measurements were taken at the <strong>same</strong> location but at different time points - your dataset is structure as <strong>before</strong> and <strong>after</strong> scenario. Here you must used a <strong>paired t-test</strong> <strong>NOT</strong> the <strong>unpaired</strong> one! In the <code>t.test()</code> make sure to set the option <code>paired = TRUE</code> to perform a <strong>paired t-test</strong>!</p>
+</div>
+<p>Okay folks, that is how you execute a <strong>t-test</strong>. Now, you should be able to do the final worksheet, and adapt the codes to your own dataset.</p>
 </section>
 </section>
 <section id="worksheet-five-london-air-quality-ii" class="level1" data-number="2">
@@ -544,7 +547,7 @@ Important
 <ol type="1">
 <li>Carry out a descriptive analysis comparing the mean and standard deviation - use the <code>tapply()</code> function for the purpose.</li>
 <li>Generate a boxplot to compare the distribution between groups.</li>
-<li>Use the <strong>Unpaired t-test</strong> to perform the statistical test to answer the above question. Provide full interpretation of whether the differences are statistical significant or not.</li>
+<li>Use the <strong>Unpaired/paired t-test</strong>, depending on your dataset, to perform the statistical test to answer the above question. Provide full interpretation of whether the differences are statistical significant or not.</li>
 </ol>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -556,7 +559,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Submission Deadline: Wednesday 10th December, 2025</strong></p>
+<p><strong>Submission Deadline: Thursday 4th December, 2025</strong></p>
 <p>The above date is a hard deadline!</p>
 <p>Please download the answer sheet <strong>HERE</strong>. You can use the answer sheet for this worksheet to insert your answers into the appropriate sections. Please note that this Worksheet 5, in particular will only be marked with individualised feedback to the script.</p>
 </div>

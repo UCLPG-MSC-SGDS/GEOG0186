@@ -29,7 +29,7 @@ In the context of the air pollution problem - an example would be comparing two 
 - Station A (e.g., **London North Kensington** (Code: **KC1**))
 - Station B (e.g., **London Farringdon Street** (Code: **LOFS**))
 
-We want to compare if there's any differences in the levels of **PM2.5** between these locations, an **unpaired two-sample t-test** can be used to answer this question.
+We want to compare if there's any differences in the levels of **PM2.5** between these two **different** locations, an **unpaired two-sample t-test** can be used to answer this question for this scenario!
 
 Let show you how by using open source data as a motivating example:
 
@@ -56,14 +56,18 @@ t.test(air_data_ttest$pm2.5[air_data_ttest$code == "KC1"], air_data_ttest$pm2.5[
 ```
 
 :::{.callout-important}
-**Interpretation:** This t-test examines whether the average PM2.5 concentration differs between two air-quality monitoring stations: KC1 and LOFS. It shows the following:
+**Interpretation:** This **unpaired t-test** examines whether the average PM2.5 concentration differs between two air-quality monitoring stations: KC1 and LOFS. It shows the following:
 
 1. **Difference** in means i.e., PM2.5 at KC1: **8.79 µg/m³**, and LOFS is **7.61 µg/m³**. So KC1 has a higher average PM2.5 than LOFS by about 1.18 µg/m³.
 
 2. **Statistical significance** with **p = 0.01347** which less than less than 0.05. Therefore, the difference in mean PM2.5 between the two stations is **statistically significant**. This means that at **KC1**, it genuinely tends to experience higher PM2.5 levels than LOFS.
 :::
 
-That is how you execute a **t-test**. Now, you should be able to the do final worksheet, and adapt the codes to your own dataset.
+:::(.callout-warning)
+Suppose that repeat pollution measurements were taken at the **same** location but at different time points - your dataset is structure as **before** and **after** scenario. Here you must used a **paired t-test** **NOT** the **unpaired** one! In the `t.test()` make sure to set the option `paired = TRUE` to perform a **paired t-test**!
+:::
+
+Okay folks, that is how you execute a **t-test**. Now, you should be able to do the final worksheet, and adapt the codes to your own dataset.
 
 # Worksheet Five: London Air Quality II
 
@@ -73,10 +77,10 @@ Using the field collected data - you must explore the differences between two gr
 
 1. Carry out a descriptive analysis comparing the mean and standard deviation - use the `tapply()` function for the purpose.
 2. Generate a boxplot to compare the distribution between groups.
-3. Use the **Unpaired t-test** to perform the statistical test to answer the above question. Provide full interpretation of whether the differences are statistical significant or not.
+3. Use the **Unpaired/paired t-test**, depending on your dataset, to perform the statistical test to answer the above question. Provide full interpretation of whether the differences are statistical significant or not.
 
 :::{.callout-important}
-**Submission Deadline: Wednesday 10th December, 2025**
+**Submission Deadline: Thursday 4th December, 2025**
 
 The above date is a hard deadline!
 
