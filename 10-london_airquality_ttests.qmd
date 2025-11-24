@@ -67,7 +67,7 @@ t.test(air_data_ttest$pm2.5[air_data_ttest$code == "KC1"], air_data_ttest$pm2.5[
 2. **Statistical significance** with **p = 0.01347** which less than less than 0.05. Therefore, the difference in mean PM2.5 between the two stations is **statistically significant**. This means that at **KC1**, it genuinely tends to experience higher PM2.5 levels than LOFS.
 :::
 
-That is how you execute a **t-test**. Now, you should be able to do final worksheet.
+That is how you execute a **t-test**. Now, you should be able to the do final worksheet.
 
 # Worksheet Five: London Air Quality II
 
@@ -82,5 +82,5 @@ Using the field collected data - you must explore the differences between two gr
 
 The above date is a hard deadline!
 
-Please download the answer sheet **HERE**. You can use the answer sheet for this worksheet to insert your answers into the appropriate sections. Please note that this Worksheet 4, in particular will only be marked with individualised feedback to the script.
+Please download the answer sheet **HERE**. You can use the answer sheet for this worksheet to insert your answers into the appropriate sections. Please note that this Worksheet 5, in particular will only be marked with individualised feedback to the script.
 :::

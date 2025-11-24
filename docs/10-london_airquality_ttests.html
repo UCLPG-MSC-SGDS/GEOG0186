@@ -490,23 +490,20 @@ Warning
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"openair"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>air_data_ttest <span class="ot">&lt;-</span> <span class="fu">importAURN</span>(<span class="at">site =</span> <span class="fu">c</span>(<span class="st">"KC1"</span>, <span class="st">"LOFS"</span>), <span class="at">year =</span> <span class="dv">2025</span>, <span class="at">data_type =</span> <span class="st">"daily"</span>, <span class="at">pollutant =</span> <span class="st">"pm2.5"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Importing AQ Data ■■■■■■■■■■■■■■■■                  50% |  ETA:  2s</code></pre>
-</div>
 </div>
 <p>First thing, since we are comparing groups i.e., <strong>KC1</strong> and <strong>LOFS</strong>. Explore the mean <strong>PM2.5</strong> by stations using <code>tapply()</code> function:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span>, air_data_ttest<span class="sc">$</span>code, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span>, air_data_ttest<span class="sc">$</span>code, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     KC1     LOFS 
 8.786574 7.605366 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span>, air_data_ttest<span class="sc">$</span>code, sd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span>, air_data_ttest<span class="sc">$</span>code, sd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     KC1     LOFS 
 7.450127 3.405972 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span> <span class="sc">~</span> air_data_ttest<span class="sc">$</span>code, <span class="at">ylab =</span> <span class="st">"Daily Average PM2.5 (μg/m³)"</span>, <span class="at">xlab =</span> <span class="st">"Location"</span>, <span class="at">outline =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span> <span class="sc">~</span> air_data_ttest<span class="sc">$</span>code, <span class="at">ylab =</span> <span class="st">"Daily Average PM2.5 (μg/m³)"</span>, <span class="at">xlab =</span> <span class="st">"Location"</span>, <span class="at">outline =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -518,7 +515,7 @@ Warning
 <p>We can see, at face-value, the average <strong>PM2.5</strong> at <strong>KC1</strong> (i.e., Kensington) is 8.786, which is a slightly higher than <strong>LOFS</strong> (i.e., Farringdon) which has an average of 7.605. Visually, however, it is difficult based on medians, but KC1 has a wide distribution with more extreme values.</p>
 <p>Now, we want to know if this difference are indeed <strong>statistical significant</strong>. We can do this by using the <code>t.test()</code> and declaring <code>paired = FALSE</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span>[air_data_ttest<span class="sc">$</span>code <span class="sc">==</span> <span class="st">"KC1"</span>], air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span>[air_data_ttest<span class="sc">$</span>code <span class="sc">==</span> <span class="st">"LOFS"</span>], <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span>[air_data_ttest<span class="sc">$</span>code <span class="sc">==</span> <span class="st">"KC1"</span>], air_data_ttest<span class="sc">$</span>pm2<span class="fl">.5</span>[air_data_ttest<span class="sc">$</span>code <span class="sc">==</span> <span class="st">"LOFS"</span>], <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -550,7 +547,7 @@ Important
 </ol>
 </div>
 </div>
-<p>That is how you execute a <strong>t-test</strong>. Now, you should be able to do final worksheet.</p>
+<p>That is how you execute a <strong>t-test</strong>. Now, you should be able to the do final worksheet.</p>
 </section>
 </section>
 <section id="worksheet-five-london-air-quality-ii" class="level1" data-number="2">
@@ -573,7 +570,7 @@ Important
 <div class="callout-body-container callout-body">
 <p><strong>Submission Deadline: Wednesday 10th December, 2025</strong></p>
 <p>The above date is a hard deadline!</p>
-<p>Please download the answer sheet <strong>HERE</strong>. You can use the answer sheet for this worksheet to insert your answers into the appropriate sections. Please note that this Worksheet 4, in particular will only be marked with individualised feedback to the script.</p>
+<p>Please download the answer sheet <strong>HERE</strong>. You can use the answer sheet for this worksheet to insert your answers into the appropriate sections. Please note that this Worksheet 5, in particular will only be marked with individualised feedback to the script.</p>
 </div>
 </div>
 
