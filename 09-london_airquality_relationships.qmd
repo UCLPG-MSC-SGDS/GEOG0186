@@ -292,11 +292,11 @@ From the above information, use the `importAURN()` code to extract all 2025 meas
 
 - **Scatterplot** showing PM10 versus PM2.5 
 - **Correlation** test for PM10 versus PM2.5
-- Simple **linear regression** model
+- Simple **linear regression** model that **quantifies how much PM10 changes when PM2.5 changes.**
 
 Provide the necessary interpretation of their relationship.
 
-**HINTS**: Because the data points are time-series - make sure to use the `diff()` in the `cor.test()` or `lm()` to de-trend observations, as well as remove any autocorrelation between lagged values for both **PM2.5** and **PM10**.
+**HINTS**: Because the data points are time-series - make sure to use the `diff()` in the `cor.test()` or `lm()` to de-trend observations, as well as remove any autocorrelation between lagged values for both **PM2.5** and **PM10**. Lastly, when building your regression model - the code should look something like: `lm(diff(pm10) ~ diff(pm2.5))` so that it is modelling the change in PM10 as a function of the change in PM2.5.
 
 :::{.callout-important}
 **Submission Deadline: Thursday 27th November, 2025**
