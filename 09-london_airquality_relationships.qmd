@@ -278,7 +278,7 @@ In this worksheet, the aim of this worksheet is conduct exploration analysis of 
 
 From the above information, use the `importAURN()` code to extract all 2025 measure for **PM2.5** and **PM10** from **CA1** and **CLL2** locations. What is the code syntax for this operation?
 
-**HINT**: The code syntax should resemble the follow: `importAURN(site = , year = , data_type = , pollutant = c())`
+**HINT**: The code syntax should resemble the follow: `importAURN(site = c(...), year = , data_type = , pollutant = c(...))`. The data extraction for both **CA1** and **CLL2** need to be performed in one line of code for efficiency.
 
 2. Create **TWO** time series plot specifically for **PM2.5** for both locations **CA1** and **CLL2**
 

@@ -76,3 +76,38 @@ tapply(dataset_aurn_CA1$pm2.5, dataset_aurn_CLL2$quarters, sd, na.rm = TRUE)
 # CLL2
 tapply(dataset_aurn_CLL2$pm2.5, dataset_aurn_CLL2$quarters, mean, na.rm = TRUE)
 tapply(dataset_aurn_CLL2$pm2.5, dataset_aurn_CLL2$quarters, sd, na.rm = TRUE)
+
+# Question 4
+# for CA1
+plot(dataset_aurn_CA1$pm10, dataset_aurn_CA1$pm2.5,
+	xlab = "Daily Average PM10 (μg/m³)", 
+	ylab = "Daily Average PM2.5 (μg/m³)",
+	main = "Scatterplot: PM10 versus  PM2.5 [Code: CA1]",
+	bty = "L",
+	pch = 16,
+	las = 1,
+)
+
+# use diff() to remove trends, seasonality 
+cor.test(diff(dataset_aurn_CA1$pm10), diff(dataset_aurn_CA1$pm2.5))
+
+# linear regression
+modelfit_CA1 <- lm(diff(dataset_aurn_CA1$pm10) ~ diff(dataset_aurn_CA1$pm2.5))
+summary(modelfit_CA1)
+
+# for CLL2
+plot(dataset_aurn_CLL2$pm10, dataset_aurn_CLL2$pm2.5,
+	xlab = "Daily Average PM10 (μg/m³)", 
+	ylab = "Daily Average PM2.5 (μg/m³)",
+	main = "Scatterplot: PM10 versus  PM2.5 [Code: CLL2]",
+	bty = "L",
+	pch = 16,
+	las = 1,
+)
+
+# use diff() to remove trends, seasonality 
+cor.test(diff(dataset_aurn_CLL2$pm10), diff(dataset_aurn_CLL2$pm2.5))
+
+# linear regression
+modelfit_CLL2 <- lm(diff(dataset_aurn_CLL2$pm10) ~ diff(dataset_aurn_CLL2$pm2.5))
+summary(modelfit_CLL2)

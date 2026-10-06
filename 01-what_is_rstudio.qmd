@@ -37,16 +37,16 @@ To use RStudio, you must first install R (Base) before installing RStudio. Follo
 
 **OS User type**| **R (Base)** | **RStudio Desktop**
 ------------ | ------------- | -------------
-Windows | [**R-4.5.1-win.exe**](https://cran.r-project.org/bin/windows/base/R-4.5.1-win.exe)| [**RStudio-2025.09.0-387.exe**](https://download1.rstudio.org/electron/windows/RStudio-2025.09.0-387.exe)
-MAC (Intel) | [**R-4.5.1-x86_64.pkg**](https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.5.1-x86_64.pkg)| [**RStudio-2025.09.0-387.dmg**](https://download1.rstudio.org/electron/macos/RStudio-2025.09.0-387.dmg)
-MAC (M1, M2 or M3) | [**R-4.5.1-arm64.pkg**](https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.5.1-arm64.pkg)| [**RStudio-2025.09.0-387.dmg**](https://download1.rstudio.org/electron/macos/RStudio-2025.09.0-387.dmg)
+Windows | [**R-4.6.1-win.exe**](https://cran.r-project.org/bin/windows/base/R-4.6.1-win.exe)| [**RStudio-2026.09.0-174.exe**](https://download1.rstudio.org/electron/windows/RStudio-2026.09.0-174.exe)
+MAC (Intel) | [**R-4.6.1-x86_64.pkg**](https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.6.1-x86_64.pkg)| [**RStudio-2026.09.0-174.dmg**](https://download1.rstudio.org/electron/macos/RStudio-2026.09.0-174.dmg)
+MAC (M1-5) | [**R-4.6.1-arm64.pkg**](https://cran.r-project.org/bin/macosx/sonoma-arm64/base/R-4.6.1-arm64.pkg)| [**RStudio-2026.09.0-174.dmg**](https://download1.rstudio.org/electron/macos/RStudio-2026.09.0-174.dmg)
 
 :::{.callout-important}
 **R (Base)** is very particular about the operating system! Please be sure to use the correct installer for your computer:
 
 - **Windows** users: use the files in the first row.
 - **Mac (Intel)** users: use the files in the second row.
-- **Mac (M1, M2, or M3 chip)** users: use the files in the third row.
+- **Mac (M1-5 chip)** users: use the files in the third row.
 :::
 
 This section covers how to download and install RStudio for it to be used locally on your machine. There are several ways to access RStudio: 
