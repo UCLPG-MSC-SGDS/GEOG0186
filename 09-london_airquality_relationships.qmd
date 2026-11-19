@@ -71,7 +71,7 @@ You can visualise the spatial distribution of these sites that are currently act
 
 ```{r, openair_atlas}
 # map of all air pollution monitors
-networkMap(source = "aurn", control = "site_type", year = 2025)
+networkMap(source = "aurn", control = "site_type", year = 2026)
 ```
 
 ### Air pollution information
@@ -92,7 +92,7 @@ We can extract information into a data frame by using the `importAURN()` functio
 ```{r, data_extraction_openair}
 air_KC1 <- importAURN(
 	site = "KC1", 
-	year = 2025, 
+	year = 2026, 
 	data_type = "daily", 
 	pollutant = c("no2", "nox", "pm2.5", "pm10"))
 ```
@@ -131,7 +131,7 @@ plot(air_KC1$no2 ~ air_KC1$date_formatted,
 	lwd=1.5, 
 	main="AURN: London North Kensington [Code: KC1]", 
 	ylab = "NO2 [PPB, Daily Average]", 
-	xlab = "Date [2025-01-01 to 2025-11-22]",
+	xlab = "Date [2026-01-01 to 2026-11-19]",
 	ylim = c(0, 70),
 	bty = "L",
 	xaxt = "n")
@@ -145,7 +145,7 @@ axis.Date(
 ```
 
 :::{.callout-note}
-**Interpretation:** This is a face-value interpretation, and as you can see, it is quite difficult to discern clear patterns in NO₂ between 01/01/2025 and 22/11/2025. But broadly speaking—and ignoring the jagged spikes—the overall pattern suggests a gradual decline in NO₂ levels from the start of the year until early September. From the beginning of September onwards, NO₂ levels begin to increase gradually. 
+**Interpretation:** This is a face-value interpretation, and as you can see, it is quite difficult to discern clear patterns in NO₂ between **01/01/2026** and **19/11/2026**. But broadly speaking—and ignoring the jagged spikes—the overall pattern suggests a gradual decline in NO₂ levels from the start of the year until early September. From the beginning of September onwards, NO₂ levels begin to increase gradually. 
 :::
 
 ### Descriptive analysis of time-series data
@@ -159,8 +159,18 @@ summary(air_KC1$no2, na.rm = TRUE)
 sd(air_KC1$no2, na.rm = TRUE)
 ```
 
+```{r desc_stats_NO2_openair_nocalculations}
+#| include: false
+
+mean_no2  <- mean(air_KC1$no2, na.rm = TRUE)
+sd_no2    <- sd(air_KC1$no2, na.rm = TRUE)
+min_no2   <- min(air_KC1$no2, na.rm = TRUE)
+max_no2   <- max(air_KC1$no2, na.rm = TRUE)
+range_no2 <- max_no2 - min_no2
+```
+
 :::{.callout-important}
-**Interpretation**: The overall mean air pollution levels for NO2 (in 2025) in London North Kensington was 16.399ppb (with one SD of ±10.82ppb). The overall range in the distribution is 61.534ppb where the lowest observed value is 3.435ppb (minimum) and the highest observed value is 64.949ppb (maximum)
+**Interpretation**: The overall mean air pollution level for NO2 (in `r format(Sys.Date(), "%Y")`) in London North Kensington was `r round(mean_no2, 3)` ppb (with one SD of ±`r round(sd_no2, 2)` ppb). The overall range in the distribution was `r round(range_no2, 3)` ppb, where the lowest observed value was `r round(min_no2, 3)` ppb (minimum) and the highest observed value was `r round(max_no2, 3)` ppb (maximum).
 :::
 
 While, this is basically a summary of the overall description of the distribution of NO2 - sometimes, its inappropriate or bad practice to summarise time series data in that fashion. It is best practice to report such summaries for time series data in a quarterly, or monthly manner, to see if their a distinct pattern that is temporally apparent.
